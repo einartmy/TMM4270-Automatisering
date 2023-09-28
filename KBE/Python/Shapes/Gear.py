@@ -8,10 +8,11 @@ class Gear:
     def __init__(self, gearR, toothL, gearHeight, x, y):
         self.gearR = gearR
         self.toothL = toothL
+        self.gearHeight = gearHeight
         self.x = x
         self.y = y
         
-        teeth = math.floor(gearR / 4)
+        teeth = math.floor(gearR / 6)
         angle = 2*math.pi / teeth
         cylinder_radius = gearR-toothL
         gear = Cylinder(x,y,0, cylinder_radius * 2, gearHeight,  [0,0,1])
