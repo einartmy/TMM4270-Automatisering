@@ -1,0 +1,76 @@
+#! NX/KF 4.0  - Teapot Spout
+DefClass: debug (ug_base_part);
+(number parameter) body_dia: 100; #tea pot body diameter
+(number parameter) wall_thickness: 3; #tea pot wall thickness
+
+
+(Child) the_body: {
+        Class,        ug_sphere,
+        Diameter,     body_dia:,
+    };
+
+(Child) the_spout_cone:{
+		Class, 			ug_cone;
+		Base_Diameter, 	body_dia:*0.2;
+		Top_Diameter, 	body_dia:*0.08;
+		Height, 		body_dia:*0.3;
+		Direction, 		Vector(-1,0,cos(50));
+		Origin, 		point(-cos(50)*body_dia:/2, 0, sin(50)*body_dia:/2.5);
+
+	};
+	
+#remove inner spout cone
+(Child) the_spout_cut_cone:{
+		Class, 			ug_cone;
+		Base_Diameter, 	the_spout_cone:Base_Diameter:*0.8;
+		Top_Diameter, 	the_spout_cone:Top_Diameter:*0.7;
+		Height, 		the_spout_cone:height:;
+		Direction, 		the_spout_cone:direction:;
+		Origin, 		the_spout_cone:origin:;
+	};
+
+
+(Child) the_spout_cut_hole:{
+		Class, 			ug_cone;
+		Base_Diameter, 	the_spout_cone:Base_Diameter:*0.8;
+		Top_Diameter, 	the_spout_cone:Top_Diameter:*0.7;
+		Height, 		the_spout_cone:height:;
+		Direction, 		the_spout_cone:direction:;
+		Origin, 		the_spout_cone:origin:;
+	};
+
+
+#inner body sphere for cutting handle so it matches the inside of the teapot curve
+(Child) the_body_in: {
+        Class,        ug_sphere;
+        Diameter,     body_dia:-wall_thickness:*2;
+		Operation, Subtract;
+		Target, {the_spout_cone:}
+    };
+
+(Child) the_spout_hole: {
+		Class, ug_boolean;
+		Operation, Subtract;
+		Target, {the_body:};
+		Tool, {the_spout_cut_hole:};
+		};
+
+
+(Child) the_spout_cut: {
+		Class, ug_boolean;
+		Operation, Subtract;
+		Target, {the_spout_cone:};
+		Tool, {the_spout_cut_cone:};
+		};
+		
+		
+
+(Child) the_spout_hole: {
+		Class,		ug_cylinder;
+		Diameter,	body_dia:*0.2;
+		Height, 	body_dia:*0.3;
+		Direction, 	Vector(-1,0,cos(50));
+		Origin, 	point(-cos(50)*body_dia:/2, 0, sin(50)*body_dia:/2.5);
+		};
+	
+		

@@ -1,0 +1,32 @@
+#! NX/KF 4.0 - Chain demo v0.5
+DefClass: ChainN (ug_base_part);
+# Set of default parameters for the part
+(number parameter) ring_radius: 100;
+(number parameter) ring_thikness: 10;
+(number parameter) n: 10;
+
+# A list of arranged chain links
+(List) elements: loop 
+{
+#iterator
+for $i from 1 to n:;
+#assignments - position, orientation of a ring
+for $pt is Point(0,$i*2*ring_radius:-ring_thikness:*$i*3,0);
+for $axisX is if (mod($i, 2)=0) then vector(0, 0, 1) else vector(1, 0, 0);
+#for $axisY is if then else  vector(0, 1, 0);
+#accumulator
+append {ug_createInstance(
+  	{
+   	 	class, MyRing;
+    	ring_radius, ring_radius:;
+		ring_thikness, ring_thikness:;
+		referenceFrame, frameXY(
+			$pt,
+			$axisX,
+			vector(0, 1, 0)
+		);
+	
+  	})};
+};
+
+(list) DemandValue: {elements:};

@@ -1,0 +1,73 @@
+#! NX/KF 4.0 - Teapot body Einar
+DefClass: TP_body_Einar (ug_base_part);
+(number parameter) body_dia: 100; #tea pot body diameter
+(number parameter) wall_thickness: 3; #tea pot wall thickness
+
+#body sphere
+(Child) the_body: {
+        Class,        ug_sphere,
+        Diameter,     body_dia:,
+    };
+
+#cut half of that body sphere - block or _cylinder_
+(Child) the_body_cylinder_cut: {
+        Class,        ug_cylinder,
+        Diameter,     body_dia:,
+		Direction, 	Vector(0, 0, -1);
+		Height, 	body_dia:/2;
+		Operation, 	Subtract;
+		Target, {the_body:}
+    };
+
+
+#make a smaller sphere to represent internal space.
+(Child) the_body_in: {
+        Class,        ug_sphere,
+        Diameter,     body_dia:-wall_thickness:*2,
+		Operation, Subtract;
+		Target, {the_body:}
+    };
+	
+	
+#cut half of the internal smaller sphere.
+(Child) the_bottom_plate: {
+        Class,        ug_cylinder;
+        Diameter,     the_body:Diameter:;
+		Height, body_dia:/30;
+    };
+
+
+#subtract smaller sphere from the body shpere at the right location.
+(Child) the_lid_cut: {
+		Class,		ug_sphere;
+		Diameter,	body_dia:*0.4;
+		Center, point(0,0,body_dia:*0.6);
+		Operation, Subtract;
+		Target, {the_body:};
+	};
+	
+#subtract small cylinder in y directon for pouring
+(Child) the_spout_cut:{
+		Class, 		ug_cylinder;
+		Diameter, 	the_body:diameter:*0.2;
+		Height, 	the_body:diameter:/2;
+		Origin, 	point(0,0,the_body:diameter:/4);
+		Direction, Vector(0, -1, 0);
+		#Operation, 	Subtract;
+		#Target, {the_body:};	
+	};
+#add spout cone to the hole
+(Child) the_spout_cone:{
+		Class, 		ug_cone;
+		Base_Diameter, the_spout_cut:diameter:;
+		Top_Diameter, the_spout_cut:diameter:*0.7;
+		
+		Height, the_body:diameter:*1.2;
+		Direction, Vector(0,-1,cos(50));
+		#Operation, subtract;
+		#Target, {the_body:};
+	};
+	
+#Make a lid...
+# Make a body to be subtracted for a lid
+# Subtract that body.

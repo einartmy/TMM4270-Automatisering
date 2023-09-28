@@ -1,0 +1,93 @@
+#! NX/KF 5.0
+DefClass: myTeapotDialog (%ui_comp);
+(list) DialogItems: {size:, color:, Center:};
+(string) Title: "Create Teapot";
+
+(child) size: {
+class, %ui_comp_group,
+Title, "Size Parameters";
+Members, {enterBodyDiameter:, enterSpoutLength:, enterHandleDiameter:};
+Group, true
+};
+
+(child) color: {
+class, %ui_comp_group,
+Title, "Color";
+Members, {enterBodyColor:, enterLidColor:, enterSpoutColor:, enterHandleColor:};
+Group, true
+};
+
+(child) enterBodyDiameter: {
+class, %ui_comp_expression,
+Title, "Body Diameter";
+value, 100;
+};
+
+(child) enterSpoutLength: {
+class, %ui_comp_expression,
+Title, "Spout Length";
+value, 30;
+};
+
+(child) enterHandleDiameter: {
+class, %ui_comp_expression,
+Title, "Handle Diameter";
+value, 40;
+};
+
+(child) Center: {
+class, %ui_comp_point,
+Title, "Center Point";
+};
+
+(child) enterBodyColor: {
+class, %ui_comp_integer,
+Title, "Color body (enter: 1-216)";
+maxinclusive, true;
+mininclusive, true;
+MaximumValue, 216;
+MinimumValue, 1;
+value, 85;
+};
+
+(child) enterLidColor: {
+class, %ui_comp_integer,
+Title, "Color lid (enter: 1-216)";
+maxinclusive, true;
+mininclusive, true;
+MaximumValue, 216;
+MinimumValue, 1;
+value, 85;
+};
+
+(child) enterSpoutColor: {
+class, %ui_comp_integer,
+Title, "Color spout (enter: 1-216)";
+maxinclusive, true;
+mininclusive, true;
+MaximumValue, 216;
+MinimumValue, 1;
+value, 85;
+};
+
+(child) enterHandleColor: {
+class, %ui_comp_integer,
+Title, "Color handle (enter: 1-216)";
+maxinclusive, true;
+mininclusive, true;
+MaximumValue, 216;
+MinimumValue, 1;
+value, 85;
+};
+
+(child) Teapot: {
+class, Teapot; # NB! Previously created class
+body_dia, enterBodyDiameter:value:;
+spout_length, enterSpoutLength:value:;
+handle_dia, enterHandleDiameter:value:;
+Center, Center:Point:; 
+color_body, enterBodyColor:value:; 
+color_lid, enterLidColor:value:;
+color_spout, enterSpoutColor:value:;  
+color_handle, enterHandleColor:value:; 
+};

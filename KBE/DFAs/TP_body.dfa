@@ -1,0 +1,151 @@
+#! NX/KF 4.0 - Teapot body
+DefClass: TP_body (ug_base_part);
+(number parameter) body_dia: 40; #tea pot body diameter
+(number parameter) wall_thickness: 0.03*body_dia:; #tea pot wall thickness (constant)
+(Point Parameter) center: point(18,100,-10); #center of tea pot body sphere
+(number parameter) spout_length: body_dia:*0.3; #spout length, default body_dia*0.3
+(integer parameter) color_body: 60;
+(integer parameter) color_lid: 200;
+(integer parameter) color_handle: 216;
+(integer parameter) color_spout: 20;
+(number) spout_length_min: body_dia:*0.2; #min spout length value, shorter than that will make the spout to small to act as a spout.
+(number) spout_length_max: body_dia:*2;	#max spout length value, does not make sense to have a spout any longer.
+
+
+#body sphere
+(Child) the_body: {
+        Class,        ug_sphere,
+        Diameter,     body_dia:,
+		Center,			center:,
+    };
+
+(Child) body_colored: 
+{ 
+  Class, ug_body; 
+  Feature, {the_body:};  
+  Layer, 1; 
+  color, color_body:;
+  };
+
+
+#cut half of that body sphere - block or _cylinder_
+(Child) the_body_cylinder_cut: {
+        Class,        ug_cylinder,
+        Diameter,     body_dia:,
+		Origin,			center:;
+		Direction, Vector(0, 0, -1);
+		Height, body_dia:/2;
+		Operation, Subtract;
+		Target, {the_body:}
+    };
+
+#make a smaller sphere to represent internal space.
+(Child) the_body_in: {
+        Class,        ug_sphere,
+        Diameter,     body_dia:-wall_thickness:*2,
+		Center,		center:;
+		Operation, Subtract;
+		Target, {the_body:}
+    };
+	
+#cut half of the internal smaller sphere.
+(Child) the_bottom_plate: {
+        Class,        ug_cylinder;
+        Diameter,     the_body:Diameter:;
+		Origin,		center: + vector(0,0,-wall_thickness:);
+		Height, body_dia:*0.03; #Same as wall_thickness
+		Operation, unite;  
+		Target, {the_body:};
+    };
+
+
+#subtract smaller sphere from the body shpere at the right location.
+
+#Importing lid from lid.dfa
+
+(Child) the_lid: {
+		Class,		lid;
+		body_dia, body_dia:; #tea pot body diameter
+		center, center:;
+		color, color_lid:;
+		};
+
+(Child) lid_colored: 
+{ 
+  Class, ug_body; 
+  Feature, {the_lid:the_lid:};  
+  Layer, 1; 
+  color, color_lid:;
+  };
+  
+
+
+
+
+# Make a body to be subtracted to make a lid cut
+# Subtract that body.
+
+(Child) the_lid_cut: {
+        Class,        ug_sphere;
+        Diameter,     body_dia:*0.4;
+		Center, center: + vector(0, 0, body_dia:*0.6);
+		Operation, Subtract;
+		Target, {the_body:};
+		};
+
+
+
+#Importing handle from Handle.dfa
+
+(Child) the_handle: {
+		Class,		Handle;
+		body_dia, body_dia:; #tea pot body diameter
+		center, center:;
+		};
+
+
+(Child) handle_colored: 
+{ 
+  Class, ug_body; 
+  Feature, {the_handle:the_handle_cylinder:};  
+  Layer, 1; 
+  color, color_handle:;
+  };
+
+
+#Importing spout from Spout.dfa
+
+(Child) the_spout: {
+		Class,		Spout;
+		body_dia, body_dia:; #tea pot body diameter
+		wall_thickness, wall_thickness:; #tea pot wall thickness
+		spout_length, spout_length:;
+		center, center:;
+		color, color_spout:;
+		};
+
+(Child) spout_colored: 
+{ 
+  Class, ug_body; 
+  Feature, {the_spout:the_spout_cone:};  
+  Layer, 1; 
+  color, color_spout:;
+  };
+  
+
+(Child) the_spout_hole: {
+		Class,		ug_cylinder;
+		Diameter,	body_dia:*0.16;
+		Height, 	body_dia:*0.3;
+		Direction, 	Vector(-1,0,cos(50));
+		Origin, 	center: + vector(-cos(50)*body_dia:/2, 0, sin(50)*body_dia:/2.5);
+		};
+
+(Child) the_hole_cut: {
+		Class,		ug_boolean;
+		Operation,  Subtract;
+		Target,		{the_body:};
+		Tool,		{the_spout_hole:};
+		};
+
+

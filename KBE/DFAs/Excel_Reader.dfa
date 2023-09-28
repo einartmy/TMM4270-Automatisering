@@ -1,0 +1,38 @@
+#! NX/KF 4.0
+DefClass: ExcelReader (%ug_create_instance ug_base_part);
+
+#Read Excel
+(List) excel_data:
+@{
+$file << ug_excel_open_file("\\home.ansatt.ntnu.no\mbergst\Desktop\KBE\blocks_data.xlsx", READ);
+$list << ug_excel_read_range($file, 1, 2, 1, 4, 6);
+ug_excel_close_file($file, FALSE);
+$list;
+};
+
+# Generating blocks from the data received from Excel file 
+# Get list of all the features
+(list) list_of_features: loop
+{
+  for $i from 6 to length(excel_data:) by 6; # Iterating over the rows of data (for blocks of 6 elements in the row)
+  for $length is ug_askValueOfExpressionStr(nth($i, excel_data:)); # length
+  for $width is ug_askValueOfExpressionStr(nth($i+1, excel_data:)); # width
+  for $heigth is ug_askValueOfExpressionStr(nth($i+2, excel_data:)); # height
+  for $x is ug_askValueOfExpressionStr(nth($i+3, excel_data:)); # x
+  for $y is ug_askValueOfExpressionStr(nth($i+4, excel_data:)); # y
+  for $z is ug_askValueOfExpressionStr(nth($i+5, excel_data:)); # z
+  for $inst is ug_createInstance(
+  	{
+   	 	class, ug_block;
+    		origin, Point($x, $y,$z);
+    		length, $length;
+		height, $heigth;
+		width, $width;
+  	});
+  append {$inst};
+
+  	
+};
+
+# Appending features
+(list) DemandValue: {list_of_features:};

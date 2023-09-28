@@ -1,0 +1,36 @@
+#! NX/KF 4.0 - Teapot Handle
+DefClass: Handle (ug_base_part);
+(number parameter) body_dia: 100; 			#tea pot body diameter
+(number parameter) handle_dia: body_dia:*0.4; #default handle diameter 
+(Point Parameter) center: point(0, 0, 0); 
+(Vector parameter) direction: Vector(0, 1, 0);
+
+
+#Making a handle as flat cylinder
+(Child) the_handle_cylinder: {
+		Class,		ug_cylinder;
+		Diameter,	handle_dia:;
+		Height, 	body_dia:*0.1;	
+		Origin, 	center: + vector(body_dia:/2.5, -the_handle_cylinder:Height:/2, body_dia:*0.3);
+		Direction, 	direction:;
+	};
+		
+#body sphere for cutting handle so it matches the teapot curve
+(Child) the_body_cut: {
+        Class,      ug_sphere,
+        Diameter,	body_dia:,
+		Center,		center:,
+		Operation, 	Subtract;
+		Target, 	{the_handle_cylinder:}
+    };
+
+#Subtracting smaller cylinder from the_handle_cylinder
+(Child) the_handle_cylinder_cut_in: {
+		Class,		ug_cylinder;
+		Diameter,	the_handle_cylinder:diameter:*0.9;
+		Height, 	the_handle_cylinder:Height:;	
+		Origin, 	the_handle_cylinder:Origin:;
+		Direction, 	the_handle_cylinder:Direction:;
+		Operation, 	Subtract;
+		Target, 	{the_handle_cylinder:};
+	};

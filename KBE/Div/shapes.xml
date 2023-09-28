@@ -1,0 +1,24 @@
+<?xml version="1.0" standalone="yes" ?>
+<!DOCTYPE shapes [
+<!ELEMENT shapes (shape*)>
+<!ELEMENT shape (x_,y_,z_,col_)>
+<!ELEMENT x_ (#PCDATA)>
+<!ELEMENT y_ (#PCDATA)>
+<!ELEMENT z_ (#PCDATA)>
+<!ELEMENT col_ (#PCDATA)>
+]>
+<shapes>
+	<shape>
+		<x_> 0 </x_> 
+		<y_> 0 </y_>
+		<z_> 100 </z_>
+		<col_> GREEN </col_>
+	</shape>
+	<shape>
+		<x_> 10 </x_>
+		<y_> 10 </y_>
+		<z_> 10 </z_>
+		<col_> GREEN </col_>
+	</shape>
+</shapes>
+
