@@ -110,3 +110,14 @@ class Swept:
 
         subtractfeaturebuilder1.Commit()
         subtractfeaturebuilder1.Destroy()
+
+    def unite(self, tool):
+        theSession = NXOpen.Session.GetSession()
+        workPart = theSession.Parts.Work     
+
+        booleanBuilder1 = workPart.Features.CreateBooleanBuilderUsingCollector(NXOpen.Features.BooleanFeature.Null)
+        booleanBuilder1.Target = self.body
+        booleanBuilder1.Tool = tool.body
+        booleanBuilder1.Operation = NXOpen.Features.Feature.BooleanType.Unite
+        booleanBuilder1.Commit()
+        booleanBuilder1.Destroy()		
