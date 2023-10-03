@@ -26,9 +26,13 @@ class UpperCase:
         y_position = gear_center_y - half_gear_radius
 
         # Create first swept object
+        
+        #Creating guide
         line1 = create_line(gear_center_x - gear_radius - 10, y_position, gear_center_x - gear_radius - 10, gear_center_y, 0, 0)
         arc_g1 = Arc(gear_center_x, gear_center_y, 0, (1, 0, 0), (0, 1, 0), gear_radius + 10, 0, 180)
         line2 = create_line(gear_center_x + gear_radius + 10, y_position, gear_center_x + gear_radius + 10, gear_center_y, 0, 0)
+        
+        #Creating section
         base_lines = [
             create_line(gear_center_x - gear_radius - 15, y_position, gear_center_x - gear_radius - 5, y_position, depth, depth),
             create_line(gear_center_x - gear_radius - 5, y_position, gear_center_x - gear_radius - 5, y_position, depth, 0),
@@ -38,7 +42,11 @@ class UpperCase:
         swept = Swept([line1, arc_g1, line2], base_lines)
 
         # Create second swept object
+        
+        #Guide
         line3 = create_line(gear_center_x - gear_radius - 5, y_position, gear_center_x - gear_radius - 110, y_position, 0, 0)
+        
+        #Section
         base_lines = [
             create_line(gear_center_x - gear_radius - 5, y_position + 10, gear_center_x - gear_radius - 5, y_position + 10, 0, depth),
             create_line(gear_center_x - gear_radius - 5, y_position + 10, gear_center_x - gear_radius - 5, y_position, depth, depth),
@@ -47,8 +55,13 @@ class UpperCase:
         ]
         swept2 = create_swept(line3, base_lines)
 
+
         # Create third swept object
+
+        #Guide
         line4 = create_line(gear_center_x + gear_radius + 5, y_position, gear_center_x + gear_radius + 110, y_position, 0, 0)
+        
+        #Section
         base_lines = [
             create_line(gear_center_x + gear_radius + 5, y_position + 10, gear_center_x + gear_radius + 5, y_position + 10, 0, depth),
             create_line(gear_center_x + gear_radius + 5, y_position + 10, gear_center_x + gear_radius + 5, y_position, depth, depth),
@@ -56,7 +69,6 @@ class UpperCase:
             create_line(gear_center_x + gear_radius + 5, y_position, gear_center_x + gear_radius + 5, y_position + 10, 0, 0)
         ]
         swept3 = create_swept(line4, base_lines)
-
 
 class LowerCase:
 
@@ -73,12 +85,16 @@ class LowerCase:
             return Swept([main_line], base_lines)
 
         half_gear_radius = gear_radius * 0.5
-        y_position = gear_center_y + half_gear_radius  # changed to plus for mirroring
+        y_position = gear_center_y + half_gear_radius  # changed to plus for mirroring uppercase 
 
         # Create first swept object
+
+        #Guide
         line1 = create_line(gear_center_x - gear_radius - 10, y_position, gear_center_x - gear_radius - 10, gear_center_y, 0, 0)  # Keep x, Change y
         arc_g1 = Arc(gear_center_x, gear_center_y, 0, (1, 0, 0), (0, 1, 0), gear_radius + 10, 180, 360)  # Change arc angle to negative for mirroring
         line2 = create_line(gear_center_x + gear_radius + 10, y_position, gear_center_x + gear_radius + 10, gear_center_y, 0, 0)  # Keep x, Change y
+        
+        #Section
         base_lines = [
             create_line(gear_center_x - gear_radius - 15, y_position, gear_center_x - gear_radius - 5, y_position, depth, depth),  # Keep x, Change y
             create_line(gear_center_x - gear_radius - 5, y_position, gear_center_x - gear_radius - 5, y_position, depth, 0),  # Keep x, Change y
@@ -88,7 +104,11 @@ class LowerCase:
         swept = Swept([line1, arc_g1, line2], base_lines)
 
         # Create second swept object
+
+        #Guide
         line3 = create_line(gear_center_x - gear_radius - 5, y_position, gear_center_x - gear_radius - 110, y_position, 0, 0)  # Keep x, Change y
+        
+        #Section
         base_lines = [
             create_line(gear_center_x - gear_radius - 5, y_position - 10, gear_center_x - gear_radius - 5, y_position - 10, 0, depth),  # Keep x, Change y
             create_line(gear_center_x - gear_radius - 5, y_position - 10, gear_center_x - gear_radius - 5, y_position, depth, depth),  # Keep x, Change y
@@ -98,7 +118,11 @@ class LowerCase:
         swept2 = create_swept(line3, base_lines)
 
         # Create third swept object
+
+        #Guide
         line4 = create_line(gear_center_x + gear_radius + 5, y_position, gear_center_x + gear_radius + 110, y_position, 0, 0)  # Keep x, Change y
+        
+        #Section
         base_lines = [
             create_line(gear_center_x + gear_radius + 5, y_position - 10, gear_center_x + gear_radius + 5, y_position - 10, 0, depth),  # Keep x, Change y
             create_line(gear_center_x + gear_radius + 5, y_position - 10, gear_center_x + gear_radius + 5, y_position, depth, depth),  # Keep x, Change y

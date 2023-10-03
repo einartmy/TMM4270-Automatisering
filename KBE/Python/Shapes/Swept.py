@@ -80,7 +80,7 @@ class Swept:
             cur = curve.body
             curves2.append(cur)
 
-        line1 = self.guide[0].line
+        line1 = self.guide[0].body
 
         curveDumbRule2 = workPart.ScRuleFactory.CreateRuleBaseCurveDumb(
             curves2, selectionIntentRuleOptions2)
