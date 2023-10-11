@@ -7,8 +7,9 @@ gear1 = Gear(100, 60, 40, 40, 50, 100)
 gear2 = Gear(gear1.gearR, gear1.toothLength, gear1.toothWidth, gear1.gearHeight, gear1.x, gear1.y-2*gear1.gearR - 0.5*gear1.toothLength)
 
 
-upper_case = UpperCase(gear1.x, gear1.y, gear1.gearR + gear1.toothLength*0.5 , gear1.gearHeight)
-lower_case = LowerCase(gear2.x, gear2.y, gear2.gearR + gear2.toothLength*0.5, gear2.gearHeight)
+
+# upper_case = UpperCase(gear1.x, gear1.y, gear1.gearR + gear1.toothLength*0.5 , gear1.gearHeight)
+# lower_case = LowerCase(gear2.x, gear2.y, gear2.gearR + gear2.toothLength*0.5, gear2.gearHeight)
 #wall = Wall(gear1.x, gear1.y, upper_case.gear_radius, gear1.gearHeight, 10, gear1.toothLength)
 
 pathToTheFolder = "M:\\Desktop\\TMM4270\\TMM4270-Automatisering\\KBE\\Python\\Animation\\"
