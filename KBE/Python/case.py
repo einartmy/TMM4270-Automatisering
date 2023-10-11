@@ -7,6 +7,7 @@ sys.path.append("M:\Desktop\TMM4270\TMM4270-Automatisering\KBE\Python")
 from Shapes.Swept import Swept 
 from Shapes.Line import Line 
 from Shapes.Arc import Arc
+from Shapes.Cylinder import Cylinder
 
 class UpperCase:
 
@@ -132,3 +133,21 @@ class LowerCase:
         swept3 = create_swept(line4, base_lines)
 
 
+class Wall:
+
+    def __init__(self, gear_center_x, gear_center_y, gear_radius, depth, thickness, toothlength) -> None:
+        self.center_x = gear_center_x
+        self.center_y = gear_center_y
+        self.radius = gear_radius + 15
+        self.depth = depth
+        self.thickness = thickness
+        self.toothlength = toothlength
+
+        self.initForNX()
+    
+    def initForNX(self):
+        front_upper_wall = Cylinder(self.center_x, self.center_y, self.depth, self.radius*2, self.thickness)
+        back_upper_wall = Cylinder(self.center_x, self.center_y,- self.thickness, self.radius*2, self.thickness)
+
+        front_lower_wall = Cylinder(self.center_x, self.center_y-2 * self.radius  + 0.5*self.toothlength, self.depth, self.radius*2, self.thickness)
+        back_lower_wall = Cylinder(self.center_x, self.center_y-2 * self.radius + 0.5*self.toothlength,- self.thickness, self.radius*2, self.thickness)
