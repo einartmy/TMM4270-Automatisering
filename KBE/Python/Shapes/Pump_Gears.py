@@ -4,12 +4,13 @@ import math
 
 class Pump_Gears:
 	
-    def __init__(self, gearRadius, gearHeight, teethRadius, x, y):
+    def __init__(self, gearRadius, gearHeight, teethRadius, x, y, offset):
         self.gearRadius = gearRadius
         self.gearHeight = gearHeight
         self.x = x
         self.y = y
         self.teethRadius = teethRadius
+        self.offset = offset
         
         
         
@@ -34,8 +35,10 @@ class Pump_Gears:
         angle = 2* math.pi / numberOfTeeth
 
         for i in range(0, numberOfTeeth):
-
-            tooth = Cylinder(self.x + (radius*math.cos(i*angle)), self.y + (radius*math.sin(i*angle)), 0, self.teethRadius, self.gearHeight)
+            if self.offset: 
+                tooth = Cylinder(self.x + (radius*math.cos(i*angle + angle)), self.y + (radius*math.sin(i*angle + angle)), 0, self.teethRadius, self.gearHeight)
+            else:
+                tooth = Cylinder(self.x + (radius*math.cos(i*angle)), self.y + (radius*math.sin(i*angle)), 0, self.teethRadius, self.gearHeight)
 
             if i % 2 == 0:
                 gear.subtract(tooth)
