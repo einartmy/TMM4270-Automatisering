@@ -12,7 +12,7 @@ class Pump_Gears:
         self.y = y
         self.teethRadius = teethRadius
         self.offset = offset
-        
+        self.gear = Cylinder(self.x, self.y, 0, self.gearRadius*2, self.gearHeight)
         
         
         #self.gearRadius = 0.5 * circumference* (1/math.pi)
@@ -28,7 +28,7 @@ class Pump_Gears:
         radius = self.gearRadius
         # circumference = self.numberOfTeeth * 2 * self.teethRadius
         # radius = 0.5 * circumference* (1/math.pi)
-        gear = Cylinder(self.x, self.y, 0, radius*2, self.gearHeight)
+        gear = self.gear
 
         numberOfTeeth = numberOfTeeth * 2
         

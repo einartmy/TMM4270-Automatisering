@@ -116,9 +116,21 @@ class Motion3:
 			selectTaggedObjectList1 = globalSelectionBuilder2.Selection
 			
 			#So, here "cylinders" are searched for.
+			        # Søk etter overordnet komponent
 			component1 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT " + self.fileName + " 1")
-			body1 = component1.FindObject("PROTO#.Bodies|GEAR(" + str(i) + ")")
-			added1 = linkBuilder1.Geometries.Add(body1)
+
+			# Sjekk om overordnet komponent ble funnet
+			if component1 is not None:
+				# Naviger gjennom komponenten for å finne "gear" -objektet
+				body1 = component1.FindObject("PROTO#.Bodies|gear")
+
+				# Sjekk om "gear" -objektet ble funnet
+				if body1 is not None:
+					added1 = linkBuilder1.Geometries.Add(body1)
+				else:
+					print("Feil: Fant ikke 'gear' -objektet.")
+			else:
+				print("Feil: Fant ikke overordnet komponent.")
 			
 			globalSelectionBuilder3 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
 			selectTaggedObjectList2 = globalSelectionBuilder3.Selection
