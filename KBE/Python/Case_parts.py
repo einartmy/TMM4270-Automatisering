@@ -22,7 +22,7 @@ class upperCase:
 
         mainCylinder.subtract(subtractCylinder)
 
-        mainBlock = Block(self.x - 2* self.outerRadius, self.y-self.gearRadius - self.toothradius, mainCylinder.z , 4*self.outerRadius, self.gearRadius, mainCylinder.height )
+        mainBlock = Block(self.x - 2* self.outerRadius, self.y - self.gearRadius - self.toothradius, mainCylinder.z , 4*self.outerRadius, self.gearRadius, mainCylinder.height )
 
         subtractBlock = Block(self.x - 2* self.outerRadius, self.y -self.gearRadius - self.toothradius, mainCylinder.z + self.thickness,
                                4*self.outerRadius, self.gearRadius - self.thickness, mainCylinder.height - 2*self.thickness)
@@ -40,3 +40,53 @@ class upperCase:
 
         mainCylinder.subtract(subtractBlock)
 
+        subtractBlock2 = Block(self.x - 2* self.outerRadius, self.y - self.gearRadius - self.toothradius - self.gearRadius, mainCylinder.z , 4*self.outerRadius, self.gearRadius, mainCylinder.height)
+
+        mainCylinder.subtract(subtractBlock2) 
+
+
+
+
+class lowerCase:
+
+    def __init__(self, gearRadius, gearDepth, toothradius, thickness, x, y):
+        self.gearRadius = gearRadius
+        self.toothradius = toothradius
+        self.outerRadius = gearRadius + toothradius + thickness
+        self.depth = gearDepth                                          #Depth inside the case, same as gear depth
+        self.thickness = thickness                                      #Thickness of case
+        self.x = x
+        self.y = y
+        
+
+        self.initForNX()
+
+    def initForNX(self):
+        
+        mainCylinder = Cylinder(self.x, self.y, -self.thickness, self.outerRadius * 2, self.depth + 2*self.thickness)
+
+        subtractCylinder = Cylinder(self.x, self.y, 0, self.outerRadius * 2 - 2*self.thickness, self.depth)
+
+        mainCylinder.subtract(subtractCylinder)
+
+        mainBlock = Block(self.x - 2* self.outerRadius, self.y - self.toothradius, mainCylinder.z , 4*self.outerRadius, self.gearRadius, mainCylinder.height)
+
+        subtractBlock = Block(self.x - 2* self.outerRadius, self.y - self.toothradius + self.thickness, mainCylinder.z + self.thickness,
+                               4*self.outerRadius, self.gearRadius - self.thickness, mainCylinder.height - 2*self.thickness)
+
+        mainBlock.subtract(subtractBlock)
+
+        subtractCylinder = Cylinder(self.x, self.y, 0, self.outerRadius * 2 - 2*self.thickness, self.depth)
+        
+        mainBlock.subtract(subtractCylinder)
+
+        mainCylinder.unite(mainBlock)
+
+        subtractBlock = Block(self.x - 2* self.outerRadius, self.y - self.toothradius + self.thickness, mainCylinder.z + self.thickness,
+                               4*self.outerRadius, self.gearRadius*2 - self.thickness, mainCylinder.height - 2*self.thickness)
+
+        mainCylinder.subtract(subtractBlock)
+
+        subtractBlock2 = Block(self.x - 2* self.outerRadius, self.y - self.toothradius + self.gearRadius, mainCylinder.z , 4*self.outerRadius, self.gearRadius, mainCylinder.height)
+
+        mainCylinder.subtract(subtractBlock2)
