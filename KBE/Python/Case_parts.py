@@ -33,29 +33,28 @@ class upperCase:
 
 
         mainCylinder = Cylinder(self.x, self.y, -self.thickness, self.outerRadius * 2 - self.toothradius, self.depth + 2*self.thickness)
+        mainBlock =     Block(xBlock, yBlock, mainCylinder.z ,                  4*self.outerRadius, self.gearRadius,                    mainCylinder.height )
+        mainCylinder.unite(mainBlock)
+
 
         subtractCylinder = getSubtractCylinder(self)
-
         mainCylinder.subtract(subtractCylinder)
 
         
 
-        mainBlock =     Block(xBlock, yBlock, mainCylinder.z ,                  4*self.outerRadius, self.gearRadius,                    mainCylinder.height )
 
+        
         subtractBlock = Block(xBlock, yBlock, mainCylinder.z + self.thickness,  4*self.outerRadius, self.gearRadius - self.thickness,   mainCylinder.height - 2*self.thickness)
-
-        mainBlock.subtract(subtractBlock)
-
-        subtractCylinder = getSubtractCylinder(self) 
-
-        mainBlock.subtract(subtractCylinder)
-
-        mainCylinder.unite(mainBlock)
-
-        subtractBlock = Block(xBlock, yBlock*2, mainCylinder.z + self.thickness,
-                               4*self.outerRadius, self.gearRadius*2 - self.thickness, mainCylinder.height - 2*self.thickness)
-
         mainCylinder.subtract(subtractBlock)
+
+        #subtractCylinder = getSubtractCylinder(self) 
+        #mainBlock.subtract(subtractCylinder)
+
+        
+
+        #subtractBlock = Block(xBlock, yBlock*2, mainCylinder.z + self.thickness, 4*self.outerRadius, self.gearRadius*2 - self.thickness, mainCylinder.height - 2*self.thickness)
+
+        #mainCylinder.subtract(subtractBlock)
 
         subtractBlock2 = Block(xBlock, yBlock*2, mainCylinder.z , 4*self.outerRadius, self.gearRadius, mainCylinder.height)
 
