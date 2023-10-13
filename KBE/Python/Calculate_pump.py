@@ -7,7 +7,7 @@ class CalculatePump:
         self.teeth_radius = radius / teeth_radius_ratio
         self.angle_speed = angle_speed
 
-    def number_of_teeth(self):
+    def number_of_teeth(self): #A function to calculate amount of gear teeths
         return math.ceil(2 * self.gear_radius * math.pi * 0.5 * (1 / self.teeth_radius))
 
     def vpm(self):
