@@ -5,16 +5,15 @@ import random
 from Calculate_pump import CalculatePump
 
 
-target_vpm = 10
+target_vpm = 100
 
 pump = CalculatePump(0.1)
 pump.get_pump(target_vpm)
 radius = pump.radius * 1000  #Convert to mm
 
-radius = 100
 depth = radius
-teethradius = 20
-x = 1000
+teethradius = 200
+x = -1000
 y = 0
 caseThickness = 10
 
