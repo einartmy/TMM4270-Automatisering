@@ -43,7 +43,7 @@ class upperCase:
         subtractBlock = Block(xBlock, yBlock,   mainCylinder.z + self.thickness,  4*self.outerRadius, self.gearRadius - self.thickness,   mainCylinder.height - 2*self.thickness) 
         mainCylinder.subtract(subtractBlock) #Create CaseSubract to fit the in and out tube
 
-        subtractBlock2 = Block(xBlock, yBlock*2, mainCylinder.z,                  4*self.outerRadius, self.gearRadius,                    mainCylinder.height)
+        subtractBlock2 = Block(xBlock, yBlock - self.gearRadius, mainCylinder.z,                  4*self.outerRadius, self.gearRadius,                    mainCylinder.height)
         mainCylinder.subtract(subtractBlock2) #Create CaseSubract to remove the cylinder that overlaps with lowerCase
  
 

@@ -12,10 +12,10 @@ pump.get_pump(target_vpm)
 radius = pump.radius * 1000  #Convert to mm
 
 depth = radius
-teethradius = 200
-x = -1000
-y = 0
-caseThickness = 10
+teethradius = 100
+x = -2000
+y = 10000
+caseThickness = 30
 
 gear1 = Pump_Gears(radius, depth, teethradius, x, y, False)
 gear2 = Pump_Gears(radius, depth, teethradius, x, y - 2*radius, True)
