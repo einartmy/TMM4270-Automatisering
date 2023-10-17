@@ -12,7 +12,7 @@ y           = 0
 def getSubtractCylinder(self):
             return Cylinder(self.x, self.y, 0, (2*self.outerRadius) - (2*self.thickness) - self.toothradius, self.depth)
 
-class upperCase:
+class UpperCase:
 
     def __init__(self, gearRadius, gearDepth, toothradius, thickness, x, y):
         self.gearRadius = gearRadius
@@ -52,7 +52,7 @@ class upperCase:
 
 
 
-class lowerCase:
+class LowerCase:
 
     def __init__(self, gearRadius, gearDepth, toothradius, thickness, x, y):
         self.gearRadius = gearRadius
