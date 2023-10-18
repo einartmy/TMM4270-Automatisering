@@ -3,6 +3,7 @@
 # from Motion.Motion3 import Motion3
 # import random
 from Calculate_pump import CalculatePump
+import json
 
 class Pump:
 
@@ -31,7 +32,13 @@ class Pump:
 
 
 if __name__ == "__main__":
-    targetVpm = 5  # Adjust this value as needed
-    Pump(targetVpm)
+    with open("KBE/Python/Pump_parameters.json", "r") as file:
+        params = json.load(file)
+    
+    pump = Pump(**params)
+
+    # targetVpm = 5  # Adjust this value as needed
+    # Pump(targetVpm)
+
 
 
