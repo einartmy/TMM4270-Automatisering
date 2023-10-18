@@ -1,8 +1,8 @@
 import math
 
 class CalculatePump:
-    def __init__(self, radius = 0.1, teeth_radius_ratio=5, angle_speed=1):              #A standard gearupset that seems reasonable, possible to change
-        self.radius = radius
+    def __init__(self, radius = 0.001, teeth_radius_ratio=5, angle_speed=1):              #A standard gearupset that seems reasonably related to each other, possible to change,
+        self.radius = radius                                                              #Radius starts with a low value for the calculations
         self.teeth_radius_ratio = teeth_radius_ratio
         self.teeth_radius = radius / teeth_radius_ratio
         self.angle_speed = angle_speed
