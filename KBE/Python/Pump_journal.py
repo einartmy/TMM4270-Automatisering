@@ -18,6 +18,7 @@ class Pump:
         self.radius = 0
         self.teeth_radius = 0
         self.depth = 0
+        self.angle_speed = 0
 
         self.createPump()
 
@@ -27,7 +28,8 @@ class Pump:
         calculatePump.change_pump(self.targetVpm)           #Converting pump to wished size
         self.radius = calculatePump.radius * 1000                #Convert to mm
         self.depth = calculatePump.depth * 1000                  #Convert to mm
-        self.teeth_radius = calculatePump.teeth_radius * 1000     #Convert to mm
+        self.teeth_radius = calculatePump.teeth_radius * 1000    #Convert to mm
+        self.angle_speed = calculatePump.angle_speed
         print(f'radius funnet ved vpm: {self.targetVpm} m^3 pr. min, ble verdien av radiusen {round(self.radius/1000,4)} m')
 
         # gear1 = Pump_Gears(radius, depth, teethradius, self.x, self.y, False)                     #making 1st gear
@@ -55,6 +57,7 @@ class Pump:
                 "casing thickness": self.case_thickness,
                 "x position (center of upper gear)": self.x,
                 "y position (center of upper gear)": self.y,
+                "angle speed": self.angle_speed,
             }
             }
         

@@ -22,7 +22,7 @@ class CalculatePump:
         return volume * teeths * rpm * 2                                                #Multiply volume pr teeth and theeths and how ofte a teeth comes around (*2 because 2 gears)
 
     def change_pump(self, target_vpm):
-        while target_vpm > self.vpm():                             #While loop that checks different sizes until you get a radius and matching gear that produce wanted volume pr. min
+        while target_vpm >= self.vpm():                             #While loop that checks different sizes until you get a radius and matching gear that produce wanted volume pr. min
             self.radius += 0.005        
             self.depth = 2 * self.radius
             self.teeth_radius = self.radius / self.teeth_radius_ratio
