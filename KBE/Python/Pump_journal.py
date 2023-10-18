@@ -3,6 +3,7 @@
 # from Motion.Motion3 import Motion3
 # import random
 from datetime import datetime
+import math
 from Calculate_pump import CalculatePump
 import json
 import os
@@ -19,6 +20,8 @@ class Pump:
         self.teeth_radius = 0
         self.depth = 0
         self.angle_speed = 0
+        self.density = 2700 #Aluminium density
+        self.mass = 0
 
         self.createPump()
 
@@ -32,11 +35,15 @@ class Pump:
         self.angle_speed = calculatePump.angle_speed
         print(f'radius funnet ved vpm: {self.targetVpm} m^3 pr. min, ble verdien av radiusen {round(self.radius/1000,4)} m')
 
-        # gear1 = Pump_Gears(radius, depth, teethradius, self.x, self.y, False)                     #making 1st gear
-        # gear2 = Pump_Gears(radius, depth, teethradius, self.x, self.y - 2*radius, True)           #making 2nd gear
+        # gear1 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y, False)                    
+        # gear2 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y - 2*self.radius, True)
 
-        # case1 = UpperCase(radius, depth, teethradius, self.case_thickness, self.x, self.y)             
-        # case2 = LowerCase(radius, depth, teethradius, self.case_thickness, self.x, self.y - 2*radius)
+        # upper_case = UpperCase(self.radius, self.depth, self.teeth_radius, self.case_thickness, self.x, self.y)
+        # lower_case = LowerCase(self.radius, self.depth, self.teeth_radius, self.case_thickness, self.x, self.y - 2*self.radius)
+
+        # volume = self.calculate_volume(gear1, gear2, upper_case, lower_case)       #Calculating volume
+        # self.mass = self.density * volume                                          #Calculating mass
+
 
     def get_design_parameters(self):
         data = {
@@ -50,7 +57,7 @@ class Pump:
                 "comment": "Desired volume throughput of the pump"
             },
             "parameters": {
-                "unit": "millimeters",
+                "length unit": "millimeters",
                 "calculated radius": round(self.radius, 5),
                 "calculated depth": round(self.depth, 5),
                 "calculated teethradius": round(self.teeth_radius, 5),
@@ -58,10 +65,33 @@ class Pump:
                 "x position (center of upper gear)": self.x,
                 "y position (center of upper gear)": self.y,
                 "angle speed": self.angle_speed,
+                
+                "mass unit": "kg",
+                "pump mass": self.mass,
+
+                "pump material": "Aluminium",
+                "pump density": self.density,
+                "density unit": "kg pr cubic meter"
             }
             }
         
         return data
+
+    def calculate_volume(self, gear1, gear2, upper_case, lower_case):
+        # Calculating volume of the two gears 
+        volume_gear1 = gear1.calculate_volume()
+        volume_gear2 = volume_gear1  # since they are of the same dimensions
+
+        # Calculating volume of the casing (upper and lower)
+        volume_upper_case = upper_case.get_volume()
+        volume_lower_case = lower_case.get_volume()
+
+        # Summing up the volume of the casing and the gears
+        total_volume = volume_upper_case + volume_lower_case + volume_gear1 + volume_gear2
+        
+        #Converting to cubic meters from cubic millimeters and returning volume
+        return total_volume * 10e-9    
+
 
 if __name__ == "__main__":
     with open("KBE/Python/Pump_parameters.json", "r") as file:

@@ -1,3 +1,4 @@
+import math
 from Shapes.Cylinder import Cylinder
 from Shapes.Block import Block
 
@@ -47,8 +48,11 @@ class UpperCase:
         mainCylinder.subtract(subtractBlock2) #Create CaseSubract to remove the cylinder that overlaps with lowerCase
  
 
-        
-
+    def get_volume(self):
+        # Calculation based on cylinder volume formula
+        outer_volume = math.pi * (self.outerRadius**2) * self.depth
+        inner_volume = math.pi * (self.outerRadius - self.thickness)**2 * (self.depth - 2*self.thickness)
+        return outer_volume - inner_volume
 
 
 
@@ -64,7 +68,7 @@ class LowerCase:
         self.y = y
         
 
-        self.initForNX()
+        #self.initForNX()
 
     def initForNX(self):
         xBlock = self.x - 2* self.outerRadius
@@ -96,3 +100,9 @@ class LowerCase:
         subtractBlock2 = Block(xBlock, self.y + self.gearRadius, mainCylinder.z , 4*self.outerRadius, self.gearRadius, mainCylinder.height)
 
         mainCylinder.subtract(subtractBlock2)
+
+    def get_volume(self):
+        # Calculation based on cylinder volume formula
+        outer_volume = math.pi * (self.outerRadius**2) * self.depth
+        inner_volume = math.pi * (self.outerRadius - self.thickness)**2 * (self.depth - 2*self.thickness)
+        return outer_volume - inner_volume
