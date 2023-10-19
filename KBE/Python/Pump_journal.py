@@ -34,13 +34,13 @@ class Pump:
         self.angle_speed = calculatePump.angle_speed
         print(f'radius funnet ved vpm: {self.targetVpm} m^3 pr. min, ble verdien av radiusen {round(self.radius/1000,4)} m')
 
-        gear1 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y, False)                    
-        gear2 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y - 2*self.radius, True)
+        self.gear1 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y, False)                    
+        self.gear2 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y - 2*self.radius, True)
 
         upper_case = UpperCase(self.radius, self.depth, self.teeth_radius, self.case_thickness, self.x, self.y)
         lower_case = LowerCase(self.radius, self.depth, self.teeth_radius, self.case_thickness, self.x, self.y - 2*self.radius)
 
-        volume = self.calculate_volume(gear1, gear2, upper_case, lower_case)       #Calculating volume
+        volume = self.calculate_volume(self.gear1, self.gear2, upper_case, lower_case)       #Calculating volume
         self.mass = self.density * volume                                          #Calculating mass
 
 
@@ -127,6 +127,15 @@ if __name__ == "__main__":
     # Save the data in the txt file
     with open(filename, 'w') as outfile:
         json.dump(design_params, outfile, indent=4)
+    
+    pathToTheFolder = "M:\\Desktop\\TMM4270\\TMM4270-Automatisering\\KBE\\Python\\Animation\\"
+    fileName = "geartrain_" + str(random.randint(1,10000)) 
+
+    # cyl1 = pump.gear1.gear
+    # cyl2 = pump.gear2.gear
+
+
+    # motion = Motion3([cyl1, cyl2], 0, 10, 10, 0, True, pathToTheFolder, fileName)
             
 
 

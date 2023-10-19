@@ -118,11 +118,12 @@ class Motion3:
 			#So, here "cylinders" are searched for.
 			        # Søk etter overordnet komponent
 			component1 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT " + self.fileName + " 1")
+			print("Checking component:", component1.Name)
 
 			# Sjekk om overordnet komponent ble funnet
 			if component1 is not None:
 				# Naviger gjennom komponenten for å finne "gear" -objektet
-				body1 = component1.FindObject("PROTO#.Bodies|gear")
+				body1 = component1.FindObject("PROTO#.Bodies|CYLINDER(" + str(i) + ")")
 
 				# Sjekk om "gear" -objektet ble funnet
 				if body1 is not None:
