@@ -93,7 +93,9 @@ class Pump:
 
 
 if __name__ == "__main__":
-    with open("M:\\Desktop\\TMM4270\\TMM4270-Automatisering\\KBE\\Python\\Pump_parameters.json", "r") as file:
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    input_json_path = os.path.join(current_directory, "Pump_parameters.json")
+    with open(input_json_path, "r") as file:
         params = json.load(file)
     
     # Use the loaded parameters to create a Pump instance
@@ -102,7 +104,6 @@ if __name__ == "__main__":
     # Gather design parameters
     design_params = pump.get_design_parameters()
 
-    current_directory = os.path.dirname(os.path.abspath(__file__))
     output_json_path = os.path.join(current_directory, "Design_parameters_output.json")
 
     # Save the design parameters to a constant JSON output file
