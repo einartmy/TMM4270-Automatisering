@@ -68,7 +68,7 @@ class LowerCase:
         self.y = y
         
 
-        #self.initForNX()
+        self.initForNX()
 
     def initForNX(self):
         xBlock = self.x - 2* self.outerRadius

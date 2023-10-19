@@ -1,13 +1,12 @@
-# from Shapes.Pump_Gears import Pump_Gears
-# from Case_parts import UpperCase, LowerCase
-# from Motion.Motion3 import Motion3
-# import random
+from Shapes.Pump_Gears import Pump_Gears
+from Case_parts import UpperCase, LowerCase
+from Motion.Motion3 import Motion3
+import random
 from datetime import datetime
 import math
 from Calculate_pump import CalculatePump
 import json
 import os
-import pandas as pd
 
 class Pump:
 
@@ -20,7 +19,7 @@ class Pump:
         self.teeth_radius = 0
         self.depth = 0
         self.angle_speed = 0
-        self.density = 2700 #Aluminium density
+        self.density = 2700                     #Aluminium density
         self.mass = 0
 
         self.createPump()
@@ -35,14 +34,14 @@ class Pump:
         self.angle_speed = calculatePump.angle_speed
         print(f'radius funnet ved vpm: {self.targetVpm} m^3 pr. min, ble verdien av radiusen {round(self.radius/1000,4)} m')
 
-        # gear1 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y, False)                    
-        # gear2 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y - 2*self.radius, True)
+        gear1 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y, False)                    
+        gear2 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y - 2*self.radius, True)
 
-        # upper_case = UpperCase(self.radius, self.depth, self.teeth_radius, self.case_thickness, self.x, self.y)
-        # lower_case = LowerCase(self.radius, self.depth, self.teeth_radius, self.case_thickness, self.x, self.y - 2*self.radius)
+        upper_case = UpperCase(self.radius, self.depth, self.teeth_radius, self.case_thickness, self.x, self.y)
+        lower_case = LowerCase(self.radius, self.depth, self.teeth_radius, self.case_thickness, self.x, self.y - 2*self.radius)
 
-        # volume = self.calculate_volume(gear1, gear2, upper_case, lower_case)       #Calculating volume
-        # self.mass = self.density * volume                                          #Calculating mass
+        volume = self.calculate_volume(gear1, gear2, upper_case, lower_case)       #Calculating volume
+        self.mass = self.density * volume                                          #Calculating mass
 
 
     def get_design_parameters(self):
@@ -94,7 +93,7 @@ class Pump:
 
 
 if __name__ == "__main__":
-    with open("KBE/Python/Pump_parameters.json", "r") as file:
+    with open("M:\\Desktop\\TMM4270\\TMM4270-Automatisering\\KBE\\Python\\Pump_parameters.json", "r") as file:
         params = json.load(file)
     
     # Use the loaded parameters to create a Pump instance
@@ -111,7 +110,7 @@ if __name__ == "__main__":
         json.dump(design_params, file, indent=4)
 
     #Save the design parameters to a new txt file each time a pump design is made
-    current_time = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+    current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     
     # Name of the directory where you want to save your txt files
     directory_name = "txt_output_files"
