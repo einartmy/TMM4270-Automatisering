@@ -14,8 +14,8 @@ class CalculatePump:
     def vpm(self):  
         teeths = self.numberOfTeeth()
         angle = 2 * math.pi / teeths                                                    #Finding the angels between the teeth
-        korde = ((self.radius + self.teethDiameter)**2 * (angle - math.sin(angle))) / 2  #Finding the area of the korde using angle
-        areal = 4 * (self.teethDiameter** 2) + korde                                     #Finding the area between 2 teeth
+        korde = ((self.radius + self.teethDiameter/2)**2 * (angle - math.sin(angle))) / 2  #Finding the area of the korde using angle
+        areal = 4 * ((self.teethDiameter/2)** 2) + korde                                     #Finding the area between 2 teeth
         volume = areal * self.depth                                                     #Finding the volume of 1 teeth
 
         rpm = self.angleSpeed * 60 / (2 * math.pi * self.radius)                       #Calculating how many times the wheel spin around in a min
@@ -34,7 +34,7 @@ class CalculatePump:
 
 # Example usage:
 if __name__ == "__main__":
-    targetVpm = 1000  # Adjust this value as needed
+    targetVpm = 1  # Adjust this value as needed
     pump = CalculatePump()
     pump.changePump(targetVpm)
-    print(f"Final radius to achieve {targetVpm} VPM: {round(pump.radius, 4)}")
+    print(f"Final radius to achieve {targetVpm} VPM: {round(pump.radius*1000, 4)}")

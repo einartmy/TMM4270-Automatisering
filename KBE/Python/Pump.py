@@ -79,7 +79,7 @@ class Pump:
     def calculateVolume(self, gear1, gear2, upperCase, lowerCase):
         # Calculating volume of the two gears 
         volumeGear1 = gear1.calculateVolume()
-        volumeGear2 = volumeGear1  # since they are of the same dimensions
+        volumeGear2 = gear2.calculateVolume()  # since they are of the same dimensions
 
         # Calculating volume of the casing (upper and lower)
         volumeUpperCase = upperCase.getVolume()
