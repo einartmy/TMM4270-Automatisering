@@ -1,6 +1,6 @@
 {
-    "targetVpm": 0.8,
-    "case_thickness": 10,
+    "targetVpm": 1,
+    "caseThickness": 10,
     "x": 0,
     "y": 0
   }

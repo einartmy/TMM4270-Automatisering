@@ -48,7 +48,7 @@ class UpperCase:
         mainCylinder.subtract(subtractBlock2) #Create CaseSubract to remove the cylinder that overlaps with lowerCase
  
 
-    def get_volume(self):
+    def getVolume(self):
         # Calculation based on cylinder volume formula
         outer_volume = math.pi * (self.outerRadius**2) * self.depth
         inner_volume = math.pi * (self.outerRadius - self.thickness)**2 * (self.depth - 2*self.thickness)
@@ -101,7 +101,7 @@ class LowerCase:
 
         mainCylinder.subtract(subtractBlock2)
 
-    def get_volume(self):
+    def getVolume(self):
         # Calculation based on cylinder volume formula
         outer_volume = math.pi * (self.outerRadius**2) * self.depth
         inner_volume = math.pi * (self.outerRadius - self.thickness)**2 * (self.depth - 2*self.thickness)

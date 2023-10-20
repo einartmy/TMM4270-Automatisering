@@ -5,12 +5,12 @@ import math
 
 class Pump_Gears:
 	
-    def __init__(self, gearRadius, gearHeight, teethRadius, x, y, offset):
+    def __init__(self, gearRadius, gearHeight, teethDiameter, x, y, offset):
         self.gearRadius = gearRadius
         self.gearHeight = gearHeight                                            #Height also known as debt of the gear
         self.x = x
         self.y = y
-        self.teethRadius = teethRadius                                          #The radius of a single tooth
+        self.teethDiameter = teethDiameter                                          #The diameter of a single tooth
         self.offset = offset                                                    #Offset to know what type of gear we are building, slave or master.
         self.gear = Cylinder(self.x, self.y, 0, self.gearRadius*2, self.gearHeight) #Main gear using a Cylinder as its base
         
@@ -21,7 +21,7 @@ class Pump_Gears:
     def initForNX(self):
         
         circumference = 2*self.gearRadius * math.pi                             #Calculating circumference
-        numberOfTeeth = math.ceil(circumference * 0.5 * (1/self.teethRadius))   #Finding suitable amount of gear teeth
+        numberOfTeeth = math.ceil(circumference * 0.5 * (1/(self.teethDiameter)))   #Finding suitable amount of gear teeth
 
         radius = self.gearRadius                                                #To save time
 
@@ -30,9 +30,9 @@ class Pump_Gears:
 
         for i in range(0, numberOfTeeth):                                       #Running threw all the teeths
             if self.offset:                                                     #Offset so the 2 gears wont collide
-                tooth = Cylinder(self.x + (radius*math.cos(i*angle + angle)), self.y + (radius*math.sin(i*angle + angle)), 0, self.teethRadius, self.gearHeight)             
+                tooth = Cylinder(self.x + (radius*math.cos(i*angle + angle)), self.y + (radius*math.sin(i*angle + angle)), 0, self.teethDiameter, self.gearHeight)             
             else:
-                tooth = Cylinder(self.x + (radius*math.cos(i*angle)), self.y + (radius*math.sin(i*angle)), 0, self.teethRadius, self.gearHeight)
+                tooth = Cylinder(self.x + (radius*math.cos(i*angle)), self.y + (radius*math.sin(i*angle)), 0, self.teethDiameter, self.gearHeight)
 
             if i % 2 == 0:                                                      #Subtract 1 and then unite 1                                          
                 self.gear.subtract(tooth)
@@ -40,19 +40,19 @@ class Pump_Gears:
                 self.gear.unite(tooth)
 
 
-        hole_in_gear = Cylinder(self.x, self.y, 0, radius/15, self.gearHeight, [0,0,1])
-        self.gear.subtract(hole_in_gear)
+        holeIngear = Cylinder(self.x, self.y, 0, radius/15, self.gearHeight, [0,0,1])
+        self.gear.subtract(holeIngear)
 
-    def calculate_volume(self):
+    def calculateVolume(self):
         # Main Gear Volume
-        volume_gear = math.pi * (self.gearRadius**2) * self.gearHeight
+        volumegear = math.pi * (self.gearRadius**2) * self.gearHeight
 
         # Hole in the Gear Volume
-        hole_radius = self.gearRadius / 15
-        volume_hole = math.pi * (hole_radius**2) * self.gearHeight
+        holeRadius = self.gearRadius / 15
+        volumeHole = math.pi * (holeRadius**2) * self.gearHeight
 
         # Total volume of the gear considering the hole
-        total_volume = volume_gear - volume_hole
+        total_volume = volumegear - volumeHole
         
         return total_volume
             

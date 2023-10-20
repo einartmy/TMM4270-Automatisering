@@ -10,15 +10,15 @@ import os
 
 class Pump:
 
-    def __init__(self, targetVpm, case_thickness = 30, x = 0, y = 0):
+    def __init__(self, targetVpm, caseThickness = 30, x = 0, y = 0):
         self.targetVpm = targetVpm
-        self.case_thickness = case_thickness
+        self.caseThickness = caseThickness
         self.x = x
         self.y = y
         self.radius = 0
-        self.teeth_radius = 0
+        self.teethDiameter = 0
         self.depth = 0
-        self.angle_speed = 0
+        self.angleSpeed = 0
         self.density = 2700                     #Aluminium density
         self.mass = 0
 
@@ -27,24 +27,24 @@ class Pump:
 
     def createPump(self):
         calculatePump = CalculatePump()                 
-        calculatePump.change_pump(self.targetVpm)           #Converting pump to wished size
+        calculatePump.changePump(self.targetVpm)           #Converting pump to wished size
         self.radius = calculatePump.radius * 1000                #Convert to mm
         self.depth = calculatePump.depth * 1000                  #Convert to mm
-        self.teeth_radius = calculatePump.teeth_radius * 1000    #Convert to mm
-        self.angle_speed = calculatePump.angle_speed
+        self.teethDiameter = calculatePump.teethDiameter * 1000    #Convert to mm
+        self.angleSpeed = calculatePump.angleSpeed
         print(f'radius funnet ved vpm: {self.targetVpm} m^3 pr. min, ble verdien av radiusen {round(self.radius/1000,4)} m')
 
-        self.gear1 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y, False)                    
-        self.gear2 = Pump_Gears(self.radius, self.depth, self.teeth_radius, self.x, self.y - 2*self.radius, True)
+        self.gear1 = Pump_Gears(self.radius, self.depth, self.teethDiameter, self.x, self.y, False)                    
+        self.gear2 = Pump_Gears(self.radius, self.depth, self.teethDiameter, self.x, self.y - 2*self.radius, True)
 
-        upper_case = UpperCase(self.radius, self.depth, self.teeth_radius, self.case_thickness, self.x, self.y)
-        lower_case = LowerCase(self.radius, self.depth, self.teeth_radius, self.case_thickness, self.x, self.y - 2*self.radius)
+        upperCase = UpperCase(self.radius, self.depth, self.teethDiameter, self.caseThickness, self.x, self.y)
+        lowerCase = LowerCase(self.radius, self.depth, self.teethDiameter, self.caseThickness, self.x, self.y - 2*self.radius)
 
-        volume = self.calculate_volume(self.gear1, self.gear2, upper_case, lower_case)       #Calculating volume
-        self.mass = self.density * volume                                          #Calculating mass
+        volume = self.calculateVolume(self.gear1, self.gear2, upperCase, lowerCase)       #Calculating volume
+        self.mass = self.density * volume                                                   #Calculating mass
 
 
-    def get_design_parameters(self):
+    def getDesignParameters(self):
         data = {
             "metadata": {
             "timestamp": str(datetime.now().strftime("%Y-%m-%d_%H:%M:%S")),
@@ -59,11 +59,11 @@ class Pump:
                 "length unit": "millimeters",
                 "calculated radius": round(self.radius, 5),
                 "calculated depth": round(self.depth, 5),
-                "calculated teethradius": round(self.teeth_radius, 5),
-                "casing thickness": self.case_thickness,
+                "calculated teethDiameter": round(self.teethDiameter, 5),
+                "casing thickness": self.caseThickness,
                 "x position (center of upper gear)": self.x,
                 "y position (center of upper gear)": self.y,
-                "angle speed": self.angle_speed,
+                "angle speed": self.angleSpeed,
                 
                 "mass unit": "kg",
                 "pump mass": self.mass,
@@ -76,57 +76,57 @@ class Pump:
         
         return data
 
-    def calculate_volume(self, gear1, gear2, upper_case, lower_case):
+    def calculateVolume(self, gear1, gear2, upperCase, lowerCase):
         # Calculating volume of the two gears 
-        volume_gear1 = gear1.calculate_volume()
-        volume_gear2 = volume_gear1  # since they are of the same dimensions
+        volumeGear1 = gear1.calculateVolume()
+        volumeGear2 = volumeGear1  # since they are of the same dimensions
 
         # Calculating volume of the casing (upper and lower)
-        volume_upper_case = upper_case.get_volume()
-        volume_lower_case = lower_case.get_volume()
+        volumeUpperCase = upperCase.getVolume()
+        volumeLowerCase = lowerCase.getVolume()
 
         # Summing up the volume of the casing and the gears
-        total_volume = volume_upper_case + volume_lower_case + volume_gear1 + volume_gear2
+        totalVolume = volumeUpperCase + volumeLowerCase + volumeGear1 + volumeGear2
         
         #Converting to cubic meters from cubic millimeters and returning volume
-        return total_volume * 10e-9    
+        return totalVolume * 10e-9    
 
 
 if __name__ == "__main__":
-    current_directory = os.path.dirname(os.path.abspath(__file__))
-    input_json_path = os.path.join(current_directory, "Pump_parameters.json")
-    with open(input_json_path, "r") as file:
+    currentDirectory = os.path.dirname(os.path.abspath(__file__))
+    inputJsonPath = os.path.join(currentDirectory, "Pump_parameters.json")
+    with open(inputJsonPath, "r") as file:
         params = json.load(file)
     
     # Use the loaded parameters to create a Pump instance
     pump = Pump(**params)
 
     # Gather design parameters
-    design_params = pump.get_design_parameters()
+    designParams = pump.getDesignParameters()
 
-    output_json_path = os.path.join(current_directory, "Design_parameters_output.json")
+    outputJsonPath = os.path.join(currentDirectory, "Design_parameters_output.json")
 
     # Save the design parameters to a constant JSON output file
-    with open(output_json_path, "w") as file:
-        json.dump(design_params, file, indent=4)
+    with open(outputJsonPath, "w") as file:
+        json.dump(designParams, file, indent=4)
 
     #Save the design parameters to a new txt file each time a pump design is made
-    current_time = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    currentTime = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     
     # Name of the directory where you want to save your txt files
     directory_name = "txt_output_files"
-    output_folder_path = os.path.join(current_directory, directory_name)
+    outputFolderPath = os.path.join(currentDirectory, directory_name)
 
     # Check if the directory exists. If not, create it.
-    if not os.path.exists(output_folder_path):
-        os.makedirs(output_folder_path)
+    if not os.path.exists(outputFolderPath):
+        os.makedirs(outputFolderPath)
     
     # Create unique filename with the timestamp and directory
-    filename = os.path.join(output_folder_path, f"Desing_paramaters_output_{current_time}.txt")
+    filename = os.path.join(outputFolderPath, f"Desing_paramaters_output_{currentTime}.txt")
     
     # Save the data in the txt file
     with open(filename, 'w') as outfile:
-        json.dump(design_params, outfile, indent=4)
+        json.dump(designParams, outfile, indent=4)
     
     pathToTheFolder = "M:\\Desktop\\TMM4270\\TMM4270-Automatisering\\KBE\\Python\\Animation\\"
     fileName = "geartrain_" + str(random.randint(1,10000)) 
