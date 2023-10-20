@@ -50,9 +50,12 @@ class UpperCase:
 
     def getVolume(self):
         # Calculation based on cylinder volume formula
-        outer_volume = math.pi * (self.outerRadius**2) * self.depth
-        inner_volume = math.pi * (self.outerRadius - self.thickness)**2 * (self.depth - 2*self.thickness)
-        return outer_volume - inner_volume
+        outer_cyl_volume = math.pi * (self.outerRadius**2) * self.depth
+        inner_cyl_volume = math.pi * (self.outerRadius - self.thickness)**2 * (self.depth - 2*self.thickness)
+        #Calculatios on suction and dischage volume
+        outer_block_volume = self.gearRadius**2 *self.depth*2
+        inner_block_volume = self.gearRadius * (self.gearRadius - self.thickness)*(self.depth - 2*self.thickness) *2
+        return (outer_cyl_volume - inner_cyl_volume) * 1/2 + (outer_block_volume - inner_block_volume)
 
 
 
@@ -103,6 +106,9 @@ class LowerCase:
 
     def getVolume(self):
         # Calculation based on cylinder volume formula
-        outer_volume = math.pi * (self.outerRadius**2) * self.depth
-        inner_volume = math.pi * (self.outerRadius - self.thickness)**2 * (self.depth - 2*self.thickness)
-        return outer_volume - inner_volume
+        outer_cyl_volume = math.pi * (self.outerRadius**2) * self.depth
+        inner_cyl_volume = math.pi * (self.outerRadius - self.thickness)**2 * (self.depth - 2*self.thickness)
+        #Calculatios on suction and dischage volume
+        outer_block_volume = self.gearRadius**2 *self.depth*2
+        inner_block_volume = self.gearRadius * (self.gearRadius - self.thickness)*(self.depth - 2*self.thickness) *2
+        return (outer_cyl_volume - inner_cyl_volume) * 1/2 + (outer_block_volume - inner_block_volume)

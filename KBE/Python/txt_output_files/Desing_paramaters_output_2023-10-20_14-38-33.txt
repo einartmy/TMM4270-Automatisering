@@ -1,24 +1,24 @@
 {
     "metadata": {
-        "timestamp": "2023-10-20_14:57:20",
+        "timestamp": "2023-10-20_14:38:33",
         "description": "Design parameters for the pump."
     },
     "volumePerMinuteTarget": {
-        "value": 1,
+        "value": 0.8,
         "unit": "cubic meters per minute",
         "comment": "Desired volume throughput of the pump"
     },
     "parameters": {
         "length unit": "millimeters",
-        "calculated radius": 36.0,
-        "calculated depth": 72.0,
-        "calculated teethDiameter": 7.2,
+        "calculated radius": 91.0,
+        "calculated depth": 182.0,
+        "calculated teethradius": 18.2,
         "casing thickness": 10,
         "x position (center of upper gear)": 0,
         "y position (center of upper gear)": 0,
-        "angle speed": 10,
+        "angle speed": 1,
         "mass unit": "kg",
-        "pump mass": 29.63416873905047,
+        "pump mass": 365.5234165514428,
         "pump material": "Aluminium",
         "pump density": 2700,
         "density unit": "kg pr cubic meter"

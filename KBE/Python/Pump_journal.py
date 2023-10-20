@@ -128,8 +128,8 @@ if __name__ == "__main__":
     with open(filename, 'w') as outfile:
         json.dump(designParams, outfile, indent=4)
     
-    pathToTheFolder = "M:\\Desktop\\TMM4270\\TMM4270-Automatisering\\KBE\\Python\\Animation\\"
-    fileName = "geartrain_" + str(random.randint(1,10000)) 
+    # pathToTheFolder = "M:\\Desktop\\TMM4270\\TMM4270-Automatisering\\KBE\\Python\\Animation\\"
+    # fileName = "geartrain_" + str(random.randint(1,10000)) 
 
     # cyl1 = pump.gear1.gear
     # cyl2 = pump.gear2.gear
