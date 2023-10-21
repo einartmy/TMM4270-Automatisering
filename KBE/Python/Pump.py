@@ -1,5 +1,5 @@
-from Shapes.Pump_Gears import Pump_Gears
-from Case_parts import UpperCase, LowerCase
+from Pump_parts.Pump_Gears import Pump_Gears
+from Pump_parts.Case_parts import UpperCase, LowerCase
 from Motion.Motion3 import Motion3
 import random
 from datetime import datetime

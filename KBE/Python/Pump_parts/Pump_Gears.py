@@ -1,5 +1,4 @@
 from Shapes.Cylinder import Cylinder
-import NXOpen
 import math
 
 

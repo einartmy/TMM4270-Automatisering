@@ -1,6 +1,6 @@
 {
     "metadata": {
-        "timestamp": "2023-10-20_16:47:26",
+        "timestamp": "2023-10-21_13:26:34",
         "description": "Design parameters for the pump."
     },
     "volumePerMinuteTarget": {
@@ -16,9 +16,9 @@
         "casing thickness": 10,
         "x position (center of upper gear)": 0,
         "y position (center of upper gear)": 0,
-        "angle speed": 10,
+        "angle speed": 1,
         "mass unit": "kg",
-        "pump mass": 2835.420237619881,
+        "pump mass": 2748.0002544643135,
         "pump material": "Aluminium",
         "pump density": 2700,
         "density unit": "kg pr cubic meter"
