@@ -1,5 +1,5 @@
 ﻿# NX 2206
-# Journal created by mbergst on Thu Oct 19 15:07:14 2023 W. Europe Daylight Time
+# Journal created by mbergst on Sun Oct 22 13:59:38 2023 W. Europe Daylight Time
 #
 import math
 import NXOpen
@@ -7,6 +7,7 @@ import NXOpen.Assemblies
 import NXOpen.CAE
 import NXOpen.Features
 import NXOpen.GeometricUtilities
+import NXOpen.MenuBar
 import NXOpen.Motion
 def main() : 
 
@@ -22,11 +23,11 @@ def main() :
     
     expression1 = cylinderBuilder1.Diameter
     
-    expression1.RightHandSide = "182.00000000000003"
+    expression1.RightHandSide = "121.99999999999999"
     
     expression2 = cylinderBuilder1.Height
     
-    expression2.RightHandSide = "182.00000000000003"
+    expression2.RightHandSide = "121.99999999999999"
     
     origin1 = NXOpen.Point3d(0.0, 0.0, 0.0)
     cylinderBuilder1.Origin = origin1
@@ -51,13 +52,13 @@ def main() :
     
     expression3 = cylinderBuilder2.Diameter
     
-    expression3.RightHandSide = "18.2"
+    expression3.RightHandSide = "12.2"
     
     expression4 = cylinderBuilder2.Height
     
-    expression4.RightHandSide = "182.00000000000003"
+    expression4.RightHandSide = "121.99999999999999"
     
-    origin2 = NXOpen.Point3d(91.000000000000014, 0.0, 0.0)
+    origin2 = NXOpen.Point3d(60.999999999999993, 0.0, 0.0)
     cylinderBuilder2.Origin = origin2
     
     vector2 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -94,13 +95,13 @@ def main() :
     
     expression5 = cylinderBuilder3.Diameter
     
-    expression5.RightHandSide = "18.2"
+    expression5.RightHandSide = "12.2"
     
     expression6 = cylinderBuilder3.Height
     
-    expression6.RightHandSide = "182.00000000000003"
+    expression6.RightHandSide = "121.99999999999999"
     
-    origin3 = NXOpen.Point3d(89.251460516693982, 17.753219303467674, 0.0)
+    origin3 = NXOpen.Point3d(59.827902104597051, 11.900509642983822, 0.0)
     cylinderBuilder3.Origin = origin3
     
     vector3 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -137,13 +138,13 @@ def main() :
     
     expression7 = cylinderBuilder4.Diameter
     
-    expression7.RightHandSide = "18.2"
+    expression7.RightHandSide = "12.2"
     
     expression8 = cylinderBuilder4.Height
     
-    expression8.RightHandSide = "182.00000000000003"
+    expression8.RightHandSide = "121.99999999999999"
     
-    origin4 = NXOpen.Point3d(84.073037458527111, 34.824192345223175, 0.0)
+    origin4 = NXOpen.Point3d(56.356651483188486, 23.343689374270475, 0.0)
     cylinderBuilder4.Origin = origin4
     
     vector4 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -180,13 +181,13 @@ def main() :
     
     expression9 = cylinderBuilder5.Diameter
     
-    expression9.RightHandSide = "18.2"
+    expression9.RightHandSide = "12.2"
     
     expression10 = cylinderBuilder5.Height
     
-    expression10.RightHandSide = "182.00000000000003"
+    expression10.RightHandSide = "121.99999999999999"
     
-    origin5 = NXOpen.Point3d(75.663734719531632, 50.556891204783803, 0.0)
+    origin5 = NXOpen.Point3d(50.719646350455257, 33.889784214195728, 0.0)
     cylinderBuilder5.Origin = origin5
     
     vector5 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -223,13 +224,13 @@ def main() :
     
     expression11 = cylinderBuilder6.Diameter
     
-    expression11.RightHandSide = "18.2"
+    expression11.RightHandSide = "12.2"
     
     expression12 = cylinderBuilder6.Height
     
-    expression12.RightHandSide = "182.00000000000003"
+    expression12.RightHandSide = "121.99999999999999"
     
-    origin6 = NXOpen.Point3d(64.346717087975833, 64.346717087975833, 0.0)
+    origin6 = NXOpen.Point3d(43.133513652379399, 43.133513652379399, 0.0)
     cylinderBuilder6.Origin = origin6
     
     vector6 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -266,13 +267,13 @@ def main() :
     
     expression13 = cylinderBuilder7.Diameter
     
-    expression13.RightHandSide = "18.2"
+    expression13.RightHandSide = "12.2"
     
     expression14 = cylinderBuilder7.Height
     
-    expression14.RightHandSide = "182.00000000000003"
+    expression14.RightHandSide = "121.99999999999999"
     
-    origin7 = NXOpen.Point3d(50.556891204783817, 75.663734719531632, 0.0)
+    origin7 = NXOpen.Point3d(33.889784214195736, 50.719646350455257, 0.0)
     cylinderBuilder7.Origin = origin7
     
     vector7 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -309,13 +310,13 @@ def main() :
     
     expression15 = cylinderBuilder8.Diameter
     
-    expression15.RightHandSide = "18.2"
+    expression15.RightHandSide = "12.2"
     
     expression16 = cylinderBuilder8.Height
     
-    expression16.RightHandSide = "182.00000000000003"
+    expression16.RightHandSide = "121.99999999999999"
     
-    origin8 = NXOpen.Point3d(34.824192345223182, 84.073037458527111, 0.0)
+    origin8 = NXOpen.Point3d(23.343689374270479, 56.356651483188486, 0.0)
     cylinderBuilder8.Origin = origin8
     
     vector8 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -352,13 +353,13 @@ def main() :
     
     expression17 = cylinderBuilder9.Diameter
     
-    expression17.RightHandSide = "18.2"
+    expression17.RightHandSide = "12.2"
     
     expression18 = cylinderBuilder9.Height
     
-    expression18.RightHandSide = "182.00000000000003"
+    expression18.RightHandSide = "121.99999999999999"
     
-    origin9 = NXOpen.Point3d(17.753219303467681, 89.251460516693982, 0.0)
+    origin9 = NXOpen.Point3d(11.900509642983828, 59.827902104597051, 0.0)
     cylinderBuilder9.Origin = origin9
     
     vector9 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -395,13 +396,13 @@ def main() :
     
     expression19 = cylinderBuilder10.Diameter
     
-    expression19.RightHandSide = "18.2"
+    expression19.RightHandSide = "12.2"
     
     expression20 = cylinderBuilder10.Height
     
-    expression20.RightHandSide = "182.00000000000003"
+    expression20.RightHandSide = "121.99999999999999"
     
-    origin10 = NXOpen.Point3d(5.5721429361204579e-15, 91.000000000000014, 0.0)
+    origin10 = NXOpen.Point3d(3.7351727373994268e-15, 60.999999999999993, 0.0)
     cylinderBuilder10.Origin = origin10
     
     vector10 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -438,13 +439,13 @@ def main() :
     
     expression21 = cylinderBuilder11.Diameter
     
-    expression21.RightHandSide = "18.2"
+    expression21.RightHandSide = "12.2"
     
     expression22 = cylinderBuilder11.Height
     
-    expression22.RightHandSide = "182.00000000000003"
+    expression22.RightHandSide = "121.99999999999999"
     
-    origin11 = NXOpen.Point3d(-17.753219303467667, 89.251460516693982, 0.0)
+    origin11 = NXOpen.Point3d(-11.900509642983819, 59.827902104597051, 0.0)
     cylinderBuilder11.Origin = origin11
     
     vector11 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -481,13 +482,13 @@ def main() :
     
     expression23 = cylinderBuilder12.Diameter
     
-    expression23.RightHandSide = "18.2"
+    expression23.RightHandSide = "12.2"
     
     expression24 = cylinderBuilder12.Height
     
-    expression24.RightHandSide = "182.00000000000003"
+    expression24.RightHandSide = "121.99999999999999"
     
-    origin12 = NXOpen.Point3d(-34.824192345223167, 84.073037458527111, 0.0)
+    origin12 = NXOpen.Point3d(-23.343689374270472, 56.356651483188486, 0.0)
     cylinderBuilder12.Origin = origin12
     
     vector12 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -524,13 +525,13 @@ def main() :
     
     expression25 = cylinderBuilder13.Diameter
     
-    expression25.RightHandSide = "18.2"
+    expression25.RightHandSide = "12.2"
     
     expression26 = cylinderBuilder13.Height
     
-    expression26.RightHandSide = "182.00000000000003"
+    expression26.RightHandSide = "121.99999999999999"
     
-    origin13 = NXOpen.Point3d(-50.556891204783788, 75.663734719531632, 0.0)
+    origin13 = NXOpen.Point3d(-33.889784214195714, 50.719646350455257, 0.0)
     cylinderBuilder13.Origin = origin13
     
     vector13 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -567,13 +568,13 @@ def main() :
     
     expression27 = cylinderBuilder14.Diameter
     
-    expression27.RightHandSide = "18.2"
+    expression27.RightHandSide = "12.2"
     
     expression28 = cylinderBuilder14.Height
     
-    expression28.RightHandSide = "182.00000000000003"
+    expression28.RightHandSide = "121.99999999999999"
     
-    origin14 = NXOpen.Point3d(-64.346717087975833, 64.346717087975833, 0.0)
+    origin14 = NXOpen.Point3d(-43.133513652379392, 43.133513652379399, 0.0)
     cylinderBuilder14.Origin = origin14
     
     vector14 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -610,13 +611,13 @@ def main() :
     
     expression29 = cylinderBuilder15.Diameter
     
-    expression29.RightHandSide = "18.2"
+    expression29.RightHandSide = "12.2"
     
     expression30 = cylinderBuilder15.Height
     
-    expression30.RightHandSide = "182.00000000000003"
+    expression30.RightHandSide = "121.99999999999999"
     
-    origin15 = NXOpen.Point3d(-75.663734719531632, 50.556891204783803, 0.0)
+    origin15 = NXOpen.Point3d(-50.719646350455257, 33.889784214195728, 0.0)
     cylinderBuilder15.Origin = origin15
     
     vector15 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -653,13 +654,13 @@ def main() :
     
     expression31 = cylinderBuilder16.Diameter
     
-    expression31.RightHandSide = "18.2"
+    expression31.RightHandSide = "12.2"
     
     expression32 = cylinderBuilder16.Height
     
-    expression32.RightHandSide = "182.00000000000003"
+    expression32.RightHandSide = "121.99999999999999"
     
-    origin16 = NXOpen.Point3d(-84.073037458527111, 34.824192345223189, 0.0)
+    origin16 = NXOpen.Point3d(-56.356651483188486, 23.343689374270483, 0.0)
     cylinderBuilder16.Origin = origin16
     
     vector16 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -696,13 +697,13 @@ def main() :
     
     expression33 = cylinderBuilder17.Diameter
     
-    expression33.RightHandSide = "18.2"
+    expression33.RightHandSide = "12.2"
     
     expression34 = cylinderBuilder17.Height
     
-    expression34.RightHandSide = "182.00000000000003"
+    expression34.RightHandSide = "121.99999999999999"
     
-    origin17 = NXOpen.Point3d(-89.251460516693982, 17.753219303467706, 0.0)
+    origin17 = NXOpen.Point3d(-59.827902104597051, 11.900509642983844, 0.0)
     cylinderBuilder17.Origin = origin17
     
     vector17 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -739,13 +740,13 @@ def main() :
     
     expression35 = cylinderBuilder18.Diameter
     
-    expression35.RightHandSide = "18.2"
+    expression35.RightHandSide = "12.2"
     
     expression36 = cylinderBuilder18.Height
     
-    expression36.RightHandSide = "182.00000000000003"
+    expression36.RightHandSide = "121.99999999999999"
     
-    origin18 = NXOpen.Point3d(-91.000000000000014, 1.1144285872240916e-14, 0.0)
+    origin18 = NXOpen.Point3d(-60.999999999999993, 7.4703454747988535e-15, 0.0)
     cylinderBuilder18.Origin = origin18
     
     vector18 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -782,13 +783,13 @@ def main() :
     
     expression37 = cylinderBuilder19.Diameter
     
-    expression37.RightHandSide = "18.2"
+    expression37.RightHandSide = "12.2"
     
     expression38 = cylinderBuilder19.Height
     
-    expression38.RightHandSide = "182.00000000000003"
+    expression38.RightHandSide = "121.99999999999999"
     
-    origin19 = NXOpen.Point3d(-89.251460516693982, -17.753219303467684, 0.0)
+    origin19 = NXOpen.Point3d(-59.827902104597051, -11.900509642983829, 0.0)
     cylinderBuilder19.Origin = origin19
     
     vector19 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -825,13 +826,13 @@ def main() :
     
     expression39 = cylinderBuilder20.Diameter
     
-    expression39.RightHandSide = "18.2"
+    expression39.RightHandSide = "12.2"
     
     expression40 = cylinderBuilder20.Height
     
-    expression40.RightHandSide = "182.00000000000003"
+    expression40.RightHandSide = "121.99999999999999"
     
-    origin20 = NXOpen.Point3d(-84.073037458527111, -34.82419234522316, 0.0)
+    origin20 = NXOpen.Point3d(-56.356651483188493, -23.343689374270465, 0.0)
     cylinderBuilder20.Origin = origin20
     
     vector20 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -868,13 +869,13 @@ def main() :
     
     expression41 = cylinderBuilder21.Diameter
     
-    expression41.RightHandSide = "18.2"
+    expression41.RightHandSide = "12.2"
     
     expression42 = cylinderBuilder21.Height
     
-    expression42.RightHandSide = "182.00000000000003"
+    expression42.RightHandSide = "121.99999999999999"
     
-    origin21 = NXOpen.Point3d(-75.663734719531647, -50.556891204783788, 0.0)
+    origin21 = NXOpen.Point3d(-50.719646350455264, -33.889784214195714, 0.0)
     cylinderBuilder21.Origin = origin21
     
     vector21 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -911,13 +912,13 @@ def main() :
     
     expression43 = cylinderBuilder22.Diameter
     
-    expression43.RightHandSide = "18.2"
+    expression43.RightHandSide = "12.2"
     
     expression44 = cylinderBuilder22.Height
     
-    expression44.RightHandSide = "182.00000000000003"
+    expression44.RightHandSide = "121.99999999999999"
     
-    origin22 = NXOpen.Point3d(-64.346717087975847, -64.346717087975833, 0.0)
+    origin22 = NXOpen.Point3d(-43.133513652379406, -43.133513652379392, 0.0)
     cylinderBuilder22.Origin = origin22
     
     vector22 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -954,13 +955,13 @@ def main() :
     
     expression45 = cylinderBuilder23.Diameter
     
-    expression45.RightHandSide = "18.2"
+    expression45.RightHandSide = "12.2"
     
     expression46 = cylinderBuilder23.Height
     
-    expression46.RightHandSide = "182.00000000000003"
+    expression46.RightHandSide = "121.99999999999999"
     
-    origin23 = NXOpen.Point3d(-50.556891204783803, -75.663734719531632, 0.0)
+    origin23 = NXOpen.Point3d(-33.889784214195728, -50.719646350455257, 0.0)
     cylinderBuilder23.Origin = origin23
     
     vector23 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -997,13 +998,13 @@ def main() :
     
     expression47 = cylinderBuilder24.Diameter
     
-    expression47.RightHandSide = "18.2"
+    expression47.RightHandSide = "12.2"
     
     expression48 = cylinderBuilder24.Height
     
-    expression48.RightHandSide = "182.00000000000003"
+    expression48.RightHandSide = "121.99999999999999"
     
-    origin24 = NXOpen.Point3d(-34.824192345223224, -84.073037458527082, 0.0)
+    origin24 = NXOpen.Point3d(-23.343689374270507, -56.356651483188472, 0.0)
     cylinderBuilder24.Origin = origin24
     
     vector24 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1040,13 +1041,13 @@ def main() :
     
     expression49 = cylinderBuilder25.Diameter
     
-    expression49.RightHandSide = "18.2"
+    expression49.RightHandSide = "12.2"
     
     expression50 = cylinderBuilder25.Height
     
-    expression50.RightHandSide = "182.00000000000003"
+    expression50.RightHandSide = "121.99999999999999"
     
-    origin25 = NXOpen.Point3d(-17.753219303467713, -89.251460516693967, 0.0)
+    origin25 = NXOpen.Point3d(-11.900509642983847, -59.827902104597044, 0.0)
     cylinderBuilder25.Origin = origin25
     
     vector25 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1083,13 +1084,13 @@ def main() :
     
     expression51 = cylinderBuilder26.Diameter
     
-    expression51.RightHandSide = "18.2"
+    expression51.RightHandSide = "12.2"
     
     expression52 = cylinderBuilder26.Height
     
-    expression52.RightHandSide = "182.00000000000003"
+    expression52.RightHandSide = "121.99999999999999"
     
-    origin26 = NXOpen.Point3d(-1.6716428808361373e-14, -91.000000000000014, 0.0)
+    origin26 = NXOpen.Point3d(-1.120551821219828e-14, -60.999999999999993, 0.0)
     cylinderBuilder26.Origin = origin26
     
     vector26 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1126,13 +1127,13 @@ def main() :
     
     expression53 = cylinderBuilder27.Diameter
     
-    expression53.RightHandSide = "18.2"
+    expression53.RightHandSide = "12.2"
     
     expression54 = cylinderBuilder27.Height
     
-    expression54.RightHandSide = "182.00000000000003"
+    expression54.RightHandSide = "121.99999999999999"
     
-    origin27 = NXOpen.Point3d(17.753219303467677, -89.251460516693982, 0.0)
+    origin27 = NXOpen.Point3d(11.900509642983826, -59.827902104597051, 0.0)
     cylinderBuilder27.Origin = origin27
     
     vector27 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1169,13 +1170,13 @@ def main() :
     
     expression55 = cylinderBuilder28.Diameter
     
-    expression55.RightHandSide = "18.2"
+    expression55.RightHandSide = "12.2"
     
     expression56 = cylinderBuilder28.Height
     
-    expression56.RightHandSide = "182.00000000000003"
+    expression56.RightHandSide = "121.99999999999999"
     
-    origin28 = NXOpen.Point3d(34.824192345223196, -84.073037458527097, 0.0)
+    origin28 = NXOpen.Point3d(23.343689374270486, -56.356651483188479, 0.0)
     cylinderBuilder28.Origin = origin28
     
     vector28 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1212,13 +1213,13 @@ def main() :
     
     expression57 = cylinderBuilder29.Diameter
     
-    expression57.RightHandSide = "18.2"
+    expression57.RightHandSide = "12.2"
     
     expression58 = cylinderBuilder29.Height
     
-    expression58.RightHandSide = "182.00000000000003"
+    expression58.RightHandSide = "121.99999999999999"
     
-    origin29 = NXOpen.Point3d(50.556891204783774, -75.663734719531647, 0.0)
+    origin29 = NXOpen.Point3d(33.889784214195707, -50.719646350455264, 0.0)
     cylinderBuilder29.Origin = origin29
     
     vector29 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1255,13 +1256,13 @@ def main() :
     
     expression59 = cylinderBuilder30.Diameter
     
-    expression59.RightHandSide = "18.2"
+    expression59.RightHandSide = "12.2"
     
     expression60 = cylinderBuilder30.Height
     
-    expression60.RightHandSide = "182.00000000000003"
+    expression60.RightHandSide = "121.99999999999999"
     
-    origin30 = NXOpen.Point3d(64.346717087975819, -64.346717087975847, 0.0)
+    origin30 = NXOpen.Point3d(43.133513652379385, -43.133513652379406, 0.0)
     cylinderBuilder30.Origin = origin30
     
     vector30 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1298,13 +1299,13 @@ def main() :
     
     expression61 = cylinderBuilder31.Diameter
     
-    expression61.RightHandSide = "18.2"
+    expression61.RightHandSide = "12.2"
     
     expression62 = cylinderBuilder31.Height
     
-    expression62.RightHandSide = "182.00000000000003"
+    expression62.RightHandSide = "121.99999999999999"
     
-    origin31 = NXOpen.Point3d(75.663734719531632, -50.556891204783803, 0.0)
+    origin31 = NXOpen.Point3d(50.719646350455257, -33.889784214195728, 0.0)
     cylinderBuilder31.Origin = origin31
     
     vector31 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1341,13 +1342,13 @@ def main() :
     
     expression63 = cylinderBuilder32.Diameter
     
-    expression63.RightHandSide = "18.2"
+    expression63.RightHandSide = "12.2"
     
     expression64 = cylinderBuilder32.Height
     
-    expression64.RightHandSide = "182.00000000000003"
+    expression64.RightHandSide = "121.99999999999999"
     
-    origin32 = NXOpen.Point3d(84.073037458527082, -34.824192345223231, 0.0)
+    origin32 = NXOpen.Point3d(56.356651483188472, -23.343689374270511, 0.0)
     cylinderBuilder32.Origin = origin32
     
     vector32 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1384,13 +1385,13 @@ def main() :
     
     expression65 = cylinderBuilder33.Diameter
     
-    expression65.RightHandSide = "18.2"
+    expression65.RightHandSide = "12.2"
     
     expression66 = cylinderBuilder33.Height
     
-    expression66.RightHandSide = "182.00000000000003"
+    expression66.RightHandSide = "121.99999999999999"
     
-    origin33 = NXOpen.Point3d(89.251460516693967, -17.753219303467716, 0.0)
+    origin33 = NXOpen.Point3d(59.827902104597044, -11.900509642983851, 0.0)
     cylinderBuilder33.Origin = origin33
     
     vector33 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1427,11 +1428,11 @@ def main() :
     
     expression67 = cylinderBuilder34.Diameter
     
-    expression67.RightHandSide = "6.066666666666667"
+    expression67.RightHandSide = "4.066666666666666"
     
     expression68 = cylinderBuilder34.Height
     
-    expression68.RightHandSide = "182.00000000000003"
+    expression68.RightHandSide = "121.99999999999999"
     
     origin34 = NXOpen.Point3d(0.0, 0.0, 0.0)
     cylinderBuilder34.Origin = origin34
@@ -1470,13 +1471,13 @@ def main() :
     
     expression69 = cylinderBuilder35.Diameter
     
-    expression69.RightHandSide = "182.00000000000003"
+    expression69.RightHandSide = "121.99999999999999"
     
     expression70 = cylinderBuilder35.Height
     
-    expression70.RightHandSide = "182.00000000000003"
+    expression70.RightHandSide = "121.99999999999999"
     
-    origin35 = NXOpen.Point3d(0.0, -182.00000000000003, 0.0)
+    origin35 = NXOpen.Point3d(0.0, -121.99999999999999, 0.0)
     cylinderBuilder35.Origin = origin35
     
     vector35 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1499,13 +1500,13 @@ def main() :
     
     expression71 = cylinderBuilder36.Diameter
     
-    expression71.RightHandSide = "18.2"
+    expression71.RightHandSide = "12.2"
     
     expression72 = cylinderBuilder36.Height
     
-    expression72.RightHandSide = "182.00000000000003"
+    expression72.RightHandSide = "121.99999999999999"
     
-    origin36 = NXOpen.Point3d(89.251460516693982, -164.24678069653237, 0.0)
+    origin36 = NXOpen.Point3d(59.827902104597051, -110.09949035701617, 0.0)
     cylinderBuilder36.Origin = origin36
     
     vector36 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1542,13 +1543,13 @@ def main() :
     
     expression73 = cylinderBuilder37.Diameter
     
-    expression73.RightHandSide = "18.2"
+    expression73.RightHandSide = "12.2"
     
     expression74 = cylinderBuilder37.Height
     
-    expression74.RightHandSide = "182.00000000000003"
+    expression74.RightHandSide = "121.99999999999999"
     
-    origin37 = NXOpen.Point3d(84.073037458527111, -147.17580765477686, 0.0)
+    origin37 = NXOpen.Point3d(56.356651483188486, -98.656310625729503, 0.0)
     cylinderBuilder37.Origin = origin37
     
     vector37 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1585,13 +1586,13 @@ def main() :
     
     expression75 = cylinderBuilder38.Diameter
     
-    expression75.RightHandSide = "18.2"
+    expression75.RightHandSide = "12.2"
     
     expression76 = cylinderBuilder38.Height
     
-    expression76.RightHandSide = "182.00000000000003"
+    expression76.RightHandSide = "121.99999999999999"
     
-    origin38 = NXOpen.Point3d(75.663734719531632, -131.44310879521623, 0.0)
+    origin38 = NXOpen.Point3d(50.719646350455257, -88.110215785804257, 0.0)
     cylinderBuilder38.Origin = origin38
     
     vector38 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1628,13 +1629,13 @@ def main() :
     
     expression77 = cylinderBuilder39.Diameter
     
-    expression77.RightHandSide = "18.2"
+    expression77.RightHandSide = "12.2"
     
     expression78 = cylinderBuilder39.Height
     
-    expression78.RightHandSide = "182.00000000000003"
+    expression78.RightHandSide = "121.99999999999999"
     
-    origin39 = NXOpen.Point3d(64.346717087975833, -117.6532829120242, 0.0)
+    origin39 = NXOpen.Point3d(43.133513652379399, -78.866486347620594, 0.0)
     cylinderBuilder39.Origin = origin39
     
     vector39 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1671,13 +1672,13 @@ def main() :
     
     expression79 = cylinderBuilder40.Diameter
     
-    expression79.RightHandSide = "18.2"
+    expression79.RightHandSide = "12.2"
     
     expression80 = cylinderBuilder40.Height
     
-    expression80.RightHandSide = "182.00000000000003"
+    expression80.RightHandSide = "121.99999999999999"
     
-    origin40 = NXOpen.Point3d(50.556891204783817, -106.3362652804684, 0.0)
+    origin40 = NXOpen.Point3d(33.889784214195736, -71.280353649544736, 0.0)
     cylinderBuilder40.Origin = origin40
     
     vector40 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1714,13 +1715,13 @@ def main() :
     
     expression81 = cylinderBuilder41.Diameter
     
-    expression81.RightHandSide = "18.2"
+    expression81.RightHandSide = "12.2"
     
     expression82 = cylinderBuilder41.Height
     
-    expression82.RightHandSide = "182.00000000000003"
+    expression82.RightHandSide = "121.99999999999999"
     
-    origin41 = NXOpen.Point3d(34.824192345223182, -97.926962541472918, 0.0)
+    origin41 = NXOpen.Point3d(23.343689374270479, -65.6433485168115, 0.0)
     cylinderBuilder41.Origin = origin41
     
     vector41 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1757,13 +1758,13 @@ def main() :
     
     expression83 = cylinderBuilder42.Diameter
     
-    expression83.RightHandSide = "18.2"
+    expression83.RightHandSide = "12.2"
     
     expression84 = cylinderBuilder42.Height
     
-    expression84.RightHandSide = "182.00000000000003"
+    expression84.RightHandSide = "121.99999999999999"
     
-    origin42 = NXOpen.Point3d(17.753219303467681, -92.748539483306047, 0.0)
+    origin42 = NXOpen.Point3d(11.900509642983828, -62.172097895402935, 0.0)
     cylinderBuilder42.Origin = origin42
     
     vector42 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1800,13 +1801,13 @@ def main() :
     
     expression85 = cylinderBuilder43.Diameter
     
-    expression85.RightHandSide = "18.2"
+    expression85.RightHandSide = "12.2"
     
     expression86 = cylinderBuilder43.Height
     
-    expression86.RightHandSide = "182.00000000000003"
+    expression86.RightHandSide = "121.99999999999999"
     
-    origin43 = NXOpen.Point3d(5.5721429361204579e-15, -91.000000000000014, 0.0)
+    origin43 = NXOpen.Point3d(3.7351727373994268e-15, -60.999999999999993, 0.0)
     cylinderBuilder43.Origin = origin43
     
     vector43 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1843,13 +1844,13 @@ def main() :
     
     expression87 = cylinderBuilder44.Diameter
     
-    expression87.RightHandSide = "18.2"
+    expression87.RightHandSide = "12.2"
     
     expression88 = cylinderBuilder44.Height
     
-    expression88.RightHandSide = "182.00000000000003"
+    expression88.RightHandSide = "121.99999999999999"
     
-    origin44 = NXOpen.Point3d(-17.753219303467667, -92.748539483306047, 0.0)
+    origin44 = NXOpen.Point3d(-11.900509642983819, -62.172097895402935, 0.0)
     cylinderBuilder44.Origin = origin44
     
     vector44 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1886,13 +1887,13 @@ def main() :
     
     expression89 = cylinderBuilder45.Diameter
     
-    expression89.RightHandSide = "18.2"
+    expression89.RightHandSide = "12.2"
     
     expression90 = cylinderBuilder45.Height
     
-    expression90.RightHandSide = "182.00000000000003"
+    expression90.RightHandSide = "121.99999999999999"
     
-    origin45 = NXOpen.Point3d(-34.824192345223167, -97.926962541472918, 0.0)
+    origin45 = NXOpen.Point3d(-23.343689374270472, -65.6433485168115, 0.0)
     cylinderBuilder45.Origin = origin45
     
     vector45 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1929,13 +1930,13 @@ def main() :
     
     expression91 = cylinderBuilder46.Diameter
     
-    expression91.RightHandSide = "18.2"
+    expression91.RightHandSide = "12.2"
     
     expression92 = cylinderBuilder46.Height
     
-    expression92.RightHandSide = "182.00000000000003"
+    expression92.RightHandSide = "121.99999999999999"
     
-    origin46 = NXOpen.Point3d(-50.556891204783788, -106.3362652804684, 0.0)
+    origin46 = NXOpen.Point3d(-33.889784214195714, -71.280353649544736, 0.0)
     cylinderBuilder46.Origin = origin46
     
     vector46 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -1972,13 +1973,13 @@ def main() :
     
     expression93 = cylinderBuilder47.Diameter
     
-    expression93.RightHandSide = "18.2"
+    expression93.RightHandSide = "12.2"
     
     expression94 = cylinderBuilder47.Height
     
-    expression94.RightHandSide = "182.00000000000003"
+    expression94.RightHandSide = "121.99999999999999"
     
-    origin47 = NXOpen.Point3d(-64.346717087975833, -117.6532829120242, 0.0)
+    origin47 = NXOpen.Point3d(-43.133513652379392, -78.866486347620594, 0.0)
     cylinderBuilder47.Origin = origin47
     
     vector47 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2015,13 +2016,13 @@ def main() :
     
     expression95 = cylinderBuilder48.Diameter
     
-    expression95.RightHandSide = "18.2"
+    expression95.RightHandSide = "12.2"
     
     expression96 = cylinderBuilder48.Height
     
-    expression96.RightHandSide = "182.00000000000003"
+    expression96.RightHandSide = "121.99999999999999"
     
-    origin48 = NXOpen.Point3d(-75.663734719531632, -131.44310879521623, 0.0)
+    origin48 = NXOpen.Point3d(-50.719646350455257, -88.110215785804257, 0.0)
     cylinderBuilder48.Origin = origin48
     
     vector48 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2058,13 +2059,13 @@ def main() :
     
     expression97 = cylinderBuilder49.Diameter
     
-    expression97.RightHandSide = "18.2"
+    expression97.RightHandSide = "12.2"
     
     expression98 = cylinderBuilder49.Height
     
-    expression98.RightHandSide = "182.00000000000003"
+    expression98.RightHandSide = "121.99999999999999"
     
-    origin49 = NXOpen.Point3d(-84.073037458527111, -147.17580765477689, 0.0)
+    origin49 = NXOpen.Point3d(-56.356651483188493, -98.656310625729532, 0.0)
     cylinderBuilder49.Origin = origin49
     
     vector49 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2101,13 +2102,13 @@ def main() :
     
     expression99 = cylinderBuilder50.Diameter
     
-    expression99.RightHandSide = "18.2"
+    expression99.RightHandSide = "12.2"
     
     expression100 = cylinderBuilder50.Height
     
-    expression100.RightHandSide = "182.00000000000003"
+    expression100.RightHandSide = "121.99999999999999"
     
-    origin50 = NXOpen.Point3d(-89.251460516693982, -164.24678069653231, 0.0)
+    origin50 = NXOpen.Point3d(-59.827902104597051, -110.09949035701614, 0.0)
     cylinderBuilder50.Origin = origin50
     
     vector50 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2144,13 +2145,13 @@ def main() :
     
     expression101 = cylinderBuilder51.Diameter
     
-    expression101.RightHandSide = "18.2"
+    expression101.RightHandSide = "12.2"
     
     expression102 = cylinderBuilder51.Height
     
-    expression102.RightHandSide = "182.00000000000003"
+    expression102.RightHandSide = "121.99999999999999"
     
-    origin51 = NXOpen.Point3d(-91.000000000000014, -182.00000000000003, 0.0)
+    origin51 = NXOpen.Point3d(-60.999999999999993, -121.99999999999997, 0.0)
     cylinderBuilder51.Origin = origin51
     
     vector51 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2187,13 +2188,13 @@ def main() :
     
     expression103 = cylinderBuilder52.Diameter
     
-    expression103.RightHandSide = "18.2"
+    expression103.RightHandSide = "12.2"
     
     expression104 = cylinderBuilder52.Height
     
-    expression104.RightHandSide = "182.00000000000003"
+    expression104.RightHandSide = "121.99999999999999"
     
-    origin52 = NXOpen.Point3d(-89.251460516693982, -199.75321930346772, 0.0)
+    origin52 = NXOpen.Point3d(-59.827902104597051, -133.90050964298382, 0.0)
     cylinderBuilder52.Origin = origin52
     
     vector52 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2230,13 +2231,13 @@ def main() :
     
     expression105 = cylinderBuilder53.Diameter
     
-    expression105.RightHandSide = "18.2"
+    expression105.RightHandSide = "12.2"
     
     expression106 = cylinderBuilder53.Height
     
-    expression106.RightHandSide = "182.00000000000003"
+    expression106.RightHandSide = "121.99999999999999"
     
-    origin53 = NXOpen.Point3d(-84.073037458527097, -216.82419234522322, 0.0)
+    origin53 = NXOpen.Point3d(-56.356651483188479, -145.34368937427047, 0.0)
     cylinderBuilder53.Origin = origin53
     
     vector53 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2273,13 +2274,13 @@ def main() :
     
     expression107 = cylinderBuilder54.Diameter
     
-    expression107.RightHandSide = "18.2"
+    expression107.RightHandSide = "12.2"
     
     expression108 = cylinderBuilder54.Height
     
-    expression108.RightHandSide = "182.00000000000003"
+    expression108.RightHandSide = "121.99999999999999"
     
-    origin54 = NXOpen.Point3d(-75.663734719531647, -232.55689120478382, 0.0)
+    origin54 = NXOpen.Point3d(-50.719646350455264, -155.88978421419569, 0.0)
     cylinderBuilder54.Origin = origin54
     
     vector54 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2316,13 +2317,13 @@ def main() :
     
     expression109 = cylinderBuilder55.Diameter
     
-    expression109.RightHandSide = "18.2"
+    expression109.RightHandSide = "12.2"
     
     expression110 = cylinderBuilder55.Height
     
-    expression110.RightHandSide = "182.00000000000003"
+    expression110.RightHandSide = "121.99999999999999"
     
-    origin55 = NXOpen.Point3d(-64.346717087975847, -246.34671708797586, 0.0)
+    origin55 = NXOpen.Point3d(-43.133513652379406, -165.13351365237938, 0.0)
     cylinderBuilder55.Origin = origin55
     
     vector55 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2359,13 +2360,13 @@ def main() :
     
     expression111 = cylinderBuilder56.Diameter
     
-    expression111.RightHandSide = "18.2"
+    expression111.RightHandSide = "12.2"
     
     expression112 = cylinderBuilder56.Height
     
-    expression112.RightHandSide = "182.00000000000003"
+    expression112.RightHandSide = "121.99999999999999"
     
-    origin56 = NXOpen.Point3d(-50.556891204783803, -257.66373471953165, 0.0)
+    origin56 = NXOpen.Point3d(-33.889784214195728, -172.71964635045524, 0.0)
     cylinderBuilder56.Origin = origin56
     
     vector56 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2402,13 +2403,13 @@ def main() :
     
     expression113 = cylinderBuilder57.Diameter
     
-    expression113.RightHandSide = "18.2"
+    expression113.RightHandSide = "12.2"
     
     expression114 = cylinderBuilder57.Height
     
-    expression114.RightHandSide = "182.00000000000003"
+    expression114.RightHandSide = "121.99999999999999"
     
-    origin57 = NXOpen.Point3d(-34.824192345223153, -266.07303745852715, 0.0)
+    origin57 = NXOpen.Point3d(-23.343689374270458, -178.35665148318847, 0.0)
     cylinderBuilder57.Origin = origin57
     
     vector57 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2445,13 +2446,13 @@ def main() :
     
     expression115 = cylinderBuilder58.Diameter
     
-    expression115.RightHandSide = "18.2"
+    expression115.RightHandSide = "12.2"
     
     expression116 = cylinderBuilder58.Height
     
-    expression116.RightHandSide = "182.00000000000003"
+    expression116.RightHandSide = "121.99999999999999"
     
-    origin58 = NXOpen.Point3d(-17.753219303467713, -271.25146051669401, 0.0)
+    origin58 = NXOpen.Point3d(-11.900509642983847, -181.82790210459703, 0.0)
     cylinderBuilder58.Origin = origin58
     
     vector58 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2488,13 +2489,13 @@ def main() :
     
     expression117 = cylinderBuilder59.Diameter
     
-    expression117.RightHandSide = "18.2"
+    expression117.RightHandSide = "12.2"
     
     expression118 = cylinderBuilder59.Height
     
-    expression118.RightHandSide = "182.00000000000003"
+    expression118.RightHandSide = "121.99999999999999"
     
-    origin59 = NXOpen.Point3d(-1.6716428808361373e-14, -273.00000000000006, 0.0)
+    origin59 = NXOpen.Point3d(-1.120551821219828e-14, -182.99999999999997, 0.0)
     cylinderBuilder59.Origin = origin59
     
     vector59 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2531,13 +2532,13 @@ def main() :
     
     expression119 = cylinderBuilder60.Diameter
     
-    expression119.RightHandSide = "18.2"
+    expression119.RightHandSide = "12.2"
     
     expression120 = cylinderBuilder60.Height
     
-    expression120.RightHandSide = "182.00000000000003"
+    expression120.RightHandSide = "121.99999999999999"
     
-    origin60 = NXOpen.Point3d(17.753219303467677, -271.25146051669401, 0.0)
+    origin60 = NXOpen.Point3d(11.900509642983826, -181.82790210459703, 0.0)
     cylinderBuilder60.Origin = origin60
     
     vector60 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2574,13 +2575,13 @@ def main() :
     
     expression121 = cylinderBuilder61.Diameter
     
-    expression121.RightHandSide = "18.2"
+    expression121.RightHandSide = "12.2"
     
     expression122 = cylinderBuilder61.Height
     
-    expression122.RightHandSide = "182.00000000000003"
+    expression122.RightHandSide = "121.99999999999999"
     
-    origin61 = NXOpen.Point3d(34.824192345223196, -266.0730374585271, 0.0)
+    origin61 = NXOpen.Point3d(23.343689374270486, -178.35665148318847, 0.0)
     cylinderBuilder61.Origin = origin61
     
     vector61 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2617,13 +2618,13 @@ def main() :
     
     expression123 = cylinderBuilder62.Diameter
     
-    expression123.RightHandSide = "18.2"
+    expression123.RightHandSide = "12.2"
     
     expression124 = cylinderBuilder62.Height
     
-    expression124.RightHandSide = "182.00000000000003"
+    expression124.RightHandSide = "121.99999999999999"
     
-    origin62 = NXOpen.Point3d(50.556891204783845, -257.66373471953165, 0.0)
+    origin62 = NXOpen.Point3d(33.889784214195757, -172.71964635045524, 0.0)
     cylinderBuilder62.Origin = origin62
     
     vector62 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2660,13 +2661,13 @@ def main() :
     
     expression125 = cylinderBuilder63.Diameter
     
-    expression125.RightHandSide = "18.2"
+    expression125.RightHandSide = "12.2"
     
     expression126 = cylinderBuilder63.Height
     
-    expression126.RightHandSide = "182.00000000000003"
+    expression126.RightHandSide = "121.99999999999999"
     
-    origin63 = NXOpen.Point3d(64.346717087975819, -246.34671708797589, 0.0)
+    origin63 = NXOpen.Point3d(43.133513652379385, -165.13351365237941, 0.0)
     cylinderBuilder63.Origin = origin63
     
     vector63 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2703,13 +2704,13 @@ def main() :
     
     expression127 = cylinderBuilder64.Diameter
     
-    expression127.RightHandSide = "18.2"
+    expression127.RightHandSide = "12.2"
     
     expression128 = cylinderBuilder64.Height
     
-    expression128.RightHandSide = "182.00000000000003"
+    expression128.RightHandSide = "121.99999999999999"
     
-    origin64 = NXOpen.Point3d(75.663734719531632, -232.55689120478382, 0.0)
+    origin64 = NXOpen.Point3d(50.719646350455257, -155.88978421419571, 0.0)
     cylinderBuilder64.Origin = origin64
     
     vector64 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2746,13 +2747,13 @@ def main() :
     
     expression129 = cylinderBuilder65.Diameter
     
-    expression129.RightHandSide = "18.2"
+    expression129.RightHandSide = "12.2"
     
     expression130 = cylinderBuilder65.Height
     
-    expression130.RightHandSide = "182.00000000000003"
+    expression130.RightHandSide = "121.99999999999999"
     
-    origin65 = NXOpen.Point3d(84.073037458527111, -216.8241923452232, 0.0)
+    origin65 = NXOpen.Point3d(56.356651483188493, -145.34368937427044, 0.0)
     cylinderBuilder65.Origin = origin65
     
     vector65 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2789,13 +2790,13 @@ def main() :
     
     expression131 = cylinderBuilder66.Diameter
     
-    expression131.RightHandSide = "18.2"
+    expression131.RightHandSide = "12.2"
     
     expression132 = cylinderBuilder66.Height
     
-    expression132.RightHandSide = "182.00000000000003"
+    expression132.RightHandSide = "121.99999999999999"
     
-    origin66 = NXOpen.Point3d(89.251460516693967, -199.75321930346774, 0.0)
+    origin66 = NXOpen.Point3d(59.827902104597044, -133.90050964298385, 0.0)
     cylinderBuilder66.Origin = origin66
     
     vector66 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2832,13 +2833,13 @@ def main() :
     
     expression133 = cylinderBuilder67.Diameter
     
-    expression133.RightHandSide = "18.2"
+    expression133.RightHandSide = "12.2"
     
     expression134 = cylinderBuilder67.Height
     
-    expression134.RightHandSide = "182.00000000000003"
+    expression134.RightHandSide = "121.99999999999999"
     
-    origin67 = NXOpen.Point3d(91.000000000000014, -182.00000000000006, 0.0)
+    origin67 = NXOpen.Point3d(60.999999999999993, -122.0, 0.0)
     cylinderBuilder67.Origin = origin67
     
     vector67 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2875,13 +2876,13 @@ def main() :
     
     expression135 = cylinderBuilder68.Diameter
     
-    expression135.RightHandSide = "6.066666666666667"
+    expression135.RightHandSide = "4.066666666666666"
     
     expression136 = cylinderBuilder68.Height
     
-    expression136.RightHandSide = "182.00000000000003"
+    expression136.RightHandSide = "121.99999999999999"
     
-    origin68 = NXOpen.Point3d(0.0, -182.00000000000003, 0.0)
+    origin68 = NXOpen.Point3d(0.0, -121.99999999999999, 0.0)
     cylinderBuilder68.Origin = origin68
     
     vector68 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -2918,11 +2919,11 @@ def main() :
     
     expression137 = cylinderBuilder69.Diameter
     
-    expression137.RightHandSide = "220.20000000000005"
+    expression137.RightHandSide = "154.2"
     
     expression138 = cylinderBuilder69.Height
     
-    expression138.RightHandSide = "202.00000000000003"
+    expression138.RightHandSide = "142.0"
     
     origin69 = NXOpen.Point3d(0.0, 0.0, -10.0)
     cylinderBuilder69.Origin = origin69
@@ -2947,8 +2948,8 @@ def main() :
     
     blockFeatureBuilder1.Type = NXOpen.Features.BlockFeatureBuilder.Types.OriginAndEdgeLengths
     
-    originPoint1 = NXOpen.Point3d(-238.40000000000003, -91.000000000000014, -10.0)
-    blockFeatureBuilder1.SetOriginAndLengths(originPoint1, "476.80000000000007", "91.00000000000001", "202.00000000000003")
+    originPoint1 = NXOpen.Point3d(-166.39999999999998, -60.999999999999993, -10.0)
+    blockFeatureBuilder1.SetOriginAndLengths(originPoint1, "332.79999999999995", "60.99999999999999", "142.0")
     
     booleanOperation70 = blockFeatureBuilder1.BooleanOption
     
@@ -2985,11 +2986,11 @@ def main() :
     
     expression139 = cylinderBuilder70.Diameter
     
-    expression139.RightHandSide = "200.20000000000005"
+    expression139.RightHandSide = "134.2"
     
     expression140 = cylinderBuilder70.Height
     
-    expression140.RightHandSide = "182.00000000000003"
+    expression140.RightHandSide = "121.99999999999999"
     
     origin70 = NXOpen.Point3d(0.0, 0.0, 0.0)
     cylinderBuilder70.Origin = origin70
@@ -3028,8 +3029,8 @@ def main() :
     
     blockFeatureBuilder2.Type = NXOpen.Features.BlockFeatureBuilder.Types.OriginAndEdgeLengths
     
-    originPoint2 = NXOpen.Point3d(-238.40000000000003, -91.000000000000014, 0.0)
-    blockFeatureBuilder2.SetOriginAndLengths(originPoint2, "476.80000000000007", "81.00000000000001", "182.00000000000003")
+    originPoint2 = NXOpen.Point3d(-166.39999999999998, -60.999999999999993, 0.0)
+    blockFeatureBuilder2.SetOriginAndLengths(originPoint2, "332.79999999999995", "50.99999999999999", "122.0")
     
     booleanOperation72 = blockFeatureBuilder2.BooleanOption
     
@@ -3066,8 +3067,8 @@ def main() :
     
     blockFeatureBuilder3.Type = NXOpen.Features.BlockFeatureBuilder.Types.OriginAndEdgeLengths
     
-    originPoint3 = NXOpen.Point3d(-238.40000000000003, -182.00000000000003, -10.0)
-    blockFeatureBuilder3.SetOriginAndLengths(originPoint3, "476.80000000000007", "91.00000000000001", "202.00000000000003")
+    originPoint3 = NXOpen.Point3d(-166.39999999999998, -121.99999999999999, -10.0)
+    blockFeatureBuilder3.SetOriginAndLengths(originPoint3, "332.79999999999995", "60.99999999999999", "142.0")
     
     booleanOperation73 = blockFeatureBuilder3.BooleanOption
     
@@ -3104,13 +3105,13 @@ def main() :
     
     expression141 = cylinderBuilder71.Diameter
     
-    expression141.RightHandSide = "220.20000000000005"
+    expression141.RightHandSide = "154.2"
     
     expression142 = cylinderBuilder71.Height
     
-    expression142.RightHandSide = "202.00000000000003"
+    expression142.RightHandSide = "142.0"
     
-    origin71 = NXOpen.Point3d(0.0, -182.00000000000003, -10.0)
+    origin71 = NXOpen.Point3d(0.0, -121.99999999999999, -10.0)
     cylinderBuilder71.Origin = origin71
     
     vector71 = NXOpen.Vector3d(0.0, 0.0, 1.0)
@@ -3129,42 +3130,37 @@ def main() :
     
     part145 = theSession.Parts.Work
     
-    cylinderBuilder72 = workPart.Features.CreateCylinderBuilder(NXOpen.Features.Feature.Null)
+    blockFeatureBuilder4 = workPart.Features.CreateBlockFeatureBuilder(NXOpen.Features.Feature.Null)
     
-    expression143 = cylinderBuilder72.Diameter
+    blockFeatureBuilder4.Type = NXOpen.Features.BlockFeatureBuilder.Types.OriginAndEdgeLengths
     
-    expression143.RightHandSide = "200.20000000000005"
+    originPoint4 = NXOpen.Point3d(-166.39999999999998, -121.99999999999999, -10.0)
+    blockFeatureBuilder4.SetOriginAndLengths(originPoint4, "332.79999999999995", "60.99999999999999", "142.0")
     
-    expression144 = cylinderBuilder72.Height
-    
-    expression144.RightHandSide = "182.00000000000003"
-    
-    origin72 = NXOpen.Point3d(0.0, -182.00000000000003, 0.0)
-    cylinderBuilder72.Origin = origin72
-    
-    vector72 = NXOpen.Vector3d(0.0, 0.0, 1.0)
-    cylinderBuilder72.Direction = vector72
-    
-    booleanOperation75 = cylinderBuilder72.BooleanOption
+    booleanOperation75 = blockFeatureBuilder4.BooleanOption
     
     booleanOperation75.Type = NXOpen.GeometricUtilities.BooleanOperation.BooleanType.Create
     
-    nXObject145 = cylinderBuilder72.Commit()
+    xAxis4 = NXOpen.Vector3d(1.0, 0.0, 0.0)
+    yAxis4 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    blockFeatureBuilder4.SetOrientation(xAxis4, yAxis4)
     
-    cylinder72 = nXObject145
-    bodies75 = cylinder72.GetBodies()
+    nXObject145 = blockFeatureBuilder4.Commit()
     
-    cylinderBuilder72.Destroy()
+    block4 = nXObject145
+    bodies75 = block4.GetBodies()
+    
+    blockFeatureBuilder4.Destroy()
     
     part146 = theSession.Parts.Work
     
-    booleanBuilder71 = workPart.Features.CreateBooleanBuilder(NXOpen.Features.BooleanFeature.Null)
+    booleanBuilder71 = workPart.Features.CreateBooleanBuilderUsingCollector(NXOpen.Features.BooleanFeature.Null)
     
     booleanBuilder71.Target = bodies74[0]
     
     booleanBuilder71.Tool = bodies75[0]
     
-    booleanBuilder71.Operation = NXOpen.Features.Feature.BooleanType.Subtract
+    booleanBuilder71.Operation = NXOpen.Features.Feature.BooleanType.Unite
     
     nXObject146 = booleanBuilder71.Commit()
     
@@ -3172,36 +3168,55 @@ def main() :
     
     part147 = theSession.Parts.Work
     
-    blockFeatureBuilder4 = workPart.Features.CreateBlockFeatureBuilder(NXOpen.Features.Feature.Null)
+    cylinderBuilder72 = workPart.Features.CreateCylinderBuilder(NXOpen.Features.Feature.Null)
     
-    blockFeatureBuilder4.Type = NXOpen.Features.BlockFeatureBuilder.Types.OriginAndEdgeLengths
+    expression143 = cylinderBuilder72.Diameter
     
-    originPoint4 = NXOpen.Point3d(-238.40000000000003, -182.00000000000003, -10.0)
-    blockFeatureBuilder4.SetOriginAndLengths(originPoint4, "476.80000000000007", "91.00000000000001", "202.00000000000003")
+    expression143.RightHandSide = "134.2"
     
-    booleanOperation76 = blockFeatureBuilder4.BooleanOption
+    expression144 = cylinderBuilder72.Height
+    
+    expression144.RightHandSide = "121.99999999999999"
+    
+    origin72 = NXOpen.Point3d(0.0, -121.99999999999999, 0.0)
+    cylinderBuilder72.Origin = origin72
+    
+    vector72 = NXOpen.Vector3d(0.0, 0.0, 1.0)
+    cylinderBuilder72.Direction = vector72
+    
+    booleanOperation76 = cylinderBuilder72.BooleanOption
     
     booleanOperation76.Type = NXOpen.GeometricUtilities.BooleanOperation.BooleanType.Create
     
-    xAxis4 = NXOpen.Vector3d(1.0, 0.0, 0.0)
-    yAxis4 = NXOpen.Vector3d(0.0, 1.0, 0.0)
-    blockFeatureBuilder4.SetOrientation(xAxis4, yAxis4)
+    nXObject147 = cylinderBuilder72.Commit()
     
-    nXObject147 = blockFeatureBuilder4.Commit()
+    cylinder72 = nXObject147
+    bodies76 = cylinder72.GetBodies()
     
-    block4 = nXObject147
-    bodies76 = block4.GetBodies()
-    
-    blockFeatureBuilder4.Destroy()
+    cylinderBuilder72.Destroy()
     
     part148 = theSession.Parts.Work
+    
+    booleanBuilder72 = workPart.Features.CreateBooleanBuilder(NXOpen.Features.BooleanFeature.Null)
+    
+    booleanBuilder72.Target = bodies74[0]
+    
+    booleanBuilder72.Tool = bodies76[0]
+    
+    booleanBuilder72.Operation = NXOpen.Features.Feature.BooleanType.Subtract
+    
+    nXObject148 = booleanBuilder72.Commit()
+    
+    booleanBuilder72.Destroy()
+    
+    part149 = theSession.Parts.Work
     
     blockFeatureBuilder5 = workPart.Features.CreateBlockFeatureBuilder(NXOpen.Features.Feature.Null)
     
     blockFeatureBuilder5.Type = NXOpen.Features.BlockFeatureBuilder.Types.OriginAndEdgeLengths
     
-    originPoint5 = NXOpen.Point3d(-238.40000000000003, -172.00000000000003, 0.0)
-    blockFeatureBuilder5.SetOriginAndLengths(originPoint5, "476.80000000000007", "81.00000000000001", "182.00000000000003")
+    originPoint5 = NXOpen.Point3d(-166.39999999999998, -111.99999999999999, 0.0)
+    blockFeatureBuilder5.SetOriginAndLengths(originPoint5, "332.79999999999995", "50.99999999999999", "122.0")
     
     booleanOperation77 = blockFeatureBuilder5.BooleanOption
     
@@ -3211,159 +3226,64 @@ def main() :
     yAxis5 = NXOpen.Vector3d(0.0, 1.0, 0.0)
     blockFeatureBuilder5.SetOrientation(xAxis5, yAxis5)
     
-    nXObject148 = blockFeatureBuilder5.Commit()
+    nXObject149 = blockFeatureBuilder5.Commit()
     
-    block5 = nXObject148
+    block5 = nXObject149
     bodies77 = block5.GetBodies()
     
     blockFeatureBuilder5.Destroy()
     
-    part149 = theSession.Parts.Work
-    
-    booleanBuilder72 = workPart.Features.CreateBooleanBuilder(NXOpen.Features.BooleanFeature.Null)
-    
-    booleanBuilder72.Target = bodies76[0]
-    
-    booleanBuilder72.Tool = bodies77[0]
-    
-    booleanBuilder72.Operation = NXOpen.Features.Feature.BooleanType.Subtract
-    
-    nXObject149 = booleanBuilder72.Commit()
-    
-    booleanBuilder72.Destroy()
-    
     part150 = theSession.Parts.Work
-    
-    cylinderBuilder73 = workPart.Features.CreateCylinderBuilder(NXOpen.Features.Feature.Null)
-    
-    expression145 = cylinderBuilder73.Diameter
-    
-    expression145.RightHandSide = "200.20000000000005"
-    
-    expression146 = cylinderBuilder73.Height
-    
-    expression146.RightHandSide = "182.00000000000003"
-    
-    origin73 = NXOpen.Point3d(0.0, -182.00000000000003, 0.0)
-    cylinderBuilder73.Origin = origin73
-    
-    vector73 = NXOpen.Vector3d(0.0, 0.0, 1.0)
-    cylinderBuilder73.Direction = vector73
-    
-    booleanOperation78 = cylinderBuilder73.BooleanOption
-    
-    booleanOperation78.Type = NXOpen.GeometricUtilities.BooleanOperation.BooleanType.Create
-    
-    nXObject150 = cylinderBuilder73.Commit()
-    
-    cylinder73 = nXObject150
-    bodies78 = cylinder73.GetBodies()
-    
-    cylinderBuilder73.Destroy()
-    
-    part151 = theSession.Parts.Work
     
     booleanBuilder73 = workPart.Features.CreateBooleanBuilder(NXOpen.Features.BooleanFeature.Null)
     
-    booleanBuilder73.Target = bodies76[0]
+    booleanBuilder73.Target = bodies74[0]
     
-    booleanBuilder73.Tool = bodies78[0]
+    booleanBuilder73.Tool = bodies77[0]
     
     booleanBuilder73.Operation = NXOpen.Features.Feature.BooleanType.Subtract
     
-    nXObject151 = booleanBuilder73.Commit()
+    nXObject150 = booleanBuilder73.Commit()
     
     booleanBuilder73.Destroy()
     
-    part152 = theSession.Parts.Work
-    
-    booleanBuilder74 = workPart.Features.CreateBooleanBuilderUsingCollector(NXOpen.Features.BooleanFeature.Null)
-    
-    booleanBuilder74.Target = bodies74[0]
-    
-    booleanBuilder74.Tool = bodies76[0]
-    
-    booleanBuilder74.Operation = NXOpen.Features.Feature.BooleanType.Unite
-    
-    nXObject152 = booleanBuilder74.Commit()
-    
-    booleanBuilder74.Destroy()
-    
-    part153 = theSession.Parts.Work
+    part151 = theSession.Parts.Work
     
     blockFeatureBuilder6 = workPart.Features.CreateBlockFeatureBuilder(NXOpen.Features.Feature.Null)
     
     blockFeatureBuilder6.Type = NXOpen.Features.BlockFeatureBuilder.Types.OriginAndEdgeLengths
     
-    originPoint6 = NXOpen.Point3d(-238.40000000000003, -172.00000000000003, 0.0)
-    blockFeatureBuilder6.SetOriginAndLengths(originPoint6, "476.80000000000007", "182.00000000000003", "182.00000000000003")
+    originPoint6 = NXOpen.Point3d(-166.39999999999998, -60.999999999999993, -10.0)
+    blockFeatureBuilder6.SetOriginAndLengths(originPoint6, "332.79999999999995", "60.99999999999999", "142.0")
     
-    booleanOperation79 = blockFeatureBuilder6.BooleanOption
+    booleanOperation78 = blockFeatureBuilder6.BooleanOption
     
-    booleanOperation79.Type = NXOpen.GeometricUtilities.BooleanOperation.BooleanType.Create
+    booleanOperation78.Type = NXOpen.GeometricUtilities.BooleanOperation.BooleanType.Create
     
     xAxis6 = NXOpen.Vector3d(1.0, 0.0, 0.0)
     yAxis6 = NXOpen.Vector3d(0.0, 1.0, 0.0)
     blockFeatureBuilder6.SetOrientation(xAxis6, yAxis6)
     
-    nXObject153 = blockFeatureBuilder6.Commit()
+    nXObject151 = blockFeatureBuilder6.Commit()
     
-    block6 = nXObject153
-    bodies79 = block6.GetBodies()
+    block6 = nXObject151
+    bodies78 = block6.GetBodies()
     
     blockFeatureBuilder6.Destroy()
     
-    part154 = theSession.Parts.Work
+    part152 = theSession.Parts.Work
     
-    booleanBuilder75 = workPart.Features.CreateBooleanBuilder(NXOpen.Features.BooleanFeature.Null)
+    booleanBuilder74 = workPart.Features.CreateBooleanBuilder(NXOpen.Features.BooleanFeature.Null)
     
-    booleanBuilder75.Target = bodies74[0]
+    booleanBuilder74.Target = bodies74[0]
     
-    booleanBuilder75.Tool = bodies79[0]
+    booleanBuilder74.Tool = bodies78[0]
     
-    booleanBuilder75.Operation = NXOpen.Features.Feature.BooleanType.Subtract
+    booleanBuilder74.Operation = NXOpen.Features.Feature.BooleanType.Subtract
     
-    nXObject154 = booleanBuilder75.Commit()
+    nXObject152 = booleanBuilder74.Commit()
     
-    booleanBuilder75.Destroy()
-    
-    part155 = theSession.Parts.Work
-    
-    blockFeatureBuilder7 = workPart.Features.CreateBlockFeatureBuilder(NXOpen.Features.Feature.Null)
-    
-    blockFeatureBuilder7.Type = NXOpen.Features.BlockFeatureBuilder.Types.OriginAndEdgeLengths
-    
-    originPoint7 = NXOpen.Point3d(-238.40000000000003, -91.000000000000014, -10.0)
-    blockFeatureBuilder7.SetOriginAndLengths(originPoint7, "476.80000000000007", "91.00000000000001", "202.00000000000003")
-    
-    booleanOperation80 = blockFeatureBuilder7.BooleanOption
-    
-    booleanOperation80.Type = NXOpen.GeometricUtilities.BooleanOperation.BooleanType.Create
-    
-    xAxis7 = NXOpen.Vector3d(1.0, 0.0, 0.0)
-    yAxis7 = NXOpen.Vector3d(0.0, 1.0, 0.0)
-    blockFeatureBuilder7.SetOrientation(xAxis7, yAxis7)
-    
-    nXObject155 = blockFeatureBuilder7.Commit()
-    
-    block7 = nXObject155
-    bodies80 = block7.GetBodies()
-    
-    blockFeatureBuilder7.Destroy()
-    
-    part156 = theSession.Parts.Work
-    
-    booleanBuilder76 = workPart.Features.CreateBooleanBuilder(NXOpen.Features.BooleanFeature.Null)
-    
-    booleanBuilder76.Target = bodies74[0]
-    
-    booleanBuilder76.Tool = bodies80[0]
-    
-    booleanBuilder76.Operation = NXOpen.Features.Feature.BooleanType.Subtract
-    
-    nXObject156 = booleanBuilder76.Commit()
-    
-    booleanBuilder76.Destroy()
+    booleanBuilder74.Destroy()
     
     # ----------------------------------------------
     #   Menu: Edit->Show and Hide->Hide...
@@ -3396,7 +3316,7 @@ def main() :
     
     globalSelectionBuilder1 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
-    theSession.CleanUpFacetedFacesAndEdges()
+    baseTemplateManager1 = theSession.XYPlotManager.TemplateManager
     
     # ----------------------------------------------
     #   Menu: File->Utilities->New Simulation...
@@ -3435,9 +3355,9 @@ def main() :
     
     fileNew1.SetCanCreateAltrep(False)
     
-    fileNew1.NewFileName = "M:\\Desktop\\TMM4270\\TMM4270-Automatisering\\KBE\\Python\\Motion\\model4_motion1.sim"
+    fileNew1.NewFileName = "M:\\Desktop\\TMM4270\\TMM4270-Automatisering\\KBE\\Python\\Animation\\model1_motion2.sim"
     
-    fileNew1.MasterFileName = "model4"
+    fileNew1.MasterFileName = "model1"
     
     fileNew1.MakeDisplayedPart = True
     
@@ -3447,12 +3367,12 @@ def main() :
     
     theSession.SetUndoMarkName(markId4, "New Simulation")
     
-    baseTemplateManager1 = theSession.XYPlotManager.TemplateManager
+    baseTemplateManager2 = theSession.XYPlotManager.TemplateManager
     
-    nXObject157 = fileNew1.Commit()
+    nXObject153 = fileNew1.Commit()
     
-    workPart = theSession.Parts.Work # model4_motion1
-    displayPart = theSession.Parts.Display # model4_motion1
+    workPart = theSession.Parts.Work # model1_motion2
+    displayPart = theSession.Parts.Display # model1_motion2
     markId7 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
     
     theSession.SetUndoMarkName(markId7, "Environment Dialog")
@@ -3493,8 +3413,6 @@ def main() :
     animationConversionBuilder1.Destroy()
     
     fileNew1.Destroy()
-    
-    theSession.CleanUpFacetedFacesAndEdges()
     
     # ----------------------------------------------
     #   Menu: Insert->Motion Body...
@@ -3574,324 +3492,51 @@ def main() :
     theSession.SetUndoMarkName(markId10, "Motion Body Dialog")
     
     unit1 = workPart.UnitCollection.FindObject("MilliMeter")
+    expression145 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression146 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
     expression147 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
-    
-    expression148 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
-    
-    expression149 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
     
     globalSelectionBuilder2 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
     selectTaggedObjectList1 = globalSelectionBuilder2.Selection
     
-    component1 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT model4 1")
-    body1 = component1.FindObject("PROTO#.Bodies|CYLINDER(1)")
+    component1 = workPart.ComponentAssembly.RootComponent.FindObject("COMPONENT model1 1")
+    body1 = component1.FindObject("PROTO#.Bodies|CYLINDER(68)")
     added1 = linkBuilder1.Geometries.Add(body1)
     
     globalSelectionBuilder3 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
     selectTaggedObjectList2 = globalSelectionBuilder3.Selection
     
-    edge1 = cylinder1.FindObject("EDGE * 1 CYLINDER(66) 3 {(-1.5166666666667,-2.6269437248128,182)(3.0333333333333,0,182)(-1.5166666666667,2.6269437248128,182) CYLINDER(1)}")
-    point1 = workPart.Points.CreatePoint(edge1, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    linkBuilder1.MassProperty.CopyGeometryMassToUserDefinedMassProperty()
     
-    edge2 = component1.FindObject("PROTO#.Features|CYLINDER(1)|EDGE * 1 CYLINDER(66) 3 {(-1.5166666666667,-2.6269437248128,182)(3.0333333333333,0,182)(-1.5166666666667,2.6269437248128,182) CYLINDER(1)}")
-    xform1, nXObject158 = workPart.Xforms.CreateExtractXform(edge2, NXOpen.SmartObject.UpdateOption.AfterModeling, False)
+    linkBuilder1.MassProperty.MassExpression.SetFormula("11.19579609901")
     
-    point2 = workPart.Points.CreatePoint(point1, xform1, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    linkBuilder1.MassProperty.IxxExpression.SetFormula("24633.44382")
     
-    globalSelectionBuilder4 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    linkBuilder1.MassProperty.IyyExpression.SetFormula("24632.06842")
     
-    selectTaggedObjectList3 = globalSelectionBuilder4.Selection
+    linkBuilder1.MassProperty.IzzExpression.SetFormula("21492.47405")
     
-    partLoadStatus1 = part156.LoadFeatureDataForSelection()
-    
-    partLoadStatus1.Dispose()
-    edge3 = nXObject158
-    point3 = workPart.Points.CreatePoint(edge3, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    xform2, nXObject159 = workPart.Xforms.CreateExtractXform(edge2, NXOpen.SmartObject.UpdateOption.AfterModeling, False)
-    
-    point4 = workPart.Points.CreatePoint(point3, xform2, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    linkBuilder1.MassProperty.MassCenter = point4
-    
-    origin74 = NXOpen.Point3d(0.0, 0.0, 182.00000000000003)
-    xDirection1 = NXOpen.Vector3d(1.0, 0.0, 0.0)
-    yDirection1 = NXOpen.Vector3d(0.0, 1.0, 0.0)
-    xform3 = workPart.Xforms.CreateXform(origin74, xDirection1, yDirection1, NXOpen.SmartObject.UpdateOption.AfterModeling, 1.0)
-    
-    cartesianCoordinateSystem1 = workPart.CoordinateSystems.CreateCoordinateSystem(xform3, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    linkBuilder1.MassProperty.InertiaCsys = cartesianCoordinateSystem1
-    
-    globalSelectionBuilder5 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList4 = globalSelectionBuilder5.Selection
-    
-    globalSelectionBuilder6 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList5 = globalSelectionBuilder6.Selection
-    
-    workPart.Points.DeletePoint(point2)
-    
-    point5 = workPart.Points.CreatePoint(point3, xform2, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    globalSelectionBuilder7 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList6 = globalSelectionBuilder7.Selection
-    
-    markId11 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
-    
-    expression150 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
-    
-    expression151 = workPart.Expressions.CreateSystemExpressionWithUnits("p35_x=0.00000000000", unit1)
-    
-    expression152 = workPart.Expressions.CreateSystemExpressionWithUnits("p36_y=0.00000000000", unit1)
-    
-    expression153 = workPart.Expressions.CreateSystemExpressionWithUnits("p37_z=182.00000000000", unit1)
-    
-    expression154 = workPart.Expressions.CreateSystemExpressionWithUnits("p38_xdelta=0", unit1)
-    
-    expression155 = workPart.Expressions.CreateSystemExpressionWithUnits("p39_ydelta=0", unit1)
-    
-    expression156 = workPart.Expressions.CreateSystemExpressionWithUnits("p40_zdelta=0", unit1)
-    
-    expression157 = workPart.Expressions.CreateSystemExpressionWithUnits("p41_radius=0", unit1)
-    
-    unit2 = workPart.UnitCollection.FindObject("Degrees")
-    expression158 = workPart.Expressions.CreateSystemExpressionWithUnits("p42_angle=0", unit2)
-    
-    expression159 = workPart.Expressions.CreateSystemExpressionWithUnits("p43_zdelta=0", unit1)
-    
-    expression160 = workPart.Expressions.CreateSystemExpressionWithUnits("p44_radius=0", unit1)
-    
-    expression161 = workPart.Expressions.CreateSystemExpressionWithUnits("p45_angle1=0", unit2)
-    
-    expression162 = workPart.Expressions.CreateSystemExpressionWithUnits("p46_angle2=0", unit2)
-    
-    expression163 = workPart.Expressions.CreateSystemExpressionWithUnits("p47_distance=0", unit1)
-    
-    expression164 = workPart.Expressions.CreateSystemExpressionWithUnits("p48_arclen=0", unit1)
-    
-    expression165 = workPart.Expressions.CreateSystemExpressionWithUnits("p49_percent=0", NXOpen.Unit.Null)
-    
-    theSession.SetUndoMarkName(markId11, "Point Dialog")
-    
-    expression151.SetFormula("0")
-    
-    expression152.SetFormula("0")
-    
-    expression153.SetFormula("182")
-    
-    expression151.SetFormula("0.00000000000")
-    
-    expression152.SetFormula("0.00000000000")
-    
-    expression153.SetFormula("182.00000000000")
-    
-    # ----------------------------------------------
-    #   Dialog Begin Point
-    # ----------------------------------------------
-    globalSelectionBuilder8 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList7 = globalSelectionBuilder8.Selection
-    
-    expression153.SetFormula("91.00000000000")
-    
-    nErrs2 = theSession.UpdateManager.AddToDeleteList(point5)
-    
-    globalSelectionBuilder9 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList8 = globalSelectionBuilder9.Selection
-    
-    globalSelectionBuilder10 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList9 = globalSelectionBuilder10.Selection
-    
-    scalar1 = workPart.Scalars.CreateScalarExpression(expression151, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    scalar2 = workPart.Scalars.CreateScalarExpression(expression152, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    scalar3 = workPart.Scalars.CreateScalarExpression(expression153, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    point6 = workPart.Points.CreatePoint(scalar1, scalar2, scalar3, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    expression151.RightHandSide = "0.00000000000"
-    
-    expression152.RightHandSide = "0.00000000000"
-    
-    expression153.RightHandSide = "91.00000000000"
-    
-    nErrs3 = theSession.UpdateManager.AddToDeleteList(point6)
-    
-    scalar4 = workPart.Scalars.CreateScalarExpression(expression151, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    scalar5 = workPart.Scalars.CreateScalarExpression(expression152, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    scalar6 = workPart.Scalars.CreateScalarExpression(expression153, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    point7 = workPart.Points.CreatePoint(scalar4, scalar5, scalar6, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    markId12 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
-    
-    theSession.DeleteUndoMark(markId12, None)
-    
-    markId13 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
-    
-    expression151.RightHandSide = "0.00000000000"
-    
-    expression152.RightHandSide = "0.00000000000"
-    
-    expression153.RightHandSide = "91.00000000000"
-    
-    nErrs4 = theSession.UpdateManager.AddToDeleteList(point7)
-    
-    scalar7 = workPart.Scalars.CreateScalarExpression(expression151, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    scalar8 = workPart.Scalars.CreateScalarExpression(expression152, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    scalar9 = workPart.Scalars.CreateScalarExpression(expression153, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    point8 = workPart.Points.CreatePoint(scalar7, scalar8, scalar9, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    theSession.DeleteUndoMark(markId13, None)
-    
-    theSession.SetUndoMarkName(markId11, "Point")
-    
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression154)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression155)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression156)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression157)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression158)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression159)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression160)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression161)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression162)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression163)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression164)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression165)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    workPart.MeasureManager.SetPartTransientModification()
-    
-    workPart.Expressions.Delete(expression150)
-    
-    workPart.MeasureManager.ClearPartTransientModification()
+    markId11 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Motion Body")
     
     theSession.DeleteUndoMark(markId11, None)
     
-    linkBuilder1.MassProperty.MassCenter = point8
-    
-    workPart.Points.DeletePoint(point4)
-    
-    scalar10 = workPart.Scalars.CreateScalarExpression(expression151, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    scalar11 = workPart.Scalars.CreateScalarExpression(expression152, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    scalar12 = workPart.Scalars.CreateScalarExpression(expression153, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    point9 = workPart.Points.CreatePoint(scalar10, scalar11, scalar12, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    globalSelectionBuilder11 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList10 = globalSelectionBuilder11.Selection
-    
-    globalSelectionBuilder12 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList11 = globalSelectionBuilder12.Selection
-    
-    markId14 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Motion Body")
-    
-    globalSelectionBuilder13 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList12 = globalSelectionBuilder13.Selection
-    
-    globalSelectionBuilder14 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList13 = globalSelectionBuilder14.Selection
-    
-    theSession.DeleteUndoMark(markId14, None)
-    
-    markId15 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Motion Body")
+    markId12 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Motion Body")
     
     linkBuilder1.InitialVelocity.TranslateVector = NXOpen.Direction.Null
     
     linkBuilder1.InitialVelocity.RotateVector = NXOpen.Direction.Null
     
-    nXObject160 = linkBuilder1.Commit()
+    nXObject154 = linkBuilder1.Commit()
     
-    theSession.DeleteUndoMark(markId15, None)
+    theSession.DeleteUndoMark(markId12, None)
     
     theSession.SetUndoMarkName(markId10, "Motion Body")
     
     linkBuilder1.Destroy()
-    
-    workPart.Points.DeletePoint(point9)
-    
-    workPart.MeasureManager.SetPartTransientModification()
-    
-    workPart.Expressions.Delete(expression149)
-    
-    workPart.MeasureManager.ClearPartTransientModification()
     
     workPart.MeasureManager.SetPartTransientModification()
     
@@ -3901,11 +3546,147 @@ def main() :
     
     workPart.MeasureManager.SetPartTransientModification()
     
+    workPart.Expressions.Delete(expression145)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression146)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    # ----------------------------------------------
+    #   Menu: Insert->Motion Body...
+    # ----------------------------------------------
+    markId13 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    linkBuilder2 = workPart.MotionManager.Links.CreateLinkBuilder(NXOpen.Motion.Link.Null)
+    
+    linkBuilder2.MassProperty.MassType = NXOpen.Motion.LinkMassProperty.MassPropertyType.UserDefined
+    
+    linkBuilder2.MassProperty.MassExpression.SetFormula("11.19579609901")
+    
+    linkBuilder2.MassProperty.IxxExpression.SetFormula("24633.44382")
+    
+    linkBuilder2.MassProperty.IyyExpression.SetFormula("24632.06842")
+    
+    linkBuilder2.MassProperty.IzzExpression.SetFormula("21492.47405")
+    
+    linkBuilder2.MassProperty.IxyExpression.SetFormula("0")
+    
+    linkBuilder2.MassProperty.IxzExpression.SetFormula("0")
+    
+    linkBuilder2.MassProperty.IyzExpression.SetFormula("0")
+    
+    try:
+        # This expression cannot be modified because it is locked.
+        linkBuilder2.MassProperty.AutoMassExpression.SetFormula("0")
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050049)
+        
+    try:
+        # This expression cannot be modified because it is locked.
+        linkBuilder2.MassProperty.AutoIxxExpression.SetFormula("0")
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050049)
+        
+    try:
+        # This expression cannot be modified because it is locked.
+        linkBuilder2.MassProperty.AutoIyyExpression.SetFormula("0")
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050049)
+        
+    try:
+        # This expression cannot be modified because it is locked.
+        linkBuilder2.MassProperty.AutoIzzExpression.SetFormula("0")
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050049)
+        
+    try:
+        # This expression cannot be modified because it is locked.
+        linkBuilder2.MassProperty.AutoIxyExpression.SetFormula("0")
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050049)
+        
+    try:
+        # This expression cannot be modified because it is locked.
+        linkBuilder2.MassProperty.AutoIxzExpression.SetFormula("0")
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050049)
+        
+    try:
+        # This expression cannot be modified because it is locked.
+        linkBuilder2.MassProperty.AutoIyzExpression.SetFormula("0")
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050049)
+        
+    linkBuilder2.InitialVelocity.TranslateExpression.SetFormula("0")
+    
+    linkBuilder2.InitialVelocity.RotateExpression.SetFormula("0")
+    
+    linkBuilder2.InitialVelocity.WxExpression.SetFormula("0")
+    
+    linkBuilder2.InitialVelocity.WyExpression.SetFormula("0")
+    
+    linkBuilder2.InitialVelocity.WzExpression.SetFormula("0")
+    
+    theSession.SetUndoMarkName(markId13, "Motion Body Dialog")
+    
+    expression148 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression149 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression150 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    globalSelectionBuilder4 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList3 = globalSelectionBuilder4.Selection
+    
+    body2 = component1.FindObject("PROTO#.Bodies|CYLINDER(1)")
+    added2 = linkBuilder2.Geometries.Add(body2)
+    
+    linkBuilder2.MassProperty.CopyGeometryMassToUserDefinedMassProperty()
+    
+    markId14 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Motion Body")
+    
+    globalSelectionBuilder5 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList4 = globalSelectionBuilder5.Selection
+    
+    theSession.DeleteUndoMark(markId14, None)
+    
+    markId15 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Motion Body")
+    
+    linkBuilder2.InitialVelocity.TranslateVector = NXOpen.Direction.Null
+    
+    linkBuilder2.InitialVelocity.RotateVector = NXOpen.Direction.Null
+    
+    nXObject155 = linkBuilder2.Commit()
+    
+    theSession.DeleteUndoMark(markId15, None)
+    
+    theSession.SetUndoMarkName(markId13, "Motion Body")
+    
+    linkBuilder2.Destroy()
+    
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression150)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    workPart.MeasureManager.SetPartTransientModification()
+    
     workPart.Expressions.Delete(expression148)
     
     workPart.MeasureManager.ClearPartTransientModification()
     
-    theSession.CleanUpFacetedFacesAndEdges()
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression149)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
     
     # ----------------------------------------------
     #   Menu: Insert->Joint...
@@ -3996,11 +3777,9 @@ def main() :
     
     jointBuilder1.JointFriction.LmsFriction.BallRadius.SetFormula("1")
     
-    jointBuilder1.JointMultiDrivers.MotionEulerAngle1.TypeOption = NXOpen.Motion.DriverOperation.Type.Polynomial
-    
     jointBuilder1.JointMultiDrivers.MotionEulerAngle1.DisplacementExpression.SetFormula("0")
     
-    jointBuilder1.JointMultiDrivers.MotionEulerAngle1.VelocityExpression.SetFormula("1")
+    jointBuilder1.JointMultiDrivers.MotionEulerAngle1.VelocityExpression.SetFormula("0")
     
     jointBuilder1.JointMultiDrivers.MotionEulerAngle1.AccelerationExpression.SetFormula("0")
     
@@ -4072,17 +3851,17 @@ def main() :
     
     theSession.SetUndoMarkName(markId16, "Joint Dialog")
     
-    expression166 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    expression151 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
     
-    expression167 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    expression152 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
     
-    expression168 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    expression153 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
     
-    expression169 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    expression154 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
     
-    expression170 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    expression155 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
     
-    expression171 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    expression156 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
     
     jointBuilder1.JointDefine.ScrewSplineFunction = NXOpen.CAE.Function.Null
     
@@ -4100,15 +3879,284 @@ def main() :
     
     jointBuilder1.JointMultiDrivers.MotionPointOnCurve.Function = NXOpen.NXObject.Null
     
-    jointBuilder1.JointMultiDrivers.MotionEulerAngle1.TypeOption = NXOpen.Motion.DriverOperation.Type.Undefined
-    
-    jointBuilder1.JointMultiDrivers.MotionEulerAngle1.VelocityExpression.SetFormula("0")
-    
     jointBuilder1.JointMultiDrivers.MotionEulerAngle1.Function = NXOpen.NXObject.Null
     
     jointBuilder1.JointMultiDrivers.MotionTranslationZ.Function = NXOpen.NXObject.Null
     
     jointBuilder1.JointMultiDrivers.MotionPointOnCurve.Function = NXOpen.NXObject.Null
+    
+    globalSelectionBuilder6 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList5 = globalSelectionBuilder6.Selection
+    
+    globalSelectionBuilder7 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList6 = globalSelectionBuilder7.Selection
+    
+    globalSelectionBuilder8 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList7 = globalSelectionBuilder8.Selection
+    
+    link1 = nXObject154
+    jointBuilder1.JointDefine.FirstLinkSelection.Value = link1
+    
+    globalSelectionBuilder9 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList8 = globalSelectionBuilder9.Selection
+    
+    expression157 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    edge1 = cylinder35.FindObject("EDGE * 1 CYLINDER(133) 3 {(-1.0166666666667,-123.7609183210284,122)(2.0333333333333,-122,122)(-1.0166666666667,-120.2390816789716,122) CYLINDER(68)}")
+    point1 = workPart.Points.CreatePoint(edge1, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    edge2 = component1.FindObject("PROTO#.Features|CYLINDER(68)|EDGE * 1 CYLINDER(133) 3 {(-1.0166666666667,-123.7609183210284,122)(2.0333333333333,-122,122)(-1.0166666666667,-120.2390816789716,122) CYLINDER(68)}")
+    xform1, nXObject156 = workPart.Xforms.CreateExtractXform(edge2, NXOpen.SmartObject.UpdateOption.AfterModeling, False)
+    
+    point2 = workPart.Points.CreatePoint(point1, xform1, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    globalSelectionBuilder10 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList9 = globalSelectionBuilder10.Selection
+    
+    partLoadStatus1 = part152.LoadFeatureDataForSelection()
+    
+    partLoadStatus1.Dispose()
+    edge3 = nXObject156
+    point3 = workPart.Points.CreatePoint(edge3, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    xform2, nXObject157 = workPart.Xforms.CreateExtractXform(edge2, NXOpen.SmartObject.UpdateOption.AfterModeling, False)
+    
+    point4 = workPart.Points.CreatePoint(point3, xform2, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    jointBuilder1.JointDefine.FirstOrigin = point4
+    
+    origin73 = NXOpen.Point3d(0.0, -122.0, 121.99999999999999)
+    xDirection1 = NXOpen.Vector3d(1.0, 0.0, 0.0)
+    yDirection1 = NXOpen.Vector3d(0.0, 1.0, 0.0)
+    xform3 = workPart.Xforms.CreateXform(origin73, xDirection1, yDirection1, NXOpen.SmartObject.UpdateOption.AfterModeling, 1.0)
+    
+    cartesianCoordinateSystem1 = workPart.CoordinateSystems.CreateCoordinateSystem(xform3, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    jointBuilder1.JointDefine.FirstCsys = cartesianCoordinateSystem1
+    
+    globalSelectionBuilder11 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList10 = globalSelectionBuilder11.Selection
+    
+    workPart.Points.DeletePoint(point2)
+    
+    point5 = workPart.Points.CreatePoint(point3, xform2, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    markId17 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
+    
+    expression158 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression159 = workPart.Expressions.CreateSystemExpressionWithUnits("p90_x=0.00000000000", unit1)
+    
+    expression160 = workPart.Expressions.CreateSystemExpressionWithUnits("p91_y=-122.00000000000", unit1)
+    
+    expression161 = workPart.Expressions.CreateSystemExpressionWithUnits("p92_z=122.00000000000", unit1)
+    
+    expression162 = workPart.Expressions.CreateSystemExpressionWithUnits("p93_xdelta=0", unit1)
+    
+    expression163 = workPart.Expressions.CreateSystemExpressionWithUnits("p94_ydelta=0", unit1)
+    
+    expression164 = workPart.Expressions.CreateSystemExpressionWithUnits("p95_zdelta=0", unit1)
+    
+    expression165 = workPart.Expressions.CreateSystemExpressionWithUnits("p96_radius=0", unit1)
+    
+    unit2 = jointBuilder1.JointMultiDrivers.MotionTranslationZ.PhaseAngleExpression.Units
+    
+    expression166 = workPart.Expressions.CreateSystemExpressionWithUnits("p97_angle=0", unit2)
+    
+    expression167 = workPart.Expressions.CreateSystemExpressionWithUnits("p98_zdelta=0", unit1)
+    
+    expression168 = workPart.Expressions.CreateSystemExpressionWithUnits("p99_radius=0", unit1)
+    
+    expression169 = workPart.Expressions.CreateSystemExpressionWithUnits("p100_angle1=0", unit2)
+    
+    expression170 = workPart.Expressions.CreateSystemExpressionWithUnits("p101_angle2=0", unit2)
+    
+    expression171 = workPart.Expressions.CreateSystemExpressionWithUnits("p102_distance=0", unit1)
+    
+    expression172 = workPart.Expressions.CreateSystemExpressionWithUnits("p103_arclen=0", unit1)
+    
+    expression173 = workPart.Expressions.CreateSystemExpressionWithUnits("p104_percent=0", NXOpen.Unit.Null)
+    
+    theSession.SetUndoMarkName(markId17, "Point Dialog")
+    
+    expression159.SetFormula("0")
+    
+    expression160.SetFormula("-122")
+    
+    expression161.SetFormula("122")
+    
+    expression159.SetFormula("0.00000000000")
+    
+    expression160.SetFormula("-122.00000000000")
+    
+    expression161.SetFormula("122.00000000000")
+    
+    # ----------------------------------------------
+    #   Dialog Begin Point
+    # ----------------------------------------------
+    globalSelectionBuilder12 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList11 = globalSelectionBuilder12.Selection
+    
+    expression161.SetFormula("61.00000000000")
+    
+    nErrs2 = theSession.UpdateManager.AddToDeleteList(point5)
+    
+    globalSelectionBuilder13 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList12 = globalSelectionBuilder13.Selection
+    
+    globalSelectionBuilder14 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList13 = globalSelectionBuilder14.Selection
+    
+    scalar1 = workPart.Scalars.CreateScalarExpression(expression159, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar2 = workPart.Scalars.CreateScalarExpression(expression160, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar3 = workPart.Scalars.CreateScalarExpression(expression161, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    point6 = workPart.Points.CreatePoint(scalar1, scalar2, scalar3, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    expression159.RightHandSide = "0.00000000000"
+    
+    expression160.RightHandSide = "-122.00000000000"
+    
+    expression161.RightHandSide = "61.00000000000"
+    
+    nErrs3 = theSession.UpdateManager.AddToDeleteList(point6)
+    
+    scalar4 = workPart.Scalars.CreateScalarExpression(expression159, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar5 = workPart.Scalars.CreateScalarExpression(expression160, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar6 = workPart.Scalars.CreateScalarExpression(expression161, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    point7 = workPart.Points.CreatePoint(scalar4, scalar5, scalar6, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    markId18 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+    
+    theSession.DeleteUndoMark(markId18, None)
+    
+    markId19 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+    
+    expression159.RightHandSide = "0.00000000000"
+    
+    expression160.RightHandSide = "-122.00000000000"
+    
+    expression161.RightHandSide = "61.00000000000"
+    
+    nErrs4 = theSession.UpdateManager.AddToDeleteList(point7)
+    
+    scalar7 = workPart.Scalars.CreateScalarExpression(expression159, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar8 = workPart.Scalars.CreateScalarExpression(expression160, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar9 = workPart.Scalars.CreateScalarExpression(expression161, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    point8 = workPart.Points.CreatePoint(scalar7, scalar8, scalar9, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    theSession.DeleteUndoMark(markId19, None)
+    
+    theSession.SetUndoMarkName(markId17, "Point")
+    
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression162)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression163)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression164)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression165)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression166)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression167)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression168)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression169)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression170)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression171)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression172)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression173)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression158)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    theSession.DeleteUndoMark(markId17, None)
+    
+    jointBuilder1.JointDefine.FirstOrigin = point8
+    
+    workPart.Points.DeletePoint(point4)
+    
+    scalar10 = workPart.Scalars.CreateScalarExpression(expression159, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar11 = workPart.Scalars.CreateScalarExpression(expression160, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar12 = workPart.Scalars.CreateScalarExpression(expression161, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    point9 = workPart.Points.CreatePoint(scalar10, scalar11, scalar12, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
     globalSelectionBuilder15 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
@@ -4118,224 +4166,464 @@ def main() :
     
     selectTaggedObjectList15 = globalSelectionBuilder16.Selection
     
+    origin74 = NXOpen.Point3d(0.0, 0.0, 0.0)
+    vector73 = NXOpen.Vector3d(0.0, 0.0, 1.0)
+    direction1 = workPart.Directions.CreateDirection(origin74, vector73, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    jointBuilder1.JointDefine.FirstVector = direction1
+    
+    markId20 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Joint")
+    
+    theSession.DeleteUndoMark(markId20, None)
+    
+    markId21 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Joint")
+    
+    nXObject158 = jointBuilder1.Commit()
+    
+    theSession.DeleteUndoMark(markId21, None)
+    
+    theSession.SetUndoMarkName(markId16, "Joint")
+    
+    jointBuilder1.Destroy()
+    
+    workPart.Points.DeletePoint(point9)
+    
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression157)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression151)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression152)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression153)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression154)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression155)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    workPart.MeasureManager.SetPartTransientModification()
+    
+    workPart.Expressions.Delete(expression156)
+    
+    workPart.MeasureManager.ClearPartTransientModification()
+    
+    # ----------------------------------------------
+    #   Menu: Insert->Joint...
+    # ----------------------------------------------
+    markId22 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    jointBuilder2 = workPart.MotionManager.Joints.CreateJointBuilder(NXOpen.Motion.Joint.Null)
+    
+    jointBuilder2.JointDefine.UpperLimitExpression.SetFormula("0")
+    
+    jointBuilder2.JointDefine.LowerLimitExpression.SetFormula("0")
+    
+    jointBuilder2.JointDefine.UpperLimitAngleExpression.SetFormula("0")
+    
+    jointBuilder2.JointDefine.LowerLimitAngleExpression.SetFormula("0")
+    
+    jointBuilder2.JointDefine.ScrewRatioExpression.SetFormula("1")
+    
+    jointBuilder2.JointFriction.AdamsFriction.MuStaticExpression.SetFormula("0")
+    
+    jointBuilder2.JointFriction.AdamsFriction.MuDynamicExpression.SetFormula("0.1")
+    
+    jointBuilder2.JointFriction.AdamsFriction.StictionTransitionVelocityExpression.SetFormula("0.1")
+    
+    jointBuilder2.JointFriction.AdamsFriction.MaxStictionDeformationExpression.SetFormula("0.01")
+    
+    jointBuilder2.JointFriction.AdamsFriction.BallRadiusExpression.SetFormula("1")
+    
+    jointBuilder2.JointFriction.AdamsFriction.PinRadiusExpression.SetFormula("1")
+    
+    jointBuilder2.JointFriction.AdamsFriction.BendingArmExpression.SetFormula("1")
+    
+    jointBuilder2.JointFriction.AdamsFriction.FrictionArmExpression.SetFormula("1")
+    
+    jointBuilder2.JointFriction.AdamsFriction.ReactionArmExpression.SetFormula("1")
+    
+    jointBuilder2.JointFriction.AdamsFriction.InitialOverlapExpression.SetFormula("1000")
+    
+    jointBuilder2.JointFriction.AdamsFriction.ForcePreloadExpression.SetFormula("0")
+    
+    jointBuilder2.JointFriction.AdamsFriction.TorquePreloadExpression.SetFormula("0")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.MuStaticExpression.SetFormula("0")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.MuDynamicExpression.SetFormula("0.1")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.StictionTransitionVelocityExpression.SetFormula("0.1")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.MaxStictionDeformationExpression.SetFormula("0.01")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.BallRadiusExpression.SetFormula("1")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.PinRadiusExpression.SetFormula("1")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.BendingArmExpression.SetFormula("1")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.FrictionArmExpression.SetFormula("1")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.ReactionArmExpression.SetFormula("10")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.InitialOverlapExpression.SetFormula("1000")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.ForcePreloadExpression.SetFormula("0")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.TorquePreloadExpression.SetFormula("0")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.MaxFrictionForceExpression.SetFormula("0")
+    
+    jointBuilder2.JointFriction.RecurDynFriction.MaxFrictionTorqueExpression.SetFormula("0")
+    
+    jointBuilder2.JointFriction.LmsFriction.MuStatic.SetFormula("0")
+    
+    jointBuilder2.JointFriction.LmsFriction.MuDynamic.SetFormula("0.1")
+    
+    jointBuilder2.JointFriction.LmsFriction.TranslationalStictionTransitionVelocity.SetFormula("0.1")
+    
+    jointBuilder2.JointFriction.LmsFriction.RotationalStictionTransitionVelocity.SetFormula("0.0572957795130824")
+    
+    jointBuilder2.JointFriction.LmsFriction.PinRadius.SetFormula("1")
+    
+    jointBuilder2.JointFriction.LmsFriction.BendingReactionArm.SetFormula("1")
+    
+    jointBuilder2.JointFriction.LmsFriction.FrictionArm.SetFormula("1")
+    
+    jointBuilder2.JointFriction.LmsFriction.ReactionArm.SetFormula("10")
+    
+    jointBuilder2.JointFriction.LmsFriction.InitialOverlap.SetFormula("1000")
+    
+    jointBuilder2.JointFriction.LmsFriction.BallRadius.SetFormula("1")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.DisplacementExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.VelocityExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.AccelerationExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.JerkExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.AmplitudeExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.FrequencyExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.PhaseAngleExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.HarmonicDisplacementExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.InitialDisplacementExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.InitialVelocityExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.ControlInitialVelocityExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.ControlInitialAccelerationExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.DisplacementExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.VelocityExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.AccelerationExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.JerkExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.AmplitudeExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.FrequencyExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.PhaseAngleExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.HarmonicDisplacementExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.InitialDisplacementExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.InitialVelocityExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.ControlInitialVelocityExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.ControlInitialAccelerationExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.DisplacementExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.VelocityExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.AccelerationExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.JerkExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.AmplitudeExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.FrequencyExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.PhaseAngleExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.HarmonicDisplacementExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.InitialDisplacementExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.InitialVelocityExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.ControlInitialVelocityExpression.SetFormula("0")
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.ControlInitialAccelerationExpression.SetFormula("0")
+    
+    theSession.SetUndoMarkName(markId22, "Joint Dialog")
+    
+    expression174 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression175 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression176 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression177 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression178 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression179 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    jointBuilder2.JointDefine.ScrewSplineFunction = NXOpen.CAE.Function.Null
+    
+    jointBuilder2.JointDefine.ScrewDisplCurveFunction = NXOpen.CAE.Function.Null
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.Function = NXOpen.NXObject.Null
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.Function = NXOpen.NXObject.Null
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.Function = NXOpen.NXObject.Null
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.Function = NXOpen.NXObject.Null
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.Function = NXOpen.NXObject.Null
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.Function = NXOpen.NXObject.Null
+    
+    jointBuilder2.JointMultiDrivers.MotionEulerAngle1.Function = NXOpen.NXObject.Null
+    
+    jointBuilder2.JointMultiDrivers.MotionTranslationZ.Function = NXOpen.NXObject.Null
+    
+    jointBuilder2.JointMultiDrivers.MotionPointOnCurve.Function = NXOpen.NXObject.Null
+    
     globalSelectionBuilder17 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
     selectTaggedObjectList16 = globalSelectionBuilder17.Selection
-    
-    link1 = nXObject160
-    jointBuilder1.JointDefine.FirstLinkSelection.Value = link1
     
     globalSelectionBuilder18 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
     selectTaggedObjectList17 = globalSelectionBuilder18.Selection
     
-    expression172 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
-    
-    edge4 = nXObject159
-    point10 = workPart.Points.CreatePoint(edge4, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    xform4, nXObject161 = workPart.Xforms.CreateExtractXform(edge2, NXOpen.SmartObject.UpdateOption.AfterModeling, False)
-    
-    point11 = workPart.Points.CreatePoint(point10, xform4, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
     globalSelectionBuilder19 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
     selectTaggedObjectList18 = globalSelectionBuilder19.Selection
     
-    partLoadStatus2 = part156.LoadFeatureDataForSelection()
+    link2 = nXObject155
+    jointBuilder2.JointDefine.FirstLinkSelection.Value = link2
+    
+    globalSelectionBuilder20 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList19 = globalSelectionBuilder20.Selection
+    
+    expression180 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    edge4 = cylinder1.FindObject("EDGE * 1 CYLINDER(66) 3 {(-1.0166666666667,-1.7609183210284,122)(2.0333333333333,0,122)(-1.0166666666667,1.7609183210284,122) CYLINDER(1)}")
+    point10 = workPart.Points.CreatePoint(edge4, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    edge5 = component1.FindObject("PROTO#.Features|CYLINDER(1)|EDGE * 1 CYLINDER(66) 3 {(-1.0166666666667,-1.7609183210284,122)(2.0333333333333,0,122)(-1.0166666666667,1.7609183210284,122) CYLINDER(1)}")
+    xform4, nXObject159 = workPart.Xforms.CreateExtractXform(edge5, NXOpen.SmartObject.UpdateOption.AfterModeling, False)
+    
+    point11 = workPart.Points.CreatePoint(point10, xform4, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    globalSelectionBuilder21 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList20 = globalSelectionBuilder21.Selection
+    
+    partLoadStatus2 = part152.LoadFeatureDataForSelection()
     
     partLoadStatus2.Dispose()
-    edge5 = nXObject161
-    point12 = workPart.Points.CreatePoint(edge5, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    edge6 = nXObject159
+    point12 = workPart.Points.CreatePoint(edge6, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    xform5, nXObject162 = workPart.Xforms.CreateExtractXform(edge2, NXOpen.SmartObject.UpdateOption.AfterModeling, False)
+    xform5, nXObject160 = workPart.Xforms.CreateExtractXform(edge5, NXOpen.SmartObject.UpdateOption.AfterModeling, False)
     
     point13 = workPart.Points.CreatePoint(point12, xform5, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    jointBuilder1.JointDefine.FirstOrigin = point13
+    jointBuilder2.JointDefine.FirstOrigin = point13
     
-    origin75 = NXOpen.Point3d(0.0, 0.0, 182.00000000000003)
+    origin75 = NXOpen.Point3d(0.0, 0.0, 121.99999999999999)
     xDirection2 = NXOpen.Vector3d(1.0, 0.0, 0.0)
     yDirection2 = NXOpen.Vector3d(0.0, 1.0, 0.0)
     xform6 = workPart.Xforms.CreateXform(origin75, xDirection2, yDirection2, NXOpen.SmartObject.UpdateOption.AfterModeling, 1.0)
     
     cartesianCoordinateSystem2 = workPart.CoordinateSystems.CreateCoordinateSystem(xform6, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    jointBuilder1.JointDefine.FirstCsys = cartesianCoordinateSystem2
-    
-    globalSelectionBuilder20 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList19 = globalSelectionBuilder20.Selection
-    
-    workPart.Points.DeletePoint(point11)
-    
-    point14 = workPart.Points.CreatePoint(point12, xform5, NXOpen.SmartObject.UpdateOption.AfterModeling)
-    
-    markId17 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
-    
-    expression173 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
-    
-    expression174 = workPart.Expressions.CreateSystemExpressionWithUnits("p90_x=0.00000000000", unit1)
-    
-    expression175 = workPart.Expressions.CreateSystemExpressionWithUnits("p91_y=0.00000000000", unit1)
-    
-    expression176 = workPart.Expressions.CreateSystemExpressionWithUnits("p92_z=182.00000000000", unit1)
-    
-    expression177 = workPart.Expressions.CreateSystemExpressionWithUnits("p93_xdelta=0", unit1)
-    
-    expression178 = workPart.Expressions.CreateSystemExpressionWithUnits("p94_ydelta=0", unit1)
-    
-    expression179 = workPart.Expressions.CreateSystemExpressionWithUnits("p95_zdelta=0", unit1)
-    
-    expression180 = workPart.Expressions.CreateSystemExpressionWithUnits("p96_radius=0", unit1)
-    
-    expression181 = workPart.Expressions.CreateSystemExpressionWithUnits("p97_angle=0", unit2)
-    
-    expression182 = workPart.Expressions.CreateSystemExpressionWithUnits("p98_zdelta=0", unit1)
-    
-    expression183 = workPart.Expressions.CreateSystemExpressionWithUnits("p99_radius=0", unit1)
-    
-    expression184 = workPart.Expressions.CreateSystemExpressionWithUnits("p100_angle1=0", unit2)
-    
-    expression185 = workPart.Expressions.CreateSystemExpressionWithUnits("p101_angle2=0", unit2)
-    
-    expression186 = workPart.Expressions.CreateSystemExpressionWithUnits("p102_distance=0", unit1)
-    
-    expression187 = workPart.Expressions.CreateSystemExpressionWithUnits("p103_arclen=0", unit1)
-    
-    expression188 = workPart.Expressions.CreateSystemExpressionWithUnits("p104_percent=0", NXOpen.Unit.Null)
-    
-    theSession.SetUndoMarkName(markId17, "Point Dialog")
-    
-    expression174.SetFormula("0")
-    
-    expression175.SetFormula("0")
-    
-    expression176.SetFormula("182")
-    
-    expression174.SetFormula("0.00000000000")
-    
-    expression175.SetFormula("0.00000000000")
-    
-    expression176.SetFormula("182.00000000000")
-    
-    # ----------------------------------------------
-    #   Dialog Begin Point
-    # ----------------------------------------------
-    globalSelectionBuilder21 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
-    
-    selectTaggedObjectList20 = globalSelectionBuilder21.Selection
-    
-    expression176.SetFormula("91.00000000000")
-    
-    nErrs5 = theSession.UpdateManager.AddToDeleteList(point14)
+    jointBuilder2.JointDefine.FirstCsys = cartesianCoordinateSystem2
     
     globalSelectionBuilder22 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
     selectTaggedObjectList21 = globalSelectionBuilder22.Selection
     
+    workPart.Points.DeletePoint(point11)
+    
+    point14 = workPart.Points.CreatePoint(point12, xform5, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    markId23 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
+    
+    expression181 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    
+    expression182 = workPart.Expressions.CreateSystemExpressionWithUnits("p91_x=0.00000000000", unit1)
+    
+    expression183 = workPart.Expressions.CreateSystemExpressionWithUnits("p92_y=0.00000000000", unit1)
+    
+    expression184 = workPart.Expressions.CreateSystemExpressionWithUnits("p93_z=122.00000000000", unit1)
+    
+    expression185 = workPart.Expressions.CreateSystemExpressionWithUnits("p94_xdelta=0", unit1)
+    
+    expression186 = workPart.Expressions.CreateSystemExpressionWithUnits("p95_ydelta=0", unit1)
+    
+    expression187 = workPart.Expressions.CreateSystemExpressionWithUnits("p96_zdelta=0", unit1)
+    
+    expression188 = workPart.Expressions.CreateSystemExpressionWithUnits("p97_radius=0", unit1)
+    
+    expression189 = workPart.Expressions.CreateSystemExpressionWithUnits("p98_angle=0", unit2)
+    
+    expression190 = workPart.Expressions.CreateSystemExpressionWithUnits("p99_zdelta=0", unit1)
+    
+    expression191 = workPart.Expressions.CreateSystemExpressionWithUnits("p100_radius=0", unit1)
+    
+    expression192 = workPart.Expressions.CreateSystemExpressionWithUnits("p101_angle1=0", unit2)
+    
+    expression193 = workPart.Expressions.CreateSystemExpressionWithUnits("p102_angle2=0", unit2)
+    
+    expression194 = workPart.Expressions.CreateSystemExpressionWithUnits("p103_distance=0", unit1)
+    
+    expression195 = workPart.Expressions.CreateSystemExpressionWithUnits("p104_arclen=0", unit1)
+    
+    expression196 = workPart.Expressions.CreateSystemExpressionWithUnits("p105_percent=0", NXOpen.Unit.Null)
+    
+    theSession.SetUndoMarkName(markId23, "Point Dialog")
+    
+    expression182.SetFormula("0")
+    
+    expression183.SetFormula("0")
+    
+    expression184.SetFormula("122")
+    
+    expression182.SetFormula("0.00000000000")
+    
+    expression183.SetFormula("0.00000000000")
+    
+    expression184.SetFormula("122.00000000000")
+    
+    # ----------------------------------------------
+    #   Dialog Begin Point
+    # ----------------------------------------------
     globalSelectionBuilder23 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
     selectTaggedObjectList22 = globalSelectionBuilder23.Selection
     
-    scalar13 = workPart.Scalars.CreateScalarExpression(expression174, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    expression184.SetFormula("61.00000000000")
     
-    scalar14 = workPart.Scalars.CreateScalarExpression(expression175, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    nErrs5 = theSession.UpdateManager.AddToDeleteList(point14)
     
-    scalar15 = workPart.Scalars.CreateScalarExpression(expression176, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    globalSelectionBuilder24 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList23 = globalSelectionBuilder24.Selection
+    
+    globalSelectionBuilder25 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList24 = globalSelectionBuilder25.Selection
+    
+    scalar13 = workPart.Scalars.CreateScalarExpression(expression182, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar14 = workPart.Scalars.CreateScalarExpression(expression183, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar15 = workPart.Scalars.CreateScalarExpression(expression184, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
     point15 = workPart.Points.CreatePoint(scalar13, scalar14, scalar15, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    expression174.RightHandSide = "0.00000000000"
+    expression182.RightHandSide = "0.00000000000"
     
-    expression175.RightHandSide = "0.00000000000"
+    expression183.RightHandSide = "0.00000000000"
     
-    expression176.RightHandSide = "91.00000000000"
+    expression184.RightHandSide = "61.00000000000"
     
     nErrs6 = theSession.UpdateManager.AddToDeleteList(point15)
     
-    scalar16 = workPart.Scalars.CreateScalarExpression(expression174, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    scalar16 = workPart.Scalars.CreateScalarExpression(expression182, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    scalar17 = workPart.Scalars.CreateScalarExpression(expression175, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    scalar17 = workPart.Scalars.CreateScalarExpression(expression183, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    scalar18 = workPart.Scalars.CreateScalarExpression(expression176, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    scalar18 = workPart.Scalars.CreateScalarExpression(expression184, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
     point16 = workPart.Points.CreatePoint(scalar16, scalar17, scalar18, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    markId18 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+    expression184.SetFormula("61.00000000000")
     
-    theSession.DeleteUndoMark(markId18, None)
+    expression182.RightHandSide = "0.00000000000"
     
-    markId19 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+    expression183.RightHandSide = "0.00000000000"
     
-    expression174.RightHandSide = "0.00000000000"
-    
-    expression175.RightHandSide = "0.00000000000"
-    
-    expression176.RightHandSide = "91.00000000000"
+    expression184.RightHandSide = "61.00000000000"
     
     nErrs7 = theSession.UpdateManager.AddToDeleteList(point16)
     
-    scalar19 = workPart.Scalars.CreateScalarExpression(expression174, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    scalar19 = workPart.Scalars.CreateScalarExpression(expression182, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    scalar20 = workPart.Scalars.CreateScalarExpression(expression175, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    scalar20 = workPart.Scalars.CreateScalarExpression(expression183, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    scalar21 = workPart.Scalars.CreateScalarExpression(expression176, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    scalar21 = workPart.Scalars.CreateScalarExpression(expression184, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
     point17 = workPart.Points.CreatePoint(scalar19, scalar20, scalar21, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    theSession.DeleteUndoMark(markId19, None)
+    markId24 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
     
-    theSession.SetUndoMarkName(markId17, "Point")
+    theSession.DeleteUndoMark(markId24, None)
     
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression177)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression178)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression179)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression180)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression181)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression182)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression183)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
-    try:
-        # Expression is still in use.
-        workPart.Expressions.Delete(expression184)
-    except NXOpen.NXException as ex:
-        ex.AssertErrorCode(1050029)
-        
+    markId25 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Point")
+    
+    expression182.RightHandSide = "0.00000000000"
+    
+    expression183.RightHandSide = "0.00000000000"
+    
+    expression184.RightHandSide = "61.00000000000"
+    
+    nErrs8 = theSession.UpdateManager.AddToDeleteList(point17)
+    
+    scalar22 = workPart.Scalars.CreateScalarExpression(expression182, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar23 = workPart.Scalars.CreateScalarExpression(expression183, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    scalar24 = workPart.Scalars.CreateScalarExpression(expression184, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    point18 = workPart.Points.CreatePoint(scalar22, scalar23, scalar24, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    
+    theSession.DeleteUndoMark(markId25, None)
+    
+    theSession.SetUndoMarkName(markId23, "Point")
+    
     try:
         # Expression is still in use.
         workPart.Expressions.Delete(expression185)
@@ -4360,167 +4648,315 @@ def main() :
     except NXOpen.NXException as ex:
         ex.AssertErrorCode(1050029)
         
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression189)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression190)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression191)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression192)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression193)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression194)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression195)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
+    try:
+        # Expression is still in use.
+        workPart.Expressions.Delete(expression196)
+    except NXOpen.NXException as ex:
+        ex.AssertErrorCode(1050029)
+        
     workPart.MeasureManager.SetPartTransientModification()
     
-    workPart.Expressions.Delete(expression173)
+    workPart.Expressions.Delete(expression181)
     
     workPart.MeasureManager.ClearPartTransientModification()
     
-    theSession.DeleteUndoMark(markId17, None)
+    theSession.DeleteUndoMark(markId23, None)
     
-    jointBuilder1.JointDefine.FirstOrigin = point17
+    jointBuilder2.JointDefine.FirstOrigin = point18
     
     workPart.Points.DeletePoint(point13)
     
-    scalar22 = workPart.Scalars.CreateScalarExpression(expression174, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    scalar25 = workPart.Scalars.CreateScalarExpression(expression182, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    scalar23 = workPart.Scalars.CreateScalarExpression(expression175, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    scalar26 = workPart.Scalars.CreateScalarExpression(expression183, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    scalar24 = workPart.Scalars.CreateScalarExpression(expression176, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    scalar27 = workPart.Scalars.CreateScalarExpression(expression184, NXOpen.Scalar.DimensionalityType.NotSet, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    point18 = workPart.Points.CreatePoint(scalar22, scalar23, scalar24, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    point19 = workPart.Points.CreatePoint(scalar25, scalar26, scalar27, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    globalSelectionBuilder24 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    globalSelectionBuilder26 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
-    selectTaggedObjectList23 = globalSelectionBuilder24.Selection
+    selectTaggedObjectList25 = globalSelectionBuilder26.Selection
     
-    globalSelectionBuilder25 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    globalSelectionBuilder27 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
-    selectTaggedObjectList24 = globalSelectionBuilder25.Selection
+    selectTaggedObjectList26 = globalSelectionBuilder27.Selection
     
     origin76 = NXOpen.Point3d(0.0, 0.0, 0.0)
     vector74 = NXOpen.Vector3d(0.0, 0.0, 1.0)
-    direction1 = workPart.Directions.CreateDirection(origin76, vector74, NXOpen.SmartObject.UpdateOption.AfterModeling)
+    direction2 = workPart.Directions.CreateDirection(origin76, vector74, NXOpen.SmartObject.UpdateOption.AfterModeling)
     
-    jointBuilder1.JointDefine.FirstVector = direction1
+    jointBuilder2.JointDefine.FirstVector = direction2
     
-    jointBuilder1.JointMultiDrivers.MotionEulerAngle1.TypeOption = NXOpen.Motion.DriverOperation.Type.Polynomial
+    markId26 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Joint")
     
-    jointBuilder1.JointMultiDrivers.MotionEulerAngle1.Function = NXOpen.NXObject.Null
+    theSession.DeleteUndoMark(markId26, None)
     
-    jointBuilder1.JointMultiDrivers.MotionEulerAngle1.VelocityExpression.SetFormula("1")
+    markId27 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Joint")
     
-    markId20 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Joint")
+    nXObject161 = jointBuilder2.Commit()
     
-    theSession.DeleteUndoMark(markId20, None)
+    theSession.DeleteUndoMark(markId27, None)
     
-    markId21 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Joint")
+    theSession.SetUndoMarkName(markId22, "Joint")
     
-    nXObject163 = jointBuilder1.Commit()
+    jointBuilder2.Destroy()
     
-    theSession.DeleteUndoMark(markId21, None)
-    
-    theSession.SetUndoMarkName(markId16, "Joint")
-    
-    jointBuilder1.Destroy()
-    
-    workPart.Points.DeletePoint(point18)
+    workPart.Points.DeletePoint(point19)
     
     workPart.MeasureManager.SetPartTransientModification()
     
-    workPart.Expressions.Delete(expression172)
+    workPart.Expressions.Delete(expression180)
     
     workPart.MeasureManager.ClearPartTransientModification()
     
     workPart.MeasureManager.SetPartTransientModification()
     
-    workPart.Expressions.Delete(expression166)
+    workPart.Expressions.Delete(expression174)
     
     workPart.MeasureManager.ClearPartTransientModification()
     
     workPart.MeasureManager.SetPartTransientModification()
     
-    workPart.Expressions.Delete(expression167)
+    workPart.Expressions.Delete(expression175)
     
     workPart.MeasureManager.ClearPartTransientModification()
     
     workPart.MeasureManager.SetPartTransientModification()
     
-    workPart.Expressions.Delete(expression168)
+    workPart.Expressions.Delete(expression176)
     
     workPart.MeasureManager.ClearPartTransientModification()
     
     workPart.MeasureManager.SetPartTransientModification()
     
-    workPart.Expressions.Delete(expression169)
+    workPart.Expressions.Delete(expression177)
     
     workPart.MeasureManager.ClearPartTransientModification()
     
     workPart.MeasureManager.SetPartTransientModification()
     
-    workPart.Expressions.Delete(expression170)
+    workPart.Expressions.Delete(expression178)
     
     workPart.MeasureManager.ClearPartTransientModification()
     
     workPart.MeasureManager.SetPartTransientModification()
     
-    workPart.Expressions.Delete(expression171)
+    workPart.Expressions.Delete(expression179)
     
     workPart.MeasureManager.ClearPartTransientModification()
     
-    theSession.CleanUpFacetedFacesAndEdges()
+    # ----------------------------------------------
+    #   Menu: Insert->Coupler->Gear Coupler...
+    # ----------------------------------------------
+    markId28 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    couplerGearBuilder1 = workPart.MotionManager.Couplers.CreateCouplerGearBuilder(NXOpen.Motion.CouplerGear.Null)
+    
+    couplerGearBuilder1.RatioExpression.SetFormula("1")
+    
+    couplerGearBuilder1.FirstRadiusExpression.SetFormula("61")
+    
+    couplerGearBuilder1.SecondRadiusExpression.SetFormula("61")
+    
+    couplerGearBuilder1.DisplayScale = 1.0
+    
+    theSession.SetUndoMarkName(markId28, "Gear Coupler Dialog")
+    
+    globalSelectionBuilder28 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList27 = globalSelectionBuilder28.Selection
+    
+    joint1 = nXObject158
+    couplerGearBuilder1.FirstJoint.Value = joint1
+    
+    globalSelectionBuilder29 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList28 = globalSelectionBuilder29.Selection
+    
+    globalSelectionBuilder30 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList29 = globalSelectionBuilder30.Selection
+    
+    joint2 = nXObject161
+    couplerGearBuilder1.SecondJoint.Value = joint2
+    
+    coordinates1 = NXOpen.Point3d(0.0, -122.0, 61.0)
+    point20 = workPart.Points.CreatePoint(coordinates1)
+    
+    markId29 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Gear Coupler")
+    
+    globalSelectionBuilder31 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList30 = globalSelectionBuilder31.Selection
+    
+    theSession.DeleteUndoMark(markId29, None)
+    
+    markId30 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Gear Coupler")
+    
+    coordinates2 = NXOpen.Point3d(0.0, -122.0, 61.0)
+    point21 = workPart.Points.CreatePoint(coordinates2)
+    
+    nXObject162 = couplerGearBuilder1.Commit()
+    
+    theSession.DeleteUndoMark(markId30, None)
+    
+    theSession.SetUndoMarkName(markId28, "Gear Coupler")
+    
+    couplerGearBuilder1.Destroy()
+    
+    # ----------------------------------------------
+    #   Menu: Insert->Driver->Driver...
+    # ----------------------------------------------
+    markId31 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    
+    jointDriverBuilder1 = workPart.MotionManager.JointDrivers.CreateJointDriverBuilder(NXOpen.Motion.JointDriver.Null)
+    
+    theSession.SetUndoMarkName(markId31, "Driver Dialog")
+    
+    jointDriverBuilder1.DriverMultiOperations.MotionEulerAngle1.Function = NXOpen.NXObject.Null
+    
+    jointDriverBuilder1.DriverMultiOperations.MotionEulerAngle1.Function = NXOpen.NXObject.Null
+    
+    jointDriverBuilder1.DriverMultiOperations.MotionTranslationZ.Function = NXOpen.NXObject.Null
+    
+    jointDriverBuilder1.DriverMultiOperations.MotionTranslationZ.Function = NXOpen.NXObject.Null
+    
+    jointDriverBuilder1.DriverMultiOperations.MotionPointOnCurve.Function = NXOpen.NXObject.Null
+    
+    jointDriverBuilder1.DriverMultiOperations.MotionPointOnCurve.Function = NXOpen.NXObject.Null
+    
+    globalSelectionBuilder32 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList31 = globalSelectionBuilder32.Selection
+    
+    jointDriverBuilder1.Joint.Value = joint1
+    
+    jointDriverBuilder1.DriverMultiOperations.MotionEulerAngle1.TypeOption = NXOpen.Motion.DriverOperation.Type.Polynomial
+    
+    jointDriverBuilder1.DriverMultiOperations.MotionEulerAngle1.Function = NXOpen.NXObject.Null
+    
+    jointDriverBuilder1.DriverMultiOperations.MotionEulerAngle1.VelocityExpression.SetFormula("1")
+    
+    markId32 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Driver")
+    
+    globalSelectionBuilder33 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    
+    selectTaggedObjectList32 = globalSelectionBuilder33.Selection
+    
+    theSession.DeleteUndoMark(markId32, None)
+    
+    markId33 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Driver")
+    
+    nXObject163 = jointDriverBuilder1.Commit()
+    
+    theSession.DeleteUndoMark(markId33, None)
+    
+    theSession.SetUndoMarkName(markId31, "Driver")
+    
+    jointDriverBuilder1.Destroy()
     
     # ----------------------------------------------
     #   Menu: Insert->Solution->Solution...
     # ----------------------------------------------
-    markId22 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
+    markId34 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Start")
     
     motionSolutionBuilder1 = workPart.MotionManager.MotionSolutions.CreateSolutionBuilder(NXOpen.Motion.MotionSolution.Null)
     
-    theSession.SetUndoMarkName(markId22, "Solution Dialog")
+    theSession.SetUndoMarkName(markId34, "Solution Dialog")
     
-    expression189 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
+    expression197 = workPart.Expressions.CreateSystemExpressionWithUnits("0", unit1)
     
-    markId23 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Solution")
+    markId35 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Solution")
     
-    theSession.DeleteUndoMark(markId23, None)
+    theSession.DeleteUndoMark(markId35, None)
     
-    markId24 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Solution")
+    markId36 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Solution")
     
     unit3 = workPart.UnitCollection.FindObject("Second")
     motionSolutionBuilder1.SetScalarExpressionPropertyValue("SolutionEndTime", "10", unit3)
     
     nXObject164 = motionSolutionBuilder1.Commit()
     
-    theSession.DeleteUndoMark(markId24, None)
+    theSession.DeleteUndoMark(markId36, None)
     
-    theSession.SetUndoMarkName(markId22, "Solution")
+    theSession.SetUndoMarkName(markId34, "Solution")
     
     motionSolutionBuilder1.Destroy()
     
     workPart.MeasureManager.SetPartTransientModification()
     
-    workPart.Expressions.Delete(expression189)
+    workPart.Expressions.Delete(expression197)
     
     workPart.MeasureManager.ClearPartTransientModification()
     
     theSession.MotionSession.MotionMethods.ModelCheck(False)
     
-    theSession.CleanUpFacetedFacesAndEdges()
+    globalSelectionBuilder34 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
     
-    globalSelectionBuilder26 = theSession.MotionSession.MotionMethods.GetGlobalSelectionBuilder(workPart)
+    selectTaggedObjectList33 = globalSelectionBuilder34.Selection
     
-    selectTaggedObjectList25 = globalSelectionBuilder26.Selection
-    
-    markId25 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, None)
+    markId37 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, None)
     
     motionSolution1 = nXObject164
     motionSolution1.SolveNormalRunSolution()
     
-    theSession.DeleteUndoMark(markId25, None)
+    theSession.DeleteUndoMark(markId37, None)
     
     # ----------------------------------------------
     #   Menu: Analysis->Motion->Animation Player...
     # ----------------------------------------------
-    markId26 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Animation Player")
+    markId38 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Visible, "Animation Player")
     
     animationControl1 = motionSolution1.GetAnimationControl()
     
-    markId27 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
+    markId39 = theSession.SetUndoMark(NXOpen.Session.MarkVisibility.Invisible, "Start")
     
-    theSession.SetUndoMarkName(markId27, "Animation Player Dialog")
+    theSession.SetUndoMarkName(markId39, "Animation Player Dialog")
     
-    theSession.SetUndoMarkVisibility(markId27, None, NXOpen.Session.MarkVisibility.Invisible)
+    theSession.SetUndoMarkVisibility(markId39, None, NXOpen.Session.MarkVisibility.Invisible)
     
     theSession.MotionSession.PostProcess.SetInterferenceOption(False)
     
@@ -4546,15 +4982,26 @@ def main() :
     
     animationControl1.Play()
     
+    matrix1 = NXOpen.Matrix3x3()
+    
+    matrix1.Xx = 0.0
+    matrix1.Xy = 1.0
+    matrix1.Xz = 0.0
+    matrix1.Yx = -1.0
+    matrix1.Yy = 0.0
+    matrix1.Yz = 0.0
+    matrix1.Zx = 0.0
+    matrix1.Zy = -0.0
+    matrix1.Zz = 1.0
+    workPart.ModelingViews.WorkView.Orient(matrix1)
+    
     animationControl1.StepToAssemblyPosition()
     
-    theSession.SetUndoMarkName(markId27, "Animation Player")
+    theSession.SetUndoMarkName(markId39, "Animation Player")
     
-    theSession.DeleteUndoMark(markId27, None)
+    theSession.DeleteUndoMark(markId39, None)
     
     animationControl1.Finish()
-    
-    theSession.CleanUpFacetedFacesAndEdges()
     
     # ----------------------------------------------
     #   Menu: Tools->Journal->Stop Recording

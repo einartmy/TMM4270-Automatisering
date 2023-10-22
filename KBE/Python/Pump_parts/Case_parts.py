@@ -2,14 +2,6 @@ import math
 from Shapes.Cylinder import Cylinder
 from Shapes.Block import Block
 
-gearRadius  = 0
-toothradius = 0 
-outerRadius = 0 
-depth       = 0                             
-thickness   = 0                              
-x           = 0
-y           = 0
-
 class UpperCase:
 
     def __init__(self, gearRadius, gearDepth, toothradius, thickness, x, y):
