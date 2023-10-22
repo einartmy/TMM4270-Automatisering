@@ -1,6 +1,5 @@
 from Pump_parts.Pump_Gears import Pump_Gears
 from Pump_parts.Case_parts import UpperCase, LowerCase
-from Motion.Motion3 import Motion3
 import random
 from datetime import datetime
 import math
@@ -128,14 +127,6 @@ if __name__ == "__main__":
     with open(filename, 'w') as outfile:
         json.dump(designParams, outfile, indent=4)
     
-    # pathToTheFolder = "M:\\Desktop\\TMM4270\\TMM4270-Automatisering\\KBE\\Python\\Animation\\"
-    # fileName = "geartrain_" + str(random.randint(1,10000)) 
-
-    # cyl1 = pump.gear1.gear
-    # cyl2 = pump.gear2.gear
-
-
-    # motion = Motion3([cyl1, cyl2], 0, 10, 10, 0, True, pathToTheFolder, fileName)
             
 
 
