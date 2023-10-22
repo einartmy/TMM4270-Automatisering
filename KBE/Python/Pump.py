@@ -9,17 +9,17 @@ import os
 
 class Pump:
 
-    def __init__(self, targetVpm, caseThickness = 30, x = 0, y = 0):
-        self.targetVpm = targetVpm
-        self.caseThickness = caseThickness
-        self.x = x
-        self.y = y
-        self.radius = 0
-        self.teethDiameter = 0
-        self.depth = 0
-        self.angleSpeed = 0
-        self.density = 2700                     #Aluminium density
-        self.mass = 0
+    def __init__(self, targetVpm, caseThickness = 10, x = 0, y = 0):
+        self.targetVpm = targetVpm                                      #Volume per minute flow target
+        self.caseThickness = caseThickness                              #Thickness of casing
+        self.x = x                                                      #X coordinate for center of upper gear
+        self.y = y                                                      #Y coordinate for center of upper gear
+        self.radius = 0                                                 #Radius of a single pump gear
+        self.teethDiameter = 0                                          #Diameter of a tooth
+        self.depth = 0                                                  #Depth (z-value) to the pump
+        self.angleSpeed = 0                                             #Angular velocity, default at 1
+        self.density = 2700                                             #Aluminium density
+        self.mass = 0                                                   #Mass of the whole pump
 
         self.createPump()
 
@@ -78,8 +78,8 @@ class Pump:
     def calculateVolume(self, gear1, gear2, upperCase, lowerCase):
         # Calculating volume of the two gears 
         volumeGear1 = gear1.calculateVolume()
-        volumeGear2 = gear2.calculateVolume()  # since they are of the same dimensions
-
+        volumeGear2 = gear2.calculateVolume()  
+        
         # Calculating volume of the casing (upper and lower)
         volumeUpperCase = upperCase.getVolume()
         volumeLowerCase = lowerCase.getVolume()

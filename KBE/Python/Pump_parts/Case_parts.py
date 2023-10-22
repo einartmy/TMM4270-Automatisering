@@ -7,9 +7,9 @@ class UpperCase:
     def __init__(self, gearRadius, gearDepth, toothradius, thickness, x, y):
         self.gearRadius = gearRadius
         self.toothradius = toothradius
-        self.outerRadius = gearRadius + toothradius + thickness
+        self.outerRadius = gearRadius + toothradius + thickness         #Radius from center to outside the casing
         self.depth = gearDepth                                          #Depth inside the case, same as gear depth
-        self.thickness = thickness                                     #Thickness of case
+        self.thickness = thickness                                      
         self.x = x
         self.y = y
         self.initForNX()
@@ -50,9 +50,9 @@ class LowerCase:
     def __init__(self, gearRadius, gearDepth, toothradius, thickness, x, y):
         self.gearRadius = gearRadius
         self.toothradius = toothradius
-        self.outerRadius = gearRadius + toothradius + thickness
+        self.outerRadius = gearRadius + toothradius + thickness         #Radius from center to outside the casing
         self.depth = gearDepth                                          #Depth inside the case, same as gear depth
-        self.thickness = thickness                                      #Thickness of case
+        self.thickness = thickness                                      
         self.x = x
         self.y = y
         

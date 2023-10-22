@@ -8,12 +8,12 @@ class CalculatePump:
         self.angleSpeed = angleSpeed
         self.depth = 2 * radius
 
-    def numberOfTeeth(self):                                                          #A function to calculate amount of gear teeths
+    def numberOfTeeth(self):                                                          #A function to calculate amount of gear teeth
         return math.ceil(2 * self.radius * math.pi * 0.5 * (1 / self.teethDiameter))
 
     def vpm(self):  
         teeths = self.numberOfTeeth()
-        angle = 2 * math.pi / teeths                                                    #Finding the angels between the teeth
+        angle = 2 * math.pi / teeths                                                    #Finding the angle between the teeth
         korde = ((self.radius + self.teethDiameter/2)**2 * (angle - math.sin(angle))) / 2  #Finding the area of the korde using angle
         areal = 4 * ((self.teethDiameter/2)** 2) + korde                                     #Finding the area between 2 teeth
         volume = areal * self.depth                                                     #Finding the volume of 1 teeth

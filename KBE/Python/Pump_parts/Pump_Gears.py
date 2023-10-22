@@ -5,12 +5,12 @@ import math
 class Pump_Gears:
 	
     def __init__(self, gearRadius, gearHeight, teethDiameter, x, y, offset):
-        self.gearRadius = gearRadius
-        self.gearHeight = gearHeight                                            #Height also known as debt of the gear
+        self.gearRadius = gearRadius                                            #Radius of gears main cylinder
+        self.gearHeight = gearHeight                                            #Height also known as debth of the gear
         self.x = x
-        self.y = y
-        self.teethDiameter = teethDiameter                                          #The diameter of a single tooth
-        self.offset = offset                                                    #Offset to know what type of gear we are building, slave or master.
+        self.y = y                                                                  
+        self.teethDiameter = teethDiameter                                         #The diameter of a single tooth
+        self.offset = offset                                                        #Offset to know what type of gear we are building, slave or master (upper or lower), for meshing purposes.
         self.gear = Cylinder(self.x, self.y, 0, self.gearRadius*2, self.gearHeight) #Main gear using a Cylinder as its base
         
     
@@ -39,7 +39,7 @@ class Pump_Gears:
                 self.gear.unite(tooth)
 
 
-        holeIngear = Cylinder(self.x, self.y, 0, radius/15, self.gearHeight, [0,0,1])
+        holeIngear = Cylinder(self.x, self.y, 0, radius/15, self.gearHeight, [0,0,1])   #Creating hole in gear
         self.gear.subtract(holeIngear)
 
     def calculateVolume(self):
