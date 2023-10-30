@@ -9,7 +9,8 @@ class CalculatePump:
         self.depth = 2 * radius
 
     def numberOfTeeth(self):                                                          #A function to calculate amount of gear teeth
-        return math.ceil(2 * self.radius * math.pi * 0.5 * (1 / self.teethDiameter))
+        teeth = math.ceil(2 * self.radius * math.pi * 0.5 * (1 / self.teethDiameter))
+        return max(3, teeth)                                                          #Ensure at least three teeth is returned
 
     def vpm(self):  
         teeths = self.numberOfTeeth()
@@ -34,7 +35,16 @@ class CalculatePump:
 
 # Example usage:
 if __name__ == "__main__":
-    targetVpm = 1  # Adjust this value as needed
+    targetVpm = 1000  # Adjust this value as needed
     pump = CalculatePump()
     pump.changePump(targetVpm)
-    print(f"Final radius to achieve {targetVpm} VPM: {round(pump.radius*1000, 4)}")
+    
+    print(f"Parameters to achieve close to {targetVpm} VPM are:")
+    print(f"Radius: {round(pump.radius*1000, 4)} mm")
+    print(f"Teeth Diameter Ratio: {round(pump.teethDiameterRatio, 2)}")
+    print(f"Teeth Diameter: {round(pump.teethDiameter*1000, 4)} mm")
+    print(f"Angle Speed: {round(pump.angleSpeed, 2)} rad/s")
+    print(f"Depth: {round(pump.depth*1000, 4)} mm")
+    print(f"Number of Teeth: {pump.numberOfTeeth()}")
+    print(f"Calculated VPM: {round(pump.vpm(), 2)}")
+
