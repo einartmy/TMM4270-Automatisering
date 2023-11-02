@@ -77,3 +77,5 @@ if __name__ == "__main__":
     print(f"Depth: {round(best_pump.depth*1000, 4)} mm")
     print(f"Number of Teeth: {best_pump.numberOfTeeth()}")
     print(f"Calculated VPM: {round(best_pump.vpm(), 2)}")
+    
+
