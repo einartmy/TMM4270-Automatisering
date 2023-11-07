@@ -14,11 +14,11 @@ def index():
 def calculate():
     target_vpm = float(request.form["targetVPM"])
     
-    # Her bruker du koden din til å utføre beregningene basert på den inngitte targetVPM
+    #Beregninger basert på targetVPM
     optimizer = GeneticPumpOptimizer(target_vpm)
     best_pump = optimizer.run()
     
-    # Legg til resultatene i en streng eller hva format du ønsker
+    # Legg til resultatene i en streng 
     results = f"""
     Optimized parameters to achieve close to {target_vpm} VPM are:<br>
     Radius: {round(best_pump.radius*1000, 4)} mm<br>
@@ -29,15 +29,15 @@ def calculate():
     Number of Teeth: {best_pump.numberOfTeeth()}<br>
     Calculated VPM: {round(best_pump.vpm(), 2)}<br>
     """
-
+    
+    # Run all update functions
+    update_data()
+    
     return results
 
 
-
-
-
 def update_sparql_data(sparql_query):
-    endpoint_url = "http://localhost:3030/#/dataset/A3/update"  # Replace dataset_name with your dataset's name.
+    endpoint_url = "http://localhost:3030/#/dataset/A3/update"  
     
     response = requests.post(endpoint_url, data={"update": sparql_query})
     
@@ -46,7 +46,6 @@ def update_sparql_data(sparql_query):
     else:
         return f"Failed with status code: {response.status_code}. Message: {response.text}"
 
-@app.route('/update_data', methods=['POST'])
 def update_data():
     sparql_query = """
     PREFIX A3: <http://www.kbe.com/pump.owl#>
@@ -61,3 +60,4 @@ def update_data():
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
+
