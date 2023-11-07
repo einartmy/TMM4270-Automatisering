@@ -65,7 +65,7 @@ class GeneticPumpOptimizer:
 
 # Example usage:
 if __name__ == "__main__":
-    target_vpm = 10  # Adjust this value as needed
+    target_vpm = 2  # Adjust this value as needed
     optimizer = GeneticPumpOptimizer(target_vpm)
     best_pump = optimizer.run()
     
