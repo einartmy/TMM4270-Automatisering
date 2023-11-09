@@ -1,7 +1,7 @@
 {
-    "targetVpm": 0.1,
+    "targetVpm": 1,
     "caseThickness": 10,
     "x": 0,
-    "y": 1500
+    "y": 0
   }
 

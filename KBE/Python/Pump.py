@@ -6,6 +6,7 @@ import math
 from Calculate_pump import CalculatePump
 import json
 import os
+from testImageGenerator import ImageGenerator
 
 class Pump:
 
@@ -127,7 +128,10 @@ if __name__ == "__main__":
     with open(filename, 'w') as outfile:
         json.dump(designParams, outfile, indent=4)
     
-            
+
+    # Create an image of the pump
+    imageGenerator = ImageGenerator(f"pump_{currentTime}.png")
+           
 
 
 

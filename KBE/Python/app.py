@@ -1,8 +1,23 @@
 from GeneticPumpOptimizer import GeneticPumpOptimizer
 from flask import Flask, request, render_template_string
 import requests
+import os
+from flask import send_file
+
+from flask import Flask, send_file
+import os
 
 app = Flask(__name__)
+
+@app.route("/latest-image")
+def latest_image():
+    currentDirectory = os.path.dirname(os.path.abspath(__file__))
+    image_directory_name = "Images"
+    ImageFolderPath = os.path.join(currentDirectory, image_directory_name)
+    images = [f for f in os.listdir(ImageFolderPath) if f.endswith(".png")]
+    latest_image = sorted(images)[-1]
+    return send_file(os.path.join(ImageFolderPath, latest_image), mimetype="image/png")
+
 
 @app.route("/")
 def index():
@@ -14,19 +29,21 @@ def index():
 def calculate():
     target_vpm = float(request.form["targetVPM"])
 
-    # Sjekk om pumpen allerede eksisterer
+    # Check if pump already exists
     if pump_exists(target_vpm):
-        # Hvis pumpen eksisterer, hent detaljene
+        # If pump exists, get the details
         #pump_details = get_pump_details(target_vpm)  #Må lage en funksjon som henter ut detaljene til pumpen
+        pump = get_pump(target_vpm)
+        print("Pump exists", pump)
         results = f"""
-        A pump with the target VPM {target_vpm} already exists:<br>
+        A pump with the target VPM {target_vpm} already exists with name {pump}<br>
         """
     else:
-        #Beregninger basert på targetVPM
+        #Calculations based on the target VPM using GA
         optimizer = GeneticPumpOptimizer(target_vpm)
         best_pump = optimizer.run()
         
-        # Legg til resultatene i en streng 
+        # Add result to a string
         results = f"""
         Optimized parameters to achieve close to {target_vpm} VPM are:<br>
         Gear Radius: {round(best_pump.radius*1000, 4)} mm<br>
@@ -35,7 +52,7 @@ def calculate():
         Angle Speed: {round(best_pump.angleSpeed, 2)} rad/s<br>
         Depth: {round(best_pump.depth*1000, 4)} mm<br>
         Number of Teeth: {best_pump.numberOfTeeth()}<br>
-        Calculated VPM: {round(best_pump.vpm(), 2)}<br>
+        Calculated VPM: {round(best_pump.vpm(), 4)}<br>
         """
     
         # Run all update functions
@@ -45,6 +62,7 @@ def calculate():
     return results
 
 
+
 def get_sparql_data(sparql_query):
     url = "http://localhost:3030/A3/query"
     
@@ -52,7 +70,8 @@ def get_sparql_data(sparql_query):
 
     response = requests.get(url, PARAMS)
     data = response.json()
-    print(data)
+    for binding in data["results"]["bindings"]:
+        print(binding["pump"]["value"].split("#")[1], ":", binding["targetVPM"]["value"])
 
     if response.status_code == 200:
         return "Update successful!"
@@ -62,10 +81,12 @@ def get_sparql_data(sparql_query):
 def get_data():
     sparql_query = """
     PREFIX A3: <http://www.kbe.com/pump.owl#>
-    SELECT ?pump
+    SELECT ?pump ?targetVPM
     WHERE {
 	?pump a A3:Pump.
+    ?pump A3:targetVPM ?targetVPM.
     }
+    ORDER BY (?pump)
     """
     result = get_sparql_data(sparql_query)
     return result
@@ -127,7 +148,31 @@ def pump_exists(target_vpm):
         data = response.json()
         return data["boolean"]  # This will be True if the Pump exists, False otherwise
     else:
-        raise Exception(f"Query failed with status code: {response.status_code}. Message: {response.text}")
+        raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
+    
+def get_pump(target_vpm):
+    # Query to get the Pump with the given targetVPM
+    sparql_query = f"""
+    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    SELECT ?pump
+    WHERE {{
+        ?pump a A3:Pump ;
+              A3:targetVPM "{target_vpm}"^^xsd:decimal.
+    }}
+    """
+    url = "http://localhost:3030/A3/query"
+    PARAMS = {"query": sparql_query}
+    response = requests.get(url, PARAMS)
+    if response.status_code == 200:
+        data = response.json()
+        bindings = data["results"]["bindings"] 
+        if len(bindings) > 0:
+            return bindings[0]["pump"]["value"].split("#")[1]
+        else:
+            return None
+    else:
+        raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
