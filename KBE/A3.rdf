@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3/"
+     xml:base="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.kbe.com/pump.owl#"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.kbe.com/pump.owl#hasLowerCase -->
+
+    <owl:ObjectProperty rdf:about="http://www.kbe.com/pump.owl#hasLowerCase">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Pump"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#LowerCase"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.kbe.com/pump.owl#hasPumpGear -->
+
+    <owl:ObjectProperty rdf:about="http://www.kbe.com/pump.owl#hasPumpGear">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Pump"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#PumpGear"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.kbe.com/pump.owl#hasUpperCase -->
+
+    <owl:ObjectProperty rdf:about="http://www.kbe.com/pump.owl#hasUpperCase">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Pump"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#hasDirection -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#hasDirection">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Cylinder"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Vector"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#hasGear -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#hasGear">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#PumpGear"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Cylinder"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.kbe.com/pump.owl#targetVPM -->
+
+    <owl:DatatypeProperty rdf:about="http://www.kbe.com/pump.owl#targetVPM">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Pump"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#depth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#depth">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#LowerCase"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#PumpGear"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#diameter -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#diameter">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Cylinder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#direction -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#direction">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Cylinder"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#gearRadius -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#gearRadius">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#LowerCase"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#PumpGear"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#height -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#height">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Cylinder"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#offset -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#offset">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#PumpGear"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#outerRadius -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#outerRadius">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#LowerCase"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#thickness -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#thickness">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#LowerCase"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#toothRadius -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#toothRadius">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#LowerCase"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#PumpGear"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#x -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#x">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Cylinder"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#LowerCase"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#PumpGear"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Vector"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#y -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#y">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Cylinder"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#LowerCase"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#PumpGear"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Vector"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#z -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#z">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Cylinder"/>
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Vector"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Cylinder -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Cylinder"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#LowerCase -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#LowerCase"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Pump -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Pump">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.kbe.com/pump.owl#hasLowerCase"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Pump"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.kbe.com/pump.owl#hasPumpGear"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Pump"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.kbe.com/pump.owl#hasUpperCase"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Pump"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#PumpGear -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#PumpGear"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Vector -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Vector"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.kbe.com/pump.owl#Pump1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.kbe.com/pump.owl#Pump1"/>
+    
+
+
+    <!-- http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Case1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#Case1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/martinbergsto/ontologies/2023/9/untitled-ontology-3#UpperCase"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi -->
+

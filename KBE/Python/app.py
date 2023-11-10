@@ -6,6 +6,13 @@ import os
 
 app = Flask(__name__)
 
+@app.route("/")
+def index():
+    with open("KBE/Python/vpm.html", "r") as file:
+        html_content = file.read()
+    return render_template_string(html_content)
+
+
 @app.route("/latest-image")
 def latest_image():
     currentDirectory = os.path.dirname(os.path.abspath(__file__))
@@ -16,16 +23,10 @@ def latest_image():
     return send_file(os.path.join(ImageFolderPath, latest_image), mimetype="image/png")
 
 
-@app.route("/")
-def index():
-    with open("KBE/Python/vpm.html", "r") as file:
-        html_content = file.read()
-    return render_template_string(html_content)
-
 @app.route("/create-pump", methods=["POST"])
 def calculate():
     target_vpm = float(request.form["targetVPM"])
-
+ 
     # Check if pump already exists
     if pump_exists(target_vpm):
         # If pump exists, get the details
@@ -33,28 +34,18 @@ def calculate():
         pump = get_pump(target_vpm)
         print("Pump exists", pump)
         results = f"""
-        A pump with the target VPM {target_vpm} already exists with name {pump}<br>
+        A pump with the target VPM {target_vpm} already exists with the values: <br> <br>
+        {get_pump_info(pump)}
         """
     else:
-        #Calculations based on the target VPM using GA
         optimizer = GeneticPumpOptimizer(target_vpm)
         best_pump = optimizer.run()
+        results = f"Optimized parameters to achieve close to {target_vpm} VPM are:<br><br>" + get_pump_info(best_pump)
         
-        # Add result to a string
-        results = f"""
-        Optimized parameters to achieve close to {target_vpm} VPM are:<br>
-        Gear Radius: {round(best_pump.radius*1000, 4)} mm<br>
-        Teeth Diameter Ratio: {round(best_pump.teethDiameterRatio, 2)}<br>
-        Teeth Diameter: {round(best_pump.teethDiameter*1000, 4)} mm<br>
-        Angle Speed: {round(best_pump.angleSpeed, 2)} rad/s<br>
-        Depth: {round(best_pump.depth*1000, 4)} mm<br>
-        Number of Teeth: {best_pump.numberOfTeeth()}<br>
-        Calculated VPM: {round(best_pump.vpm(), 4)}<br>
-        """
-    
         # Run all update functions
         insert_data(target_vpm)
         get_data()
+        
     
     image_button = f"""
     <html>
@@ -66,6 +57,59 @@ def calculate():
     """
     return results + image_button
 
+
+
+def get_pump_info(pump):
+    #Calculations based on the target VPM using GA
+    
+    
+    # Add result to a string
+    results = """
+    <style>
+    td {
+        text-align: center:
+    }
+    </style>"""+f"""
+    <table>
+  <tr>
+    <th>Parameter</th>
+    <th>Value</th>
+  </tr>
+  <tr>
+    <td>Gear Radius</td>
+    <td>{round(pump.radius * 1000, 4)} mm</td>
+  </tr>
+  <tr>
+    <td>Teeth Diameter Ratio</td>
+    <td>{round(pump.teethDiameterRatio, 2)}</td>
+  </tr>
+  <tr>
+    <td>Teeth Diameter</td>
+    <td>{round(pump.teethDiameter * 1000, 4)} mm</td>
+  </tr>
+  <tr>
+    <td>Angle Speed</td>
+    <td>{round(pump.angleSpeed, 2)} rad/s</td>
+  </tr>
+  <tr>
+    <td>Depth</td>
+    <td>{round(pump.depth * 1000, 4)} mm</td>
+  </tr>
+  <tr>
+    <td>Number of Teeth</td>
+    <td>{pump.numberOfTeeth()}</td>
+  </tr>
+  <tr>
+    <td>Calculated VPM</td>
+    <td>{round(pump.vpm(), 4)}</td>
+  </tr>
+</table>
+    """
+
+    
+    
+
+    return results
 
 
 def get_sparql_data(sparql_query):
