@@ -1,10 +1,7 @@
 from GeneticPumpOptimizer import GeneticPumpOptimizer
-from flask import Flask, request, render_template_string
 import requests
 import os
-from flask import send_file
-
-from flask import Flask, send_file
+from flask import Flask, send_file, url_for, render_template_string, request
 import os
 
 app = Flask(__name__)
@@ -59,7 +56,15 @@ def calculate():
         insert_data(target_vpm)
         get_data()
     
-    return results
+    image_button = f"""
+    <html>
+    <body>
+        <br>
+        <a href="{url_for('latest_image')}"><button>View Image</button></a>
+    </body>
+    </html>
+    """
+    return results + image_button
 
 
 
@@ -104,6 +109,18 @@ def insert_data(target_vpm):
     result = insert_sparql_data(sparql_query)
     return result
 
+def insert_sparql_data(sparql_query):
+    url = "http://localhost:3030/A3/update"
+    
+    PARAMS = {"update": sparql_query}
+
+    response = requests.post(url, PARAMS)
+
+    if response.status_code == 200:
+        return "Update successful!"
+    else:
+        return f"Failed with status code: {response.status_code}. Message: {response.text}"
+
 def get_pump_count():
     sparql_query = """
     PREFIX A3: <http://www.kbe.com/pump.owl#>
@@ -118,18 +135,6 @@ def get_pump_count():
     data = response.json()
     count = int(data["results"]["bindings"][0]["count"]["value"])
     return count + 1
-
-def insert_sparql_data(sparql_query):
-    url = "http://localhost:3030/A3/update"
-    
-    PARAMS = {"update": sparql_query}
-
-    response = requests.post(url, PARAMS)
-
-    if response.status_code == 200:
-        return "Update successful!"
-    else:
-        return f"Failed with status code: {response.status_code}. Message: {response.text}"
 
 def pump_exists(target_vpm):
     # SPARQL Query to check if a Pump with the given targetVPM exists
