@@ -32,6 +32,7 @@ def calculate():
         #pump_details = get_pump_details(target_vpm)  #Må lage en funksjon som henter ut detaljene til pumpen
         pump = get_pump(target_vpm)
         print("Pump exists", pump)
+        print(get_pump_details(target_vpm))
         results = f"""
         A pump with the target VPM {target_vpm} already exists with name {pump}<br>
         """
@@ -54,7 +55,7 @@ def calculate():
     
         # Run all update functions
         insert_data(target_vpm)
-        get_data()
+        get_pump_list()
     
     image_button = f"""
     <html>
@@ -68,7 +69,7 @@ def calculate():
 
 
 
-def get_sparql_data(sparql_query):
+def get_sparql_pump_list(sparql_query):
     url = "http://localhost:3030/A3/query"
     
     PARAMS = {"query": sparql_query}
@@ -83,7 +84,7 @@ def get_sparql_data(sparql_query):
     else:
         return f"Failed with status code: {response.status_code}. Message: {response.text}"
 
-def get_data():
+def get_pump_list():
     sparql_query = """
     PREFIX A3: <http://www.kbe.com/pump.owl#>
     SELECT ?pump ?targetVPM
@@ -93,21 +94,110 @@ def get_data():
     }
     ORDER BY (?pump)
     """
-    result = get_sparql_data(sparql_query)
+    result = get_sparql_pump_list(sparql_query)
     return result
 
 def insert_data(target_vpm):
-    sparql_query = f"""
+    count = get_pump_count()
+    #Må få inn alle verdiene fra pumpen og erstatte 10.0 med de verdiene
+    sparql_upperCase_query = f"""
     PREFIX A3: <http://www.kbe.com/pump.owl#>
     INSERT {{
-        A3:pump_{get_pump_count()} a A3:Pump;
+        A3:upperCase_{count} a A3:UpperCase .
+        A3:upperCase_{count} A3:depth 10.0 .
+  		A3:upperCase_{count} A3:thickness 10.0 .
+  		A3:upperCase_{count} A3:gearRadius 10.0 .
+  		A3:upperCase_{count} A3:toothRadius 10.0 .
+  		A3:upperCase_{count} A3:outerRadius 10.0 .
+  		A3:upperCase_{count} A3:x 10.0 .
+  		A3:upperCase_{count} A3:y 10.0 .
+  		A3:upperCase_{count} A3:z 10.0 .
+  		
+    }}
+    WHERE {{
+    }}
+    """
+    insert_sparql_data(sparql_upperCase_query)
+
+    sparql_lowerCase_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    INSERT {{
+        A3:lowerCase_{count} a A3:LowerCase .
+        A3:lowerCase_{count} A3:depth 10.0 .
+        A3:lowerCase_{count} A3:thickness 10.0 .
+        A3:lowerCase_{count} A3:gearRadius 10.0 .
+        A3:lowerCase_{count} A3:toothRadius 10.0 .
+        A3:lowerCase_{count} A3:outerRadius 10.0 .
+        A3:lowerCase_{count} A3:x 10.0 .
+        A3:lowerCase_{count} A3:y 10.0 .
+        A3:lowerCase_{count} A3:z 10.0 .
+    }}
+    WHERE {{
+    }}
+    """
+    insert_sparql_data(sparql_lowerCase_query)
+    
+    sparql_upperGear_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    INSERT {{
+        A3:gear1_{count} a A3:PumpGear .
+        A3:gear1_{count} A3:depth 10.0 .
+        A3:gear1_{count} A3:offset true .
+        A3:gear1_{count} A3:gearRadius 10.0 .
+        A3:gear1_{count} A3:toothRadius 10.0 .
+        A3:gear1_{count} A3:x 10.0 .
+        A3:gear1_{count} A3:y 10.0 .
+        A3:gear1_{count} A3:z 10.0 .
+    }}
+    WHERE {{
+    }}
+    """
+
+    insert_sparql_data(sparql_upperGear_query)
+
+    sparql_lowerGear_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    INSERT {{
+        A3:gear2_{count} a A3:PumpGear .
+        A3:gear2_{count} A3:depth 10.0 .
+        A3:gear2_{count} A3:offset false .
+        A3:gear2_{count} A3:gearRadius 10.0 .
+        A3:gear2_{count} A3:toothRadius 10.0 .
+        A3:gear2_{count} A3:x 10.0 .
+        A3:gear2_{count} A3:y 10.0 .
+        A3:gear2_{count} A3:z 10.0 .
+    }}
+    WHERE {{
+    }}
+    """
+    insert_sparql_data(sparql_lowerGear_query)
+
+    sparql_pump_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    INSERT {{
+        A3:pump_{count} a A3:Pump;
             A3:targetVPM {target_vpm}.
     }}
     WHERE {{
     }}
     """
-    result = insert_sparql_data(sparql_query)
-    return result
+    insert_sparql_data(sparql_pump_query)
+
+    sparql_has_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    INSERT {{
+        A3:pump_{count} A3:hasGear A3:gear1_{count}.
+        A3:pump_{count} A3:hasGear A3:gear2_{count}.
+        A3:pump_{count} A3:hasUpperCase A3:upperCase_{count}.
+        A3:pump_{count} A3:hasLowerCase A3:lowerCase_{count}.
+    }}
+    WHERE {{
+    }}
+    """
+
+    insert_sparql_data(sparql_has_query)
+
+
 
 def insert_sparql_data(sparql_query):
     url = "http://localhost:3030/A3/update"
@@ -174,6 +264,35 @@ def get_pump(target_vpm):
         bindings = data["results"]["bindings"] 
         if len(bindings) > 0:
             return bindings[0]["pump"]["value"].split("#")[1]
+        else:
+            return None
+    else:
+        raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
+
+def get_pump_details(target_vpm):
+    # Query to get the Pump with the given targetVPM
+    # MÅ LEGGE TIL INFO OM CASING OGSÅ
+    sparql_query = f"""
+    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    SELECT ?pump ?targetVPM ?gearRadius ?toothRadius ?depth ?thickness
+    WHERE {{
+        ?pump a A3:Pump ;
+                A3:targetVPM ?targetVPM ;
+                A3:hasGear ?gear .
+        ?gear A3:gearRadius ?gearRadius ;
+                A3:toothRadius ?toothRadius ;
+                A3:depth ?depth ;   
+    }}
+    """
+    url = "http://localhost:3030/A3/query"
+    PARAMS = {"query": sparql_query}
+    response = requests.get(url, PARAMS)
+    if response.status_code == 200:
+        data = response.json()
+        bindings = data["results"]["bindings"] 
+        if len(bindings) > 0:
+            return bindings[0]
         else:
             return None
     else:
