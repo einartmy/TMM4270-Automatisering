@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pump Designer</title>
+</head>
+<body>
+
+<h2>Create a Pump</h2>
+
+<form action="/create-pump" method="post">
+    <label for="targetVPM">Enter Volume Per Minute (VPM):</label>
+    <input type="text" id="targetVPM" name="targetVPM" required pattern="\d+(\.\d+)?" title="Please enter a valid float value">
+    <input type="submit" value="Create Pump" name="createPumpBtn">
+</form>
+
+<!-- Show Available Pumps button -->
+<button id="showPumpsButton">Show Available Pumps</button>
+
+<!-- Available Pumps table (initially hidden) -->
+<div id="pumpsTableDiv" style="display: none;">
+    {{ pumps_table | safe }}
+</div>
+
+<script>
+    document.getElementById("showPumpsButton").addEventListener("click", function() {
+        var pumpsTableDiv = document.getElementById("pumpsTableDiv");
+        if (pumpsTableDiv.style.display === "none" || pumpsTableDiv.style.display === "") {
+            pumpsTableDiv.style.display = "block";
+        } else {
+            pumpsTableDiv.style.display = "none";
+        }
+    });
+</script>
+
+</body>
+</html>

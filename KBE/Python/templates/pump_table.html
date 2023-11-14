@@ -1,0 +1,31 @@
+<!-- templates/pump_template.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Pumps</title>
+</head>
+<body>
+    <h2>Available Pumps</h2>
+    <table border="1">
+        <tr>
+            <th>Pump Name</th>
+            <th>Target VPM</th>
+            <th>Gear Radius</th>
+            <th>Tooth Radius</th>
+            <th>Depth</th>
+            <th>Thickness</th>
+        </tr>
+        {% for pump_name, pump_info in pumps.items() %}
+        <tr>
+            <td>{{ pump_name }}</td>
+            <td>{{ pump_info.targetVPM }}</td>
+            <td>{{ pump_info.gearRadius }}</td>
+            <td>{{ pump_info.toothRadius }}</td>
+            <td>{{ pump_info.depth }}</td>
+            <td>{{ pump_info.thickness }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
