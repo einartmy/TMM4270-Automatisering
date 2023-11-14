@@ -6,7 +6,7 @@ import math
 from Calculate_pump import CalculatePump
 import json
 import os
-from testImageGenerator import ImageGenerator
+from ImageGenerator import ImageGenerator
 
 class Pump:
 

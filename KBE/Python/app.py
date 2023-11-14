@@ -38,15 +38,19 @@ def calculate():
         pump = get_pump(target_vpm)
         print(pump)
         print("Pump exists", pump)
-        print(get_pump_details(target_vpm))
+        pump_details = get_pump_details(target_vpm)
+        print(pump_details)
+        output_info = get_html_pump_info(pump_details["gearRadius"], pump_details["toothRadius"], pump_details["depth"], pump_details["thickness"], pump_exists=True)
         results = f"""
-        A pump with the target VPM {target_vpm} already exists with the name: <br> <br>
-        {pump}
+        A pump with the target VPM {target_vpm} already exists with the name: {pump} <br> <br>
+       
+        Optimized parameters to achieve close to {target_vpm} VPM are:<br><br> {output_info}
         """
     else:
         optimizer = GeneticPumpOptimizer(target_vpm)
         best_pump = optimizer.run()
-        results = f"Optimized parameters to achieve close to {target_vpm} VPM are:<br><br>" + get_pump_info(best_pump)
+        thickness = 10.0
+        results = f"Optimized parameters to achieve close to {target_vpm} VPM are:<br><br>" + get_html_pump_info(best_pump.radius, best_pump.teethDiameter, thickness, best_pump.depth, calculated_vpm=best_pump.vpm(), pump_exists=False)
         
         # Run all update functions
         insert_data(target_vpm)        
@@ -63,58 +67,49 @@ def calculate():
     return results + image_button
 
 
-
-def get_pump_info(pump):
-    #Calculations based on the target VPM using GA
-    
-    
-    # Add result to a string
-    results = """
-    <style>
-    td {
-        text-align: center:
-    }
-    </style>"""+f"""
-    <table>
-  <tr>
-    <th>Parameter</th>
-    <th>Value</th>
-  </tr>
-  <tr>
-    <td>Gear Radius</td>
-    <td>{round(pump.radius * 1000, 4)} mm</td>
-  </tr>
-  <tr>
-    <td>Teeth Diameter Ratio</td>
-    <td>{round(pump.teethDiameterRatio, 2)}</td>
-  </tr>
-  <tr>
-    <td>Teeth Diameter</td>
-    <td>{round(pump.teethDiameter * 1000, 4)} mm</td>
-  </tr>
-  <tr>
-    <td>Angle Speed</td>
-    <td>{round(pump.angleSpeed, 2)} rad/s</td>
-  </tr>
-  <tr>
-    <td>Depth</td>
-    <td>{round(pump.depth * 1000, 4)} mm</td>
-  </tr>
-  <tr>
-    <td>Number of Teeth</td>
-    <td>{pump.numberOfTeeth()}</td>
-  </tr>
-  <tr>
-    <td>Calculated VPM</td>
-    <td>{round(pump.vpm(), 4)}</td>
-  </tr>
-</table>
+#Må legge til anglespeed og numberofteeth 
+def get_html_pump_info(radius, teethDiameter, thickness, depth, calculated_vpm=None, pump_exists=False):
+        #Calculations based on the target VPM using GA
+        
+        
+        # Add result to a string
+        results = """
+        <style>
+        td {
+                text-align: center:
+        }
+        </style>"""+f"""
+        <table>
+    <tr>
+        <th>Parameter</th>
+        <th>Value</th>
+    </tr>
+    <tr>
+        <td>Gear Radius</td>
+        <td>{round(radius * 1000, 4)} mm</td>
+    </tr>
+    <tr>
+        <td>Teeth Diameter</td>
+        <td>{round(teethDiameter * 1000, 4)} mm</td>
+    </tr>
+    <tr>
+        <td>Depth</td>
+        <td>{round(depth * 1000, 4)} mm</td>
+    </tr>
+        <td>Case Thickness</td>
+        <td>{thickness} mm</td>
+    </tr>
     """
+        if not pump_exists:
+            results += f"""
+            <tr>
+                <td>Calculated VPM</td>
+                <td>{round(calculated_vpm, 6)} cubic meters pr min</td>
+            </tr>
+            """
+        results += "</table>"
 
-    
-    
-
-    return results
+        return results
 
 
 def get_sparql_pump_list(sparql_query):
@@ -319,19 +314,23 @@ def get_pump(target_vpm):
 
 def get_pump_details(target_vpm):
     # Query to get the Pump with the given targetVPM
-    # MÅ LEGGE TIL INFO OM CASING OGSÅ
     sparql_query = f"""
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     PREFIX A3: <http://www.kbe.com/pump.owl#>
-    SELECT ?pump ?targetVPM ?gearRadius ?toothRadius ?depth ?thickness
+    SELECT DISTINCT ?pump ?targetVPM ?gearRadius ?toothRadius ?depth ?thickness
     WHERE {{
         ?pump a A3:Pump ;
-                A3:targetVPM ?targetVPM ;
-                A3:hasGear ?gear .
+            A3:targetVPM "{target_vpm}"^^xsd:decimal ;
+            A3:hasLowerCase ?lowerCase ;
+            A3:hasGear ?gear .
+
+        ?lowerCase A3:thickness ?thickness .
+
         ?gear A3:gearRadius ?gearRadius ;
-                A3:toothRadius ?toothRadius ;
-                A3:depth ?depth ;   
+            A3:toothRadius ?toothRadius ;
+            A3:depth ?depth . 
     }}
+
     """
     url = "http://localhost:3030/A3/query"
     PARAMS = {"query": sparql_query}
@@ -339,8 +338,15 @@ def get_pump_details(target_vpm):
     if response.status_code == 200:
         data = response.json()
         bindings = data["results"]["bindings"] 
+        print(bindings)
         if len(bindings) > 0:
-            return bindings[0]
+            result = {}
+            for key, value in bindings[0].items():
+                if key == "pump": 
+                    result[key] = value["value"].split("#")[1]
+                else:
+                    result[key] = float(value["value"])
+            return result 
         else:
             return None
     else:
