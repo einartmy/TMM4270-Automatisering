@@ -30,13 +30,18 @@ def calculate():
     # Check if pump already exists
     if pump_exists(target_vpm):
         # If pump exists, get the details
-        #pump_details = get_pump_details(target_vpm)  #Må lage en funksjon som henter ut detaljene til pumpen
+        #pump_details = get_pump_details(target_vpm)  
+        #Må lage en funksjon som henter ut detaljene til pumpen
+        #Så det kan vises til brukeren
+        #Kan ikke bruke get_pump_info fordi den bruker et pump objekt
+        #Vår pump er en String hentet fra databasen. 
         pump = get_pump(target_vpm)
+        print(pump)
         print("Pump exists", pump)
         print(get_pump_details(target_vpm))
         results = f"""
-        A pump with the target VPM {target_vpm} already exists with the values: <br> <br>
-        {get_pump_info(pump)}
+        A pump with the target VPM {target_vpm} already exists with the name: <br> <br>
+        {pump}
         """
     else:
         optimizer = GeneticPumpOptimizer(target_vpm)
