@@ -24,7 +24,7 @@ def index():
 @app.route("/get-image")
 def get_image():
     target_vpm = request.args.get("targetVPM", default=None, type=float)
-    filename = f"pump_{target_vpm}.png"
+    filename = f"pump_{target_vpm}"
     currentDirectory = os.path.dirname(os.path.abspath(__file__))
     image_directory_name = "Images"
     image_file_path = os.path.join(currentDirectory, image_directory_name, f"{filename}.png")
@@ -33,6 +33,33 @@ def get_image():
         return send_file(image_file_path, mimetype="image/png")
     else:
         return "No image found for the given targetVPM, 3D model has not been generated yet."
+
+@app.route("/order-page")
+def order_page():
+    pump_name = request.args.get("pumpName", default=None)
+    #target_vpm = float(request.form["targetVPM"])
+
+    return render_template("order.html")
+
+@app.route("/confirmed-order",  methods=["POST"])
+def confirmed_order():
+    username = request.form["username"]
+    email = request.form["email"]
+    pump_amount = request.form["pump_amount"]
+   
+    #pump_name = request.args.get("pumpName", default=None)
+    text = f"""
+    <html>
+    <body>
+        <br>
+        <h5>{username}</h5>
+        <h5>{email}</h5>
+        <h5>{pump_amount}</h5>
+    </body>
+    </html>
+    """
+    return text
+
 
 @app.route("/create-pump", methods=["POST"])
 def calculate():
@@ -81,13 +108,15 @@ def calculate():
         insert_data(target_vpm, depth, thickness, radius, teethDiameter)
     
     global pumps
-    pumps = get_all_pumps()      
+    pumps = get_all_pumps()    
+    pump_name = f"pump_{get_pump_count()}"  
 
     image_button = f"""
     <html>
     <body>
         <br>
         <a href="{url_for('get_image', targetVPM = target_vpm)}"><button>View Image</button></a>
+        <a href="{url_for('order_page', pumpName = pump_name)}"><button>Order</button></a>
     </body>
     </html>
     """
@@ -231,8 +260,6 @@ def insert_data(target_vpm, depth, thickness, gear_radius, tooth_radius):
         """
         insert_sparql_data(sparql_query)
 
-
-
 def insert_sparql_data(sparql_query):
     url = "http://localhost:3030/A3/update"
     
@@ -302,8 +329,6 @@ def get_pump(target_vpm):
             return None
     else:
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
-
-
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
