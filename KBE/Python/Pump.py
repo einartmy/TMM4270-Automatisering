@@ -6,7 +6,7 @@ import math
 from Calculate_pump import CalculatePump
 import json
 import os
-from ImageGenerator import ImageGenerator
+from imageGenerator import ImageGenerator
 
 class Pump:
 
@@ -101,6 +101,7 @@ if __name__ == "__main__":
     # Use the loaded parameters to create a Pump instance
     pump = Pump(**params)
 
+    targetVpm = params.get("targetVpm")
     # Gather design parameters
     designParams = pump.getDesignParameters()
 
@@ -130,7 +131,7 @@ if __name__ == "__main__":
     
 
     # Create an image of the pump
-    imageGenerator = ImageGenerator(f"pump_{currentTime}.png")
+    imageGenerator = ImageGenerator(f"pump_{targetVpm}.png")
            
 
 

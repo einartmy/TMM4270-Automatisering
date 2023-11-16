@@ -22,7 +22,7 @@ def index():
 
 
 @app.route("/get-image")
-def latest_image():
+def get_image():
     target_vpm = request.args.get("targetVPM", default=None, type=float)
     filename = f"pump_{target_vpm}.png"
     currentDirectory = os.path.dirname(os.path.abspath(__file__))
@@ -59,6 +59,7 @@ def calculate():
         depth = best_pump.depth
         calculated_vpm = best_pump.vpm()
         best_pump_data = {
+            "targetVpm": target_vpm,
             "radius": radius,
             "teethDiameter": teethDiameter,
             "depth": depth,

@@ -1,7 +1,1 @@
-{
-    "targetVpm": 2.1,
-    "caseThickness": 10,
-    "x": 0,
-    "y": 0
-  }
-
+{"targetVpm": 3.5, "radius": 0.16692390108762, "teethDiameter": 0.02730357293489251, "depth": 0.33384780217524, "angleSpeed": 5.524836617607041, "caseThickness": 10.0, "x": 0, "y": 0}
