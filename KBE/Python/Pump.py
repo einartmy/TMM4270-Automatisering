@@ -8,30 +8,30 @@ import json
 import os
 from testImageGenerator import ImageGenerator
 
-class Pump:
-
-    def __init__(self, targetVpm, caseThickness = 10, x = 0, y = 0):
-        self.targetVpm = targetVpm                                      #Volume per minute flow target
-        self.caseThickness = caseThickness                              #Thickness of casing
-        self.x = x                                                      #X coordinate for center of upper gear
-        self.y = y                                                      #Y coordinate for center of upper gear
-        self.radius = 0                                                 #Radius of a single pump gear
-        self.teethDiameter = 0                                          #Diameter of a tooth
-        self.depth = 0                                                  #Depth (z-value) to the pump
-        self.angleSpeed = 0                                             #Angular velocity, default at 1
-        self.density = 2700                                             #Aluminium density
-        self.mass = 0                                                   #Mass of the whole pump
+class Pump:        
+    def __init__(self, targetVpm, caseThickness=10, x=0, y=0, radius, teethDiameter, depth, angleSpeed, density=2700, mass=0):
+        self.targetVpm = targetVpm
+        self.caseThickness = caseThickness
+        self.x = x
+        self.y = y
+        self.radius = radius 
+        self.teethDiameter = teethDiameter 
+        self.depth = depth
+        self.angleSpeed = angleSpeed
+        self.density = density
+        self.mass = mass
 
         self.createPump()
 
 
+
     def createPump(self):
-        calculatePump = CalculatePump()                 
-        calculatePump.changePump(self.targetVpm)           #Converting pump to wished size
-        self.radius = calculatePump.radius * 1000                #Convert to mm
-        self.depth = calculatePump.depth * 1000                  #Convert to mm
-        self.teethDiameter = calculatePump.teethDiameter * 1000    #Convert to mm
-        self.angleSpeed = calculatePump.angleSpeed
+        #calculatePump = CalculatePump()                 
+        #calculatePump.changePump(self.targetVpm)           #Converting pump to wished size
+        #self.radius = calculatePump.radius * 1000                #Convert to mm
+        #self.depth = calculatePump.depth * 1000                  #Convert to mm
+        #self.teethDiameter = calculatePump.teethDiameter * 1000    #Convert to mm
+        #self.angleSpeed = calculatePump.angleSpeed
         print(f'radius funnet ved vpm: {self.targetVpm} m^3 pr. min, ble verdien av radiusen {round(self.radius/1000,4)} m')
 
         self.gear1 = Pump_Gears(self.radius, self.depth, self.teethDiameter, self.x, self.y, False)                    
@@ -101,6 +101,7 @@ if __name__ == "__main__":
     # Use the loaded parameters to create a Pump instance
     pump = Pump(**params)
 
+    targetVpm = params.get("targetVpm")
     # Gather design parameters
     designParams = pump.getDesignParameters()
 
@@ -122,7 +123,7 @@ if __name__ == "__main__":
         os.makedirs(outputFolderPath)
     
     # Create unique filename with the timestamp and directory
-    filename = os.path.join(outputFolderPath, f"Desing_paramaters_output_{currentTime}.txt")
+    filename = os.path.join(outputFolderPath, f"Desing_paramaters_output_{targetVpm}.txt")
     
     # Save the data in the txt file
     with open(filename, 'w') as outfile:
@@ -130,7 +131,7 @@ if __name__ == "__main__":
     
 
     # Create an image of the pump
-    imageGenerator = ImageGenerator(f"pump_{currentTime}.png")
+    imageGenerator = ImageGenerator(f"pump_{targetVpm}.png")
            
 
 

@@ -2,6 +2,12 @@
     "targetVpm": 2.1,
     "caseThickness": 10,
     "x": 0,
-    "y": 0
+    "y": 0,
+    "radius": 20,
+    "teethDiameter": 5,
+    "depth": 10,
+    "angleSpeed": 0.1,
+    "density": 2700,
+    "mass": 0
   }
 

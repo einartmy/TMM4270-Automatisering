@@ -3,6 +3,7 @@ import requests
 import os
 from flask import Flask, send_file, url_for, render_template_string, request
 import os
+import json
 
 app = Flask(__name__)
 
@@ -13,14 +14,27 @@ def index():
     return render_template_string(html_content)
 
 
-@app.route("/latest-image")
-def latest_image():
-    currentDirectory = os.path.dirname(os.path.abspath(__file__))
+@app.route("/get-image")
+# def latest_image():
+#     currentDirectory = os.path.dirname(os.path.abspath(__file__))
+#     image_directory_name = "Images"
+#     ImageFolderPath = os.path.join(currentDirectory, image_directory_name)
+#     images = [f for f in os.listdir(ImageFolderPath) if f.endswith(".png")]
+#     latest_image = sorted(images)[-1]
+#     return send_file(os.path.join(ImageFolderPath, latest_image), mimetype="image/png")
+def get_image():
+    target_vpm = request.args.get('targetVPM', default = None, type=float)
+    filename= f"pump_{target_vpm}"
+    current_directory = os.path.dirname(os.path.abspath(__file__))
     image_directory_name = "Images"
-    ImageFolderPath = os.path.join(currentDirectory, image_directory_name)
-    images = [f for f in os.listdir(ImageFolderPath) if f.endswith(".png")]
-    latest_image = sorted(images)[-1]
-    return send_file(os.path.join(ImageFolderPath, latest_image), mimetype="image/png")
+    image_file_path = os.path.join(current_directory, image_directory_name, f"{filename}.png")
+
+    if os.path.exists(image_file_path):
+        return send_file(image_file_path, mimetype="image/png")
+    else:
+        # Handle the case where the specified image file does not exist
+        return "Image not found", 404
+
 
 
 @app.route("/create-pump", methods=["POST"])
@@ -36,16 +50,32 @@ def calculate():
         #Kan ikke bruke get_pump_info fordi den bruker et pump objekt
         #Vår pump er en String hentet fra databasen. 
         pump = get_pump(target_vpm)
-        print(pump)
         print("Pump exists", pump)
-        print(get_pump_details(target_vpm))
+        pump_details = get_pump_details(target_vpm)
         results = f"""
-        A pump with the target VPM {target_vpm} already exists with the name: <br> <br>
-        {pump}
+        A pump with the target VPM {target_vpm} already exists with the values: <br> <br>
+        {get_pump_info(pump)}
         """
     else:
         optimizer = GeneticPumpOptimizer(target_vpm)
         best_pump = optimizer.run()
+        best_pump_data = {
+            "targetVpm": best_pump.target_vpm,
+            "caseThickness": best_pump.caseThickness,
+            "x": best_pump.x,
+            "y": best_pump.y,
+            "radius": best_pump.radius,
+            "teethDiameter": best_pump.teethDiameter,
+            "depth": best_pump.depth,
+            "angleSpeed": best_pump.angleSpeed,
+        }
+        currentDirectory = os.path.dirname(os.path.abspath(__file__))
+        inputJsonPath = os.path.join(currentDirectory, "Pump_parameters.json")
+        with open(inputJsonPath, "w") as file:  
+            json.dump(best_pump_data, file)
+            
+        
+        
         results = f"Optimized parameters to achieve close to {target_vpm} VPM are:<br><br>" + get_pump_info(best_pump)
         
         # Run all update functions
@@ -56,22 +86,19 @@ def calculate():
     <html>
     <body>
         <br>
-        <a href="{url_for('latest_image')}"><button>View Image</button></a>
+        <a href="{url_for('get-image', targetVPM = target_vpm)}"><button>View Image</button></a>
     </body>
     </html>
     """
     return results + image_button
 
 
-
 def get_pump_info(pump):
     #Calculations based on the target VPM using GA
-    
-    
     # Add result to a string
     results = """
     <style>
-    td {
+    tr {
         text-align: center:
     }
     </style>"""+f"""
@@ -108,14 +135,9 @@ def get_pump_info(pump):
     <td>Calculated VPM</td>
     <td>{round(pump.vpm(), 4)}</td>
   </tr>
-</table>
+  </table>
     """
-
-    
-    
-
     return results
-
 
 def get_sparql_pump_list(sparql_query):
     url = "http://localhost:3030/A3/query"
@@ -245,8 +267,6 @@ def insert_data(target_vpm):
 
     insert_sparql_data(sparql_has_query)
 
-
-
 def insert_sparql_data(sparql_query):
     url = "http://localhost:3030/A3/update"
     
@@ -340,7 +360,14 @@ def get_pump_details(target_vpm):
         data = response.json()
         bindings = data["results"]["bindings"] 
         if len(bindings) > 0:
-            return bindings[0]
+            pump_details = {
+                'pump': result['pump']['value'],
+                'targetVPM': result['targetVPM']['value'],
+                'gearRadius': result['gearRadius']['value'],
+                'toothRadius': result['toothRadius']['value'],
+                'depth': result['depth']['value'],
+            }
+            return pump_details
         else:
             return None
     else:
