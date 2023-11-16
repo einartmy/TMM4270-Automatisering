@@ -36,17 +36,24 @@ def get_image():
 
 @app.route("/order-page")
 def order_page():
-    pump_name = request.args.get("pumpName", default=None)
+    pump_name = request.args.get("pump_name", default=None)
+    print(pump_name)
     #target_vpm = float(request.form["targetVPM"])
 
-    return render_template("order.html")
+    return render_template("order.html", pump_name=pump_name)
 
 @app.route("/confirmed-order",  methods=["POST"])
 def confirmed_order():
     username = request.form["username"]
     email = request.form["email"]
     pump_amount = request.form["pump_amount"]
-   
+    pump_name = request.form.get("pump_name", default=None)
+    print(pump_name)
+
+    insert_customer_data(username, email)
+    insert_order_data(pump_name, pump_amount, username)
+    orders = show_orders_table(username)
+
     #pump_name = request.args.get("pumpName", default=None)
     text = f"""
     <html>
@@ -58,7 +65,7 @@ def confirmed_order():
     </body>
     </html>
     """
-    return text
+    return text + orders
 
 
 @app.route("/create-pump", methods=["POST"])
@@ -119,7 +126,7 @@ def calculate():
     <body>
         <br>
         <a href="{url_for('get_image', targetVPM = target_vpm)}"><button>View Image</button></a>
-        <a href="{url_for('order_page', pumpName = pump_name)}"><button>Order</button></a>
+        <a href="{url_for('order_page', pump_name = pump_name)}"><button>Order</button></a>
     </body>
     </html>
     """
@@ -448,12 +455,17 @@ def get_orders(customer_username):
 
 def show_orders_table(customer_username):
     orders = get_orders(customer_username)
-    table = """
-    <style>
-        td {{ text-align: center; }}
-    </style>
-    <table>
-        <tr><th>Order</th><th>Pump</th><th>Quantity</th></tr>
+    table = f"""
+    <h2>Your Orders {customer_username}</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Order Number</th>
+                <th>Pump Number</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
     """
     for order in orders:
         table += f"""
@@ -463,7 +475,7 @@ def show_orders_table(customer_username):
             <td>{order["quantity"]}</td>
         </tr>
         """
-    table += "</table>"
+    table += "</tbody></table>"
     return table
     
 
