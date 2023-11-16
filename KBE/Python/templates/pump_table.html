@@ -12,18 +12,22 @@
             <th>Pump Name</th>
             <th>Target VPM</th>
             <th>Gear Radius</th>
-            <th>Tooth Radius</th>
-            <th>Depth</th>
-            <th>Thickness</th>
+            <th>Teeth Diameter</th>
+            <th>Gear Depth</th>
+            <th>Case Thickness</th>
+            <th>Angle Speed</th>
+            <th>Number of Teeth</th>
         </tr>
         {% for pump_name, pump_info in pumps.items() %}
         <tr>
             <td>{{ pump_name }}</td>
             <td>{{ pump_info.targetVPM }}</td>
             <td>{{ pump_info.gearRadius }}</td>
-            <td>{{ pump_info.toothRadius }}</td>
+            <td>{{ pump_info.teethDiameter }}</td>
             <td>{{ pump_info.depth }}</td>
             <td>{{ pump_info.thickness }}</td>
+            <td>{{ pump_info.angleSpeed }}</td>
+            <td>{{ pump_info.numberOfTeeth }}</td>
         </tr>
         {% endfor %}
     </table>

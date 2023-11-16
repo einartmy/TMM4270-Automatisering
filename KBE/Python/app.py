@@ -24,7 +24,7 @@ def index():
 @app.route("/get-image")
 def get_image():
     target_vpm = request.args.get("targetVPM", default=None, type=float)
-    filename = f"pump_{target_vpm}.png"
+    filename = f"pump_{target_vpm}"
     currentDirectory = os.path.dirname(os.path.abspath(__file__))
     image_directory_name = "Images"
     image_file_path = os.path.join(currentDirectory, image_directory_name, f"{filename}.png")
@@ -44,7 +44,8 @@ def calculate():
         print("Pump exists", pump)
         pump_details = get_pump_details(target_vpm)
         print(pump_details)
-        output_info = get_html_pump_info(pump_details["gearRadius"], pump_details["toothRadius"], pump_details["thickness"] ,pump_details["depth"], pump_exists=True)
+        output_info = get_html_pump_info(pump_details["gearRadius"], pump_details["teethDiameter"], 
+        pump_details["thickness"], pump_details["depth"], pump_details["angleSpeed"], pump_details["numberOfTeeth"], pump_exists=True)
         results = f"""
         A pump with the target VPM {target_vpm} already exists with the name: {pump} <br> <br>
        
@@ -58,6 +59,8 @@ def calculate():
         teethDiameter = best_pump.teethDiameter
         depth = best_pump.depth
         calculated_vpm = best_pump.vpm()
+        angleSpeed = best_pump.angleSpeed
+        numberOfTeeth = best_pump.numberOfTeeth()
         best_pump_data = {
             "targetVpm": target_vpm,
             "radius": radius,
@@ -75,10 +78,10 @@ def calculate():
             json.dump(best_pump_data, file)
         
 
-        results = f"Optimized parameters to achieve close to {target_vpm} VPM are:<br><br>" + get_html_pump_info(radius, teethDiameter, thickness, depth, calculated_vpm, pump_exists=False)
+        results = f"Optimized parameters to achieve close to {target_vpm} VPM are:<br><br>" + get_html_pump_info(radius, teethDiameter, thickness, depth, angleSpeed, numberOfTeeth, calculated_vpm, pump_exists=False)
         
         # Run all update functions
-        insert_data(target_vpm, depth, thickness, radius, teethDiameter)
+        insert_data(target_vpm, depth, thickness, radius, teethDiameter, angleSpeed, numberOfTeeth)
     
     global pumps
     pumps = get_all_pumps()      
@@ -98,18 +101,20 @@ def get_pump_details(target_vpm):
     sparql_query = f"""
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     PREFIX A3: <http://www.kbe.com/pump.owl#>
-    SELECT DISTINCT ?pump ?targetVPM ?gearRadius ?toothRadius ?depth ?thickness
+    SELECT DISTINCT ?pump ?targetVPM ?gearRadius ?teethDiameter ?depth ?thickness ?angleSpeed ?numberOfTeeth
     WHERE {{
         ?pump a A3:Pump ;
             A3:targetVPM "{target_vpm}"^^xsd:decimal ;
+            A3:angleSpeed ?angleSpeed ;
             A3:hasLowerCase ?lowerCase ;
             A3:hasGear ?gear .
 
         ?lowerCase A3:thickness ?thickness .
 
         ?gear A3:gearRadius ?gearRadius ;
-            A3:toothRadius ?toothRadius ;
-            A3:depth ?depth . 
+            A3:teethDiameter ?teethDiameter ;
+            A3:depth ?depth ;
+            A3:numberOfTeeth ?numberOfTeeth . 
     }}
 
     """
@@ -138,18 +143,20 @@ def get_all_pumps():
     sparql_query = """
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     PREFIX A3: <http://www.kbe.com/pump.owl#>
-    SELECT DISTINCT ?pump ?targetVPM ?gearRadius ?toothRadius ?depth ?thickness
+    SELECT DISTINCT ?pump ?targetVPM ?gearRadius ?teethDiameter ?depth ?thickness ?angleSpeed ?numberOfTeeth
     WHERE {
         ?pump a A3:Pump ;
             A3:targetVPM ?targetVPM ;
+            A3:angleSpeed ?angleSpeed ;
             A3:hasLowerCase ?lowerCase ;
             A3:hasGear ?gear .
 
         ?lowerCase A3:thickness ?thickness .
 
         ?gear A3:gearRadius ?gearRadius ;
-            A3:toothRadius ?toothRadius ;
-            A3:depth ?depth . 
+            A3:teethDiameter ?teethDiameter ;
+            A3:depth ?depth ;
+            A3:numberOfTeeth ?numberOfTeeth . 
     }
     ORDER BY (?pump)
     """
@@ -164,74 +171,76 @@ def get_all_pumps():
             pump_name = binding["pump"]["value"].split("#")[1]
             pumps[pump_name] = {
                 "targetVPM": float(binding["targetVPM"]["value"]),
-                "gearRadius": float(binding["gearRadius"]["value"]),
-                "toothRadius": float(binding["toothRadius"]["value"]),
-                "depth": float(binding["depth"]["value"]),
-                "thickness": float(binding["thickness"]["value"])
+                "gearRadius": round(float(binding["gearRadius"]["value"]) * 1000, 2),                   #Convert to mm
+                "teethDiameter": round(float(binding["teethDiameter"]["value"]) * 1000, 2),             #Convert to mm
+                "depth": round(float(binding["depth"]["value"]) * 1000, 2),                             #Convert to mm      
+                "thickness": float(binding["thickness"]["value"]),
+                "angleSpeed": round(float(binding["angleSpeed"]["value"]), 2),
+                "numberOfTeeth": int(binding["numberOfTeeth"]["value"])
             }
         print(pumps)
         return pumps
     else:
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
 
-
-
-#Må legge til anglespeed og numberofteeth 
-def get_html_pump_info(radius, teethDiameter, thickness, depth, calculated_vpm=None, pump_exists=False):
+def get_html_pump_info(radius, teethDiameter, thickness, depth, angleSpeed, numberOfTeeth, calculated_vpm=None, pump_exists=False):
     results = f"""
     <style>
         td {{ text-align: center; }}
     </style>
     <table>
         <tr><th>Parameter</th><th>Value</th></tr>
-        <tr><td>Gear Radius</td><td>{round(radius * 1000, 4)} mm</td></tr>
-        <tr><td>Teeth Diameter</td><td>{round(teethDiameter * 1000, 4)} mm</td></tr>
-        <tr><td>Depth</td><td>{round(depth * 1000, 4)} mm</td></tr>
+        <tr><td>Gear Radius</td><td>{round(radius * 1000, 2)} mm</td></tr>
+        <tr><td>Teeth Diameter</td><td>{round(teethDiameter * 1000, 2)} mm</td></tr>
+        <tr><td>Gear Depth</td><td>{round(depth * 1000, 2)} mm</td></tr>
+        <tr><td>Angle Speed</td><td>{round(angleSpeed, 2)} rad/s</td></tr>
+        <tr><td>Number of Teeth</td><td>{numberOfTeeth}</td></tr>
         <tr><td>Case Thickness</td><td>{thickness} mm</td></tr>
     """
     if not pump_exists:
-        results += f"<tr><td>Calculated VPM</td><td>{round(calculated_vpm, 6)} cubic meters pr min</td></tr>"
+        results += f"<tr><td>Calculated VPM</td><td>{round(calculated_vpm, 3)} cubic meters pr min</td></tr>"
     results += "</table>"
     return results
 
-def insert_data(target_vpm, depth, thickness, gear_radius, tooth_radius): 
+def insert_data(target_vpm, depth, thickness, gear_radius, tooth_radius, angleSpeed, numberOfTeeth): 
         count = get_pump_count()
         sparql_query = f"""
         PREFIX A3: <http://www.kbe.com/pump.owl#>
         INSERT {{
                 A3:pump_{count} a A3:Pump;
                         A3:targetVPM {target_vpm};
+                        A3:angleSpeed {angleSpeed};
                         A3:hasGear [ a A3:PumpGear;
                                                     A3:depth {depth};
                                                     A3:gearRadius {gear_radius};
-                                                    A3:toothRadius {tooth_radius};
+                                                    A3:teethDiameter {tooth_radius};
+                                                    A3:numberOfTeeth {numberOfTeeth};
                                                     A3:offset true
                                                 ],
                                             [ a A3:PumpGear;
                                                     A3:depth {depth};
                                                     A3:gearRadius {gear_radius};
-                                                    A3:toothRadius {tooth_radius};
+                                                    A3:teethDiameter {tooth_radius};
+                                                    A3:numberOfTeeth {numberOfTeeth};
                                                     A3:offset false
                                                 ];
                         A3:hasUpperCase [ a A3:UpperCase;
                                                             A3:depth {depth};
                                                             A3:thickness {thickness};
                                                             A3:gearRadius {gear_radius};
-                                                            A3:toothRadius {tooth_radius}
+                                                            A3:teethDiameter {tooth_radius}
                                                         ];
                         A3:hasLowerCase [ a A3:LowerCase;
                                                             A3:depth {depth};
                                                             A3:thickness {thickness};
                                                             A3:gearRadius {gear_radius};
-                                                            A3:toothRadius {tooth_radius}
+                                                            A3:teethDiameter {tooth_radius}
                                                         ]
         }}
         WHERE {{
         }}
         """
         insert_sparql_data(sparql_query)
-
-
 
 def insert_sparql_data(sparql_query):
     url = "http://localhost:3030/A3/update"
@@ -303,7 +312,131 @@ def get_pump(target_vpm):
     else:
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
 
+def get_order_count():
+    sparql_query = """
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    SELECT (COUNT(?order) AS ?count)
+    WHERE {
+        ?order a A3:Order.
+    }
+    """
+    url = "http://localhost:3030/A3/query"
+    PARAMS = {"query": sparql_query}
+    response = requests.get(url, PARAMS)
+    data = response.json()
+    count = int(data["results"]["bindings"][0]["count"]["value"])
+    return count + 1
 
+def insert_order_data(pump_name, order_quantity, customer_username):
+    count = get_order_count()
+    sparql_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    INSERT {{
+            A3:order_{count} a A3:Order;
+                    A3:hasProduct A3:{pump_name};
+                    A3:hasCustomer A3:{customer_username};
+                    A3:orderQuantity {order_quantity}
+    }}
+    WHERE {{
+    }}
+    """
+    insert_sparql_data(sparql_query)
+
+def insert_customer_data(customer_username, customer_email):
+    count = get_customer_count()
+    sparql_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    INSERT {{
+            A3:customer_{count} a A3:Customer;
+                    A3:userName "{customer_username}";
+                    A3:mail "{customer_email}"
+    }}
+    WHERE {{
+    }}
+    """
+    insert_sparql_data(sparql_query)
+
+def get_customer_count():
+    sparql_query = """
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    SELECT (COUNT(?customer) AS ?count)
+    WHERE {
+        ?customer a A3:Customer.
+    }
+    """
+    url = "http://localhost:3030/A3/query"
+    PARAMS = {"query": sparql_query}
+    response = requests.get(url, PARAMS)
+    data = response.json()
+    count = int(data["results"]["bindings"][0]["count"]["value"])
+    return count + 1
+
+def check_username_exists(customer_username):
+    sparql_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    ASK {{
+        ?customer a A3:Customer ;
+              A3:userName "{customer_username}".
+    }}
+    """
+    url = "http://localhost:3030/A3/query"
+    PARAMS = {"query": sparql_query}
+    response = requests.get(url, PARAMS)
+    if response.status_code == 200:
+        data = response.json()
+        return data["boolean"]  # This will be True if the customer exists, False otherwise
+    else:
+        raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
+
+def get_orders(customer_username):
+    sparql_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    SELECT ?order ?pump ?quantity
+    WHERE {{
+        ?order a A3:Order ;
+              A3:hasCustomer A3:{customer_username} ;
+              A3:hasProduct ?pump ;
+              A3:orderQuantity ?quantity .
+    }}
+    ORDER BY (?order)
+    """
+    url = "http://localhost:3030/A3/query"
+    PARAMS = {"query": sparql_query}
+    response = requests.get(url, PARAMS)
+    if response.status_code == 200:
+        data = response.json()
+        bindings = data["results"]["bindings"]
+        orders = []
+        for binding in bindings:
+            orders.append({
+                "order": binding["order"]["value"].split("#")[1],
+                "pump": binding["pump"]["value"].split("#")[1],
+                "quantity": int(binding["quantity"]["value"])
+            })
+        return orders
+    else:
+        raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
+
+def show_orders_table(customer_username):
+    orders = get_orders(customer_username)
+    table = """
+    <style>
+        td {{ text-align: center; }}
+    </style>
+    <table>
+        <tr><th>Order</th><th>Pump</th><th>Quantity</th></tr>
+    """
+    for order in orders:
+        table += f"""
+        <tr>
+            <td>{order["order"]}</td>
+            <td>{order["pump"]}</td>
+            <td>{order["quantity"]}</td>
+        </tr>
+        """
+    table += "</table>"
+    return table
+    
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
