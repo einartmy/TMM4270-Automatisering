@@ -1,3 +1,4 @@
+import json
 from GeneticPumpOptimizer import GeneticPumpOptimizer
 import requests
 import os
@@ -20,15 +21,18 @@ def index():
     return render_template("vpm.html", pumps_table=pumps_table)
 
 
-@app.route("/latest-image")
+@app.route("/get-image")
 def latest_image():
+    target_vpm = request.args.get("targetVPM", default=None, type=float)
+    filename = f"pump_{target_vpm}.png"
     currentDirectory = os.path.dirname(os.path.abspath(__file__))
     image_directory_name = "Images"
-    ImageFolderPath = os.path.join(currentDirectory, image_directory_name)
-    images = [f for f in os.listdir(ImageFolderPath) if f.endswith(".png")]
-    latest_image = sorted(images)[-1]
-    return send_file(os.path.join(ImageFolderPath, latest_image), mimetype="image/png")
+    image_file_path = os.path.join(currentDirectory, image_directory_name, f"{filename}.png")
 
+    if os.path.exists(image_file_path):
+        return send_file(image_file_path, mimetype="image/png")
+    else:
+        return "No image found for the given targetVPM, 3D model has not been generated yet."
 
 @app.route("/create-pump", methods=["POST"])
 def calculate():
@@ -54,6 +58,22 @@ def calculate():
         teethDiameter = best_pump.teethDiameter
         depth = best_pump.depth
         calculated_vpm = best_pump.vpm()
+        best_pump_data = {
+            "radius": radius,
+            "teethDiameter": teethDiameter,
+            "depth": depth,
+            "angleSpeed": best_pump.angleSpeed,
+            "caseThickness": thickness,
+            "x": 0,
+            "y": 0
+        }
+
+        currentDirectory = os.path.dirname(os.path.abspath(__file__))
+        inputJsonPath = os.path.join(currentDirectory, "Pump_parameters.json")
+        with open(inputJsonPath, "w") as file:
+            json.dump(best_pump_data, file)
+        
+
         results = f"Optimized parameters to achieve close to {target_vpm} VPM are:<br><br>" + get_html_pump_info(radius, teethDiameter, thickness, depth, calculated_vpm, pump_exists=False)
         
         # Run all update functions
@@ -66,7 +86,7 @@ def calculate():
     <html>
     <body>
         <br>
-        <a href="{url_for('latest_image')}"><button>View Image</button></a>
+        <a href="{url_for('get_image', targetVPM = target_vpm)}"><button>View Image</button></a>
     </body>
     </html>
     """
