@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pump Designer</title>
+</head>
+<body>
+
+<h2>Order The Pump</h2>
+
+<form action="/confirmed-order" method="post">
+    <label for="username">Enter username:</label>
+    <input type="text" id="username" name="username" >
+    <br>
+    <label for="email">Enter email:</label>
+    <input type="text" id="email" name="email" >
+    <br>
+    
+    <label for="pump_amount">Enter amount of pumps:</label>
+    <input type="text" id="pump_amount" name="pump_amount" required pattern="\d+?" title="Please enter a valid value">
+    <br>
+
+    <button type="submit">Submit Order</button>
+</form>
+
+
+</body>
+</html>

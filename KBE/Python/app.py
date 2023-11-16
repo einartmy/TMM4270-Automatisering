@@ -34,6 +34,33 @@ def get_image():
     else:
         return "No image found for the given targetVPM, 3D model has not been generated yet."
 
+@app.route("/order-page")
+def order_page():
+    pump_name = request.args.get("pumpName", default=None)
+    #target_vpm = float(request.form["targetVPM"])
+
+    return render_template("order.html")
+
+@app.route("/confirmed-order",  methods=["POST"])
+def confirmed_order():
+    username = request.form["username"]
+    email = request.form["email"]
+    pump_amount = request.form["pump_amount"]
+   
+    #pump_name = request.args.get("pumpName", default=None)
+    text = f"""
+    <html>
+    <body>
+        <br>
+        <h5>{username}</h5>
+        <h5>{email}</h5>
+        <h5>{pump_amount}</h5>
+    </body>
+    </html>
+    """
+    return text
+
+
 @app.route("/create-pump", methods=["POST"])
 def calculate():
     target_vpm = float(request.form["targetVPM"])
@@ -84,13 +111,15 @@ def calculate():
         insert_data(target_vpm, depth, thickness, radius, teethDiameter, angleSpeed, numberOfTeeth)
     
     global pumps
-    pumps = get_all_pumps()      
+    pumps = get_all_pumps()    
+    pump_name = f"pump_{get_pump_count()}"  
 
     image_button = f"""
     <html>
     <body>
         <br>
         <a href="{url_for('get_image', targetVPM = target_vpm)}"><button>View Image</button></a>
+        <a href="{url_for('order_page', pumpName = pump_name)}"><button>Order</button></a>
     </body>
     </html>
     """
