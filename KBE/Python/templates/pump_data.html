@@ -68,7 +68,7 @@
 {% if pump_exists %}
 <p>A pump with this VPM already exists in our database.</p>
 {% endif %}
-    <table>
+    <table> 
         <tr>
             <th>Parameter</th>
             <th>Value</th>
@@ -110,9 +110,11 @@
         {% endif %} 
     </table>
     
-<!-- Buttons to view image or order -->
+<!-- Buttons to view image or order. 
+    Image sends target_vpm since its the value that is important for finding right image
+    Order sends pump_name since we need to know what pump the customer wanted to order -->
 <div>
-    <a href="{{ url_for('get_image', targetVPM=target_vpm) }}"><button>View Image</button></a>
+    <a href="{{ url_for('get_image', targetVPM=target_vpm) }}"><button>View Image</button></a> 
     <a href="{{ url_for('order_page', pump_name=pump_name) }}"><button>Order</button></a>
 </div>
 
