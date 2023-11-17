@@ -119,7 +119,7 @@ def calculate():
     
     global pumps
     pumps = get_all_pumps()    
-    pump_name = f"pump_{get_pump_count()}"  
+    pump_name = get_pump(target_vpm)  
 
     image_button = f"""
     <html>
