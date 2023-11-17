@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pump Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center; /* Center align the content */
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 70%; 
+            margin: 20px auto; 
+            font-size: 14px; 
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 6px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+    </style>
+</head>
+<body>
+    
+<h2>Pump Details for {{ pump_name }}</h2>
+<br>
+{% if pump_exists %}
+<p>A pump with this VPM already exists in our database.</p>
+{% endif %}
+    <table>
+        <tr>
+            <th>Parameter</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Target VPM</td>
+            <td>{{ target_vpm }}</td>
+        </tr>
+        <tr>
+            <td>Gear Radius</td>
+            <td>{{ pump_data.gearRadius }}</td>
+        </tr>
+        <tr>
+            <td>Teeth Diameter</td>
+            <td>{{ pump_data.teethDiameter }}</td>
+        </tr>
+        <tr>
+            <td>Gear Depth</td>
+            <td>{{ pump_data.depth }}</td>
+        </tr>
+        <tr>
+            <td>Case Thickness</td>
+            <td>{{ pump_data.thickness }}</td>
+        </tr>
+        <tr>
+            <td>Angle Speed</td>
+            <td>{{ pump_data.angleSpeed }}</td>
+        </tr>
+        <tr>
+            <td>Number of Teeth</td>
+            <td>{{ pump_data.numberOfTeeth }}</td>
+        </tr>
+
+        {% if not pump_exists %}
+        <tr>
+            <td>Calculated VPM</td>
+            <td>{{ calculated_vpm }}</td>
+        </tr>
+        {% endif %} 
+    </table>
+    
+<!-- Buttons to view image or order -->
+<div>
+    <a href="{{ url_for('get_image', targetVPM=target_vpm) }}"><button>View Image</button></a>
+    <a href="{{ url_for('order_page', pump_name=pump_name) }}"><button>Order</button></a>
+</div>
+
+</body>
+</html>
+    

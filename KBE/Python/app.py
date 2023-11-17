@@ -43,40 +43,30 @@ def confirmed_order():
     pump_name = request.form.get("pump_name", default=None)
 
     insert_customer_data(username, email)
-    insert_order_data(pump_name, pump_amount, username)
-    orders = show_orders_table(username)
-    homepage_button = f"""
-        <html>
-        <body>
-            <h1> Order complete </h1>
-            <span> We will be in touch <span>
-            <br><br>
-            <a href="{url_for('index')}"><button>Homepage</button></a>
-            <br><br>
-        </body>
-        </html>
-        """
-    #pump_name = request.args.get("pumpName", default=None)
-    return homepage_button + orders
-
+    order_number = insert_order_data(pump_name, pump_amount, username)
+    orders = get_orders(username)
+    return render_template('order_confirmed.html', order_number=order_number, orders=orders, username=username)
 
 @app.route("/create-pump", methods=["POST"])
 def calculate():
     target_vpm = float(request.form["targetVPM"])
+    global pumps
  
     # Check if pump already exists
     if pump_exists(target_vpm):
-        pump = get_pump(target_vpm)
-        print("Pump exists", pump)
+        pump_name = get_pump(target_vpm)
+        print("Pump exists", pump_name)
         pump_details = get_pump_details(target_vpm)
         print(pump_details)
-        output_info = get_html_pump_info(pump_details["gearRadius"], pump_details["teethDiameter"], 
-        pump_details["thickness"], pump_details["depth"], pump_details["angleSpeed"], pump_details["numberOfTeeth"], pump_exists=True)
-        results = f"""
-        A pump with the target VPM {target_vpm} already exists with the name: {pump} <br> <br>
-       
-        Optimized parameters to achieve close to {target_vpm} VPM are:<br><br> {output_info}
-        """
+
+        results =  render_template(
+        'pump_data.html',
+        target_vpm=target_vpm,
+        pump_data=pump_details,
+        pump_name=pump_name,
+        pump_exists=True)
+
+    # If pump does not exist, optimize the parameters
     else:
         optimizer = GeneticPumpOptimizer(target_vpm)
         best_pump = optimizer.run()
@@ -103,26 +93,24 @@ def calculate():
         with open(inputJsonPath, "w") as file:
             json.dump(best_pump_data, file)
         
-
-        results = f"Optimized parameters to achieve close to {target_vpm} VPM are:<br><br>" + get_html_pump_info(radius, teethDiameter, thickness, depth, angleSpeed, numberOfTeeth, calculated_vpm, pump_exists=False)
-        
         # Run all update functions
         insert_data(target_vpm, depth, thickness, radius, teethDiameter, angleSpeed, numberOfTeeth)
-    
-    global pumps
-    pumps = get_all_pumps()    
-    pump_name = get_pump(target_vpm)  
+        pumps = get_all_pumps()   # Update the pumps dictionary   
+        pump_name = get_pump(target_vpm) 
+        pump_details = get_pump_details(target_vpm)
+        
+        print(pump_details)
 
-    image_and_order_button = f"""
-    <html>
-    <body>
-        <br>
-        <a href="{url_for('get_image', targetVPM = target_vpm)}"><button>View Image</button></a>
-        <a href="{url_for('order_page', pump_name = pump_name)}"><button>Order</button></a>
-    </body>
-    </html>
-    """
-    return results + image_and_order_button
+        results =  render_template(
+        'pump_data.html',
+        target_vpm=target_vpm,
+        pump_data=pump_details,
+        pumps=pumps,
+        pump_name=pump_name,
+        pump_exists=False,
+        calculated_vpm= round(calculated_vpm, 4))
+
+    return results 
 
 def get_pump_details(target_vpm):
     # Query to get the Pump with the given targetVPM
@@ -159,7 +147,12 @@ def get_pump_details(target_vpm):
                 if key == "pump": 
                     result[key] = value["value"].split("#")[1]
                 else:
-                    result[key] = float(value["value"])
+                    if key in ["gearRadius", "teethDiameter", "depth"]:
+                        result[key] = round(float(value["value"]) * 1000, 2)
+                    elif key == "angleSpeed":
+                        result[key] = round(float(value["value"]), 2)
+                    else:
+                        result[key] = float(value["value"])
             return result 
         else:
             return None
@@ -210,25 +203,6 @@ def get_all_pumps():
         return pumps
     else:
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
-
-def get_html_pump_info(radius, teethDiameter, thickness, depth, angleSpeed, numberOfTeeth, calculated_vpm=None, pump_exists=False):
-    results = f"""
-    <style>
-        td {{ text-align: center; }}
-    </style>
-    <table>
-        <tr><th>Parameter</th><th>Value</th></tr>
-        <tr><td>Gear Radius</td><td>{round(radius * 1000, 2)} mm</td></tr>
-        <tr><td>Teeth Diameter</td><td>{round(teethDiameter * 1000, 2)} mm</td></tr>
-        <tr><td>Gear Depth</td><td>{round(depth * 1000, 2)} mm</td></tr>
-        <tr><td>Angle Speed</td><td>{round(angleSpeed, 2)} rad/s</td></tr>
-        <tr><td>Number of Teeth</td><td>{numberOfTeeth}</td></tr>
-        <tr><td>Case Thickness</td><td>{thickness} mm</td></tr>
-    """
-    if not pump_exists:
-        results += f"<tr><td>Calculated VPM</td><td>{round(calculated_vpm, 3)} cubic meters pr min</td></tr>"
-    results += "</table>"
-    return results
 
 def insert_data(target_vpm, depth, thickness, gear_radius, tooth_radius, angleSpeed, numberOfTeeth): 
         count = get_pump_count()
@@ -357,18 +331,20 @@ def get_order_count():
 
 def insert_order_data(pump_name, order_quantity, customer_username):
     count = get_order_count()
+    order_number = f"order_{count}"
     sparql_query = f"""
     PREFIX A3: <http://www.kbe.com/pump.owl#>
     INSERT {{
-            A3:order_{count} a A3:Order;
-                    A3:hasProduct A3:{pump_name};
-                    A3:hasCustomer A3:{customer_username};
-                    A3:orderQuantity {order_quantity}
+        A3:{order_number} a A3:Order;
+            A3:hasProduct A3:{pump_name};
+            A3:hasCustomer A3:{customer_username};
+            A3:orderQuantity {order_quantity}
     }}
     WHERE {{
     }}
     """
     insert_sparql_data(sparql_query)
+    return order_number
 
 def insert_customer_data(customer_username, customer_email):
     count = get_customer_count()
@@ -398,23 +374,6 @@ def get_customer_count():
     data = response.json()
     count = int(data["results"]["bindings"][0]["count"]["value"])
     return count + 1
-
-def check_username_exists(customer_username):
-    sparql_query = f"""
-    PREFIX A3: <http://www.kbe.com/pump.owl#>
-    ASK {{
-        ?customer a A3:Customer ;
-              A3:userName "{customer_username}".
-    }}
-    """
-    url = "http://localhost:3030/A3/query"
-    PARAMS = {"query": sparql_query}
-    response = requests.get(url, PARAMS)
-    if response.status_code == 200:
-        data = response.json()
-        return data["boolean"]  # This will be True if the customer exists, False otherwise
-    else:
-        raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
 
 def get_orders(customer_username):
     sparql_query = f"""

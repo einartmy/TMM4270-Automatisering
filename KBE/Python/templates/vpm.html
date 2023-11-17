@@ -81,7 +81,8 @@
 <h2>Create a Pump</h2>
 
 <form action="/create-pump" method="post">
-    <label for="targetVPM">Enter Volume Per Minute (VPM):</label>
+    <!-- FILEPATH: /m:/Desktop/TMM4270/TMM4270-Automatisering/KBE/Python/templates/vpm.html -->
+    <label for="targetVPM">Enter Volume Per Minute (VPM) in cubic meters:</label>
     <input type="text" id="targetVPM" name="targetVPM" required pattern="\d+(\.\d+)?" title="Please enter a valid float value">
     <input type="submit" value="Create Pump" name="createPumpBtn">
 </form>
@@ -92,8 +93,7 @@
 
 <!-- Available Pumps table (initially hidden) -->
 <div id="pumpsTableDiv">
-    <!-- {{ pumps_table | safe }} -->
-    <!-- Replace the above comment with the actual content you want to display -->
+    {{ pumps_table | safe }} 
 </div>
 
 <script>
