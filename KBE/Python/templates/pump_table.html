@@ -55,6 +55,7 @@
             <th>Case Thickness</th>
             <th>Angle Speed</th>
             <th>Number of Teeth</th>
+            <th>Times Ordered</th>
         </tr>
         {% for pump_name, pump_info in pumps.items() %}
         <tr>
@@ -66,6 +67,7 @@
             <td>{{ pump_info.thickness }}</td>
             <td>{{ pump_info.angleSpeed }}</td>
             <td>{{ pump_info.numberOfTeeth }}</td>
+            <td>{{ pump_info.timesOrdered }}</td>
         </tr>
         {% endfor %}
     </table>

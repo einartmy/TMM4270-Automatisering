@@ -16,7 +16,6 @@ def index():
 
     return render_template("vpm.html", pumps_table=pumps_table)
 
-
 @app.route("/get-image")
 def get_image():
     target_vpm = request.args.get("targetVPM", default=None, type=float) #get the sent VPM to find matching image
@@ -188,6 +187,7 @@ def get_all_pumps():
         pumps = {}
         for binding in bindings:
             pump_name = binding["pump"]["value"].split("#")[1]
+            times_ordered = count_pump_ordered(pump_name)
             pumps[pump_name] = {
                 "targetVPM": float(binding["targetVPM"]["value"]),
                 "gearRadius": round(float(binding["gearRadius"]["value"]) * 1000, 2),                   #Convert to mm
@@ -195,7 +195,8 @@ def get_all_pumps():
                 "depth": round(float(binding["depth"]["value"]) * 1000, 2),                             #Convert to mm      
                 "thickness": float(binding["thickness"]["value"]),
                 "angleSpeed": round(float(binding["angleSpeed"]["value"]), 2),
-                "numberOfTeeth": int(binding["numberOfTeeth"]["value"])
+                "numberOfTeeth": int(binding["numberOfTeeth"]["value"]),
+                "timesOrdered": times_ordered
             }
         return pumps
     else:
@@ -426,6 +427,24 @@ def check_username_exists(customer_username):
         return data["boolean"]  # This will be True if the Customer exists, False otherwise
     else:
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
+
+def count_pump_ordered(pump_name):
+    # SPARQL Query to count the number of times a Pump has been ordered
+    sparql_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    SELECT (SUM(?quantity) AS ?count)
+    WHERE {{
+        ?order a A3:Order ;
+              A3:hasProduct A3:{pump_name} ;
+              A3:orderQuantity ?quantity .
+    }}
+    """
+    url = "http://localhost:3030/A3/query"
+    PARAMS = {"query": sparql_query}
+    response = requests.get(url, PARAMS)
+    data = response.json()
+    count = int(data["results"]["bindings"][0]["count"]["value"])
+    return count
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
