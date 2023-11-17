@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"targetVpm": 3.5, "radius": 0.2398440052712092, "teethDiameter": 0.030322144985950795, "depth": 0.4796880105424184, "angleSpeed": 3.646018044325365, "caseThickness": 10.0, "x": 0, "y": 0}
+=======
+{"targetVpm": 4.0, "radius": 0.20220568466513167, "teethDiameter": 0.020220568466513166, "depth": 0.40441136933026334, "angleSpeed": 7.484172197097573, "caseThickness": 10.0, "x": 0, "y": 0}
+>>>>>>> c661add7ce3dc612ffa93be5b59a1738d00ff7a9
