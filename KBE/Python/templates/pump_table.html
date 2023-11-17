@@ -1,13 +1,50 @@
 <!-- templates/pump_template.html -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Available Pumps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 70%; /* Adjust the width as needed */
+            margin: 20px auto; /* Center the table */
+            font-size: 14px; /* Adjust the font size */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 6px; /* Adjust the padding */
+            text-align: left;
+        }
+
+        th {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
     <h2>Available Pumps</h2>
-    <table border="1">
+    <table>
         <tr>
             <th>Pump Name</th>
             <th>Target VPM</th>
@@ -33,3 +70,4 @@
     </table>
 </body>
 </html>
+

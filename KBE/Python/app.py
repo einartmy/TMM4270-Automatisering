@@ -6,40 +6,33 @@ from flask import Flask, render_template, send_file, url_for, render_template_st
 import os
 
 app = Flask(__name__)
-
 pumps = {}
 
 @app.route("/")
 def index():
-    # Get the available pumps as a dictionary
     global pumps
-    pumps = get_all_pumps()
-
-    # Render the HTML template with the available pumps
-    pumps_table = render_template("pump_table.html", pumps=pumps)
+    pumps = get_all_pumps()     # Get the available pumps as a dictionary
+    pumps_table = render_template("pump_table.html", pumps=pumps)     # Render the HTML template with the available pumps
 
     return render_template("vpm.html", pumps_table=pumps_table)
 
 
 @app.route("/get-image")
 def get_image():
-    target_vpm = request.args.get("targetVPM", default=None, type=float)
-    filename = f"pump_{target_vpm}"
+    target_vpm = request.args.get("targetVPM", default=None, type=float) #get the sent VPM to find matching image
+    filename = f"pump_{target_vpm}.png"
     currentDirectory = os.path.dirname(os.path.abspath(__file__))
     image_directory_name = "Images"
-    image_file_path = os.path.join(currentDirectory, image_directory_name, f"{filename}.png")
+    image_file_path = os.path.join(currentDirectory, image_directory_name, filename)
 
     if os.path.exists(image_file_path):
         return send_file(image_file_path, mimetype="image/png")
     else:
-        return "No image found for the given targetVPM, 3D model has not been generated yet."
+        return "No image found for the given target VPM, 3D model has not been generated yet."
 
 @app.route("/order-page")
 def order_page():
     pump_name = request.args.get("pump_name", default=None)
-    print(pump_name)
-    #target_vpm = float(request.form["targetVPM"])
-
     return render_template("order.html", pump_name=pump_name)
 
 @app.route("/confirmed-order",  methods=["POST"])
@@ -48,24 +41,23 @@ def confirmed_order():
     email = request.form["email"]
     pump_amount = request.form["pump_amount"]
     pump_name = request.form.get("pump_name", default=None)
-    print(pump_name)
 
     insert_customer_data(username, email)
     insert_order_data(pump_name, pump_amount, username)
     orders = show_orders_table(username)
-
+    homepage_button = f"""
+        <html>
+        <body>
+            <h1> Order complete </h1>
+            <span> We will be in touch <span>
+            <br><br>
+            <a href="{url_for('index')}"><button>Homepage</button></a>
+            <br><br>
+        </body>
+        </html>
+        """
     #pump_name = request.args.get("pumpName", default=None)
-    text = f"""
-    <html>
-    <body>
-        <br>
-        <h5>{username}</h5>
-        <h5>{email}</h5>
-        <h5>{pump_amount}</h5>
-    </body>
-    </html>
-    """
-    return text + orders
+    return homepage_button + orders
 
 
 @app.route("/create-pump", methods=["POST"])
@@ -121,7 +113,7 @@ def calculate():
     pumps = get_all_pumps()    
     pump_name = f"pump_{get_pump_count()}"  
 
-    image_button = f"""
+    image_and_order_button = f"""
     <html>
     <body>
         <br>
@@ -130,7 +122,7 @@ def calculate():
     </body>
     </html>
     """
-    return results + image_button
+    return results + image_and_order_button
 
 def get_pump_details(target_vpm):
     # Query to get the Pump with the given targetVPM
@@ -194,7 +186,7 @@ def get_all_pumps():
             A3:depth ?depth ;
             A3:numberOfTeeth ?numberOfTeeth . 
     }
-    ORDER BY (?pump)
+    ORDER BY (?targetVPM)
     """
     url = "http://localhost:3030/A3/query"
     PARAMS = {"query": sparql_query}
