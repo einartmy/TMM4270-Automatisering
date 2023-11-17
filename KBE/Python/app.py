@@ -43,14 +43,15 @@ def confirmed_order():                                              #Order confi
     pump_name = request.form.get("pump_name", default=None)
 
     if not check_username_exists(username):
+        # If the username does not exist, insert the customer data into the ontology    
         insert_customer_data(username, email)
     
-    order_number = insert_order_data(pump_name, pump_amount, username)
+    order_number = insert_order_data(pump_name, pump_amount, username)     # Insert the order data into the ontology, returns the order number
     orders = get_orders(username)
-    return render_template('order_confirmed.html', order_number=order_number, orders=orders, username=username)
+    return render_template('order_confirmed.html', order_number=order_number, orders=orders, username=username)     
 
 @app.route("/create-pump", methods=["POST"])
-def calculate():
+def calculate():                                                    #Page where pump is either created or an existing pump is shown
     target_vpm = float(request.form["targetVPM"])
     global pumps
  
@@ -66,7 +67,7 @@ def calculate():
         pump_name=pump_name,
         pump_exists=True)
 
-    # If pump does not exist, optimize the parameters
+    # If pump does not exist, optimize the parameters with the Genetic Algorithm
     else:
         optimizer = GeneticPumpOptimizer(target_vpm)
         best_pump = optimizer.run()
@@ -89,8 +90,8 @@ def calculate():
         }
 
         currentDirectory = os.path.dirname(os.path.abspath(__file__))
-        inputJsonPath = os.path.join(currentDirectory, "Pump_parameters.json")
-        with open(inputJsonPath, "w") as file:
+        inputJsonPath = os.path.join(currentDirectory, "Pump_parameters.json")   # Path to the JSON file
+        with open(inputJsonPath, "w") as file:                                   # Write the best pump parameters to the JSON file for use in NX
             json.dump(best_pump_data, file)
         
         # Run all update functions
@@ -111,7 +112,7 @@ def calculate():
     return results 
 
 def get_pump_details(target_vpm):
-    # Query to get Data of the Pump with the given targetVPM
+    # Query to get details of the Pump with the given targetVPM in a dictionary
     sparql_query = f"""
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     PREFIX A3: <http://www.kbe.com/pump.owl#>
@@ -157,7 +158,7 @@ def get_pump_details(target_vpm):
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
 
 def get_all_pumps():
-    # Query to get all pumps
+    # Query to get all pumps in a dictionary
     sparql_query = """
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     PREFIX A3: <http://www.kbe.com/pump.owl#>
@@ -201,6 +202,7 @@ def get_all_pumps():
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
 
 def insert_data(target_vpm, depth, thickness, gear_radius, tooth_radius, angleSpeed, numberOfTeeth): 
+        # Query to insert the data of the optimized pump into the ontology 
         count = get_pump_count()
         sparql_query = f"""
         PREFIX A3: <http://www.kbe.com/pump.owl#>
@@ -241,6 +243,7 @@ def insert_data(target_vpm, depth, thickness, gear_radius, tooth_radius, angleSp
         insert_sparql_data(sparql_query)
 
 def insert_sparql_data(sparql_query):
+    # Function to insert data into the ontology
     url = "http://localhost:3030/A3/update"
     
     PARAMS = {"update": sparql_query}
@@ -253,6 +256,7 @@ def insert_sparql_data(sparql_query):
         return f"Failed with status code: {response.status_code}. Message: {response.text}"
 
 def get_pump_count():
+    # SPARQL Query to get the number of pumps in the ontology
     sparql_query = """
     PREFIX A3: <http://www.kbe.com/pump.owl#>
     SELECT (COUNT(?pump) AS ?count)
@@ -311,6 +315,7 @@ def get_pump(target_vpm):
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
 
 def get_order_count():
+    # SPARQL Query to get the number of orders in the ontology
     sparql_query = """
     PREFIX A3: <http://www.kbe.com/pump.owl#>
     SELECT (COUNT(?order) AS ?count)
@@ -326,6 +331,7 @@ def get_order_count():
     return count + 1
 
 def insert_order_data(pump_name, order_quantity, customer_username):
+    # SPARQL Query to insert the order data into the ontology
     count = get_order_count()
     order_number = f"order_{count}"
     sparql_query = f"""
@@ -343,6 +349,7 @@ def insert_order_data(pump_name, order_quantity, customer_username):
     return order_number
 
 def insert_customer_data(customer_username, customer_email):
+    # SPARQL Query to insert the customer data into the ontology
     count = get_customer_count()
     sparql_query = f"""
     PREFIX A3: <http://www.kbe.com/pump.owl#>
@@ -357,6 +364,7 @@ def insert_customer_data(customer_username, customer_email):
     insert_sparql_data(sparql_query)
 
 def get_customer_count():
+    # SPARQL Query to get the number of customers in the ontology
     sparql_query = """
     PREFIX A3: <http://www.kbe.com/pump.owl#>
     SELECT (COUNT(?customer) AS ?count)
@@ -372,6 +380,7 @@ def get_customer_count():
     return count + 1
 
 def get_orders(customer_username):
+    # Query to get all orders of the given customer in a dictionary
     sparql_query = f"""
     PREFIX A3: <http://www.kbe.com/pump.owl#>
     SELECT ?order ?pump ?quantity
@@ -400,32 +409,8 @@ def get_orders(customer_username):
     else:
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
 
-def show_orders_table(customer_username):
-    orders = get_orders(customer_username)
-    table = f"""
-    <h2>Your Orders {customer_username}</h2>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Order Number</th>
-                <th>Pump Number</th>
-                <th>Quantity</th>
-            </tr>
-        </thead>
-        <tbody>
-    """
-    for order in orders:
-        table += f"""
-        <tr>
-            <td>{order["order"]}</td>
-            <td>{order["pump"]}</td>
-            <td>{order["quantity"]}</td>
-        </tr>
-        """
-    table += "</tbody></table>"
-    return table
-
 def check_username_exists(customer_username):
+    # SPARQL Query to check if a Customer with the given username exists
     sparql_query = f"""
     PREFIX A3: <http://www.kbe.com/pump.owl#>
     ASK {{
