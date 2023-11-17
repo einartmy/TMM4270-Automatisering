@@ -64,13 +64,12 @@
 <body>
     
 <h2>Order confirmed with order number: {{ order_number }}</h2>
-
-
+<!-- Button to take you to first page again -->
 <div>
     <a href="{{ url_for('index') }}"><button>Homepage</button></a>
 </div>
+<!-- A table to display old confirmed orders by same account (username) -->
 <h2>Your Orders {{ username }}</h2>
-
 <table>
     <thead>
         <tr>

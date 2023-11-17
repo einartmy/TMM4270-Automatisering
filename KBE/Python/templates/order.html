@@ -58,14 +58,14 @@
 
 <h2 style="text-align: center;">Order The Pump</h2>
 
-<form action="/confirmed-order" method="post">
+<form action="/confirmed-order" method="post"> <!-- Using method post to send information to app.py, and next page -->
+    <!-- 3 inputs for name, email and pumps- This to make it easier to order more, and make sure this customer have ordered before or not -->
     <label for="username">Enter username:</label>
     <input type="text" id="username" name="username">
     <br>
     <label for="email">Enter email:</label>
     <input type="text" id="email" name="email">
     <br>
-    
     <label for="pump_amount">Enter amount of pumps:</label>
     <input type="text" id="pump_amount" name="pump_amount" required pattern="\d+?" title="Please enter a valid value">
     <br>
