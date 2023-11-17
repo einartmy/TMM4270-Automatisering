@@ -8,10 +8,10 @@ import os
 app = Flask(__name__)
 pumps = {}
 
-@app.route("/")
+@app.route("/")                 #Homepage
 def index():
     global pumps
-    pumps = get_all_pumps()     # Get the available pumps as a dictionary
+    pumps = get_all_pumps()     # Get all the available pumps as a dictionary
     pumps_table = render_template("pump_table.html", pumps=pumps)     # Render the HTML template with the available pumps
 
     return render_template("vpm.html", pumps_table=pumps_table)
@@ -30,19 +30,21 @@ def get_image():
     else:
         return "No image found for the given target VPM, 3D model has not been generated yet."
 
-@app.route("/order-page")
+@app.route("/order-page")                                           #Page to place order
 def order_page():
     pump_name = request.args.get("pump_name", default=None)
     return render_template("order.html", pump_name=pump_name)
 
-@app.route("/confirmed-order",  methods=["POST"])
-def confirmed_order():
+@app.route("/confirmed-order",  methods=["POST"])   
+def confirmed_order():                                              #Order confirmation page
     username = request.form["username"]
     email = request.form["email"]
     pump_amount = request.form["pump_amount"]
     pump_name = request.form.get("pump_name", default=None)
 
-    insert_customer_data(username, email)
+    if not check_username_exists(username):
+        insert_customer_data(username, email)
+    
     order_number = insert_order_data(pump_name, pump_amount, username)
     orders = get_orders(username)
     return render_template('order_confirmed.html', order_number=order_number, orders=orders, username=username)
@@ -55,9 +57,7 @@ def calculate():
     # Check if pump already exists
     if pump_exists(target_vpm):
         pump_name = get_pump(target_vpm)
-        print("Pump exists", pump_name)
         pump_details = get_pump_details(target_vpm)
-        print(pump_details)
 
         results =  render_template(
         'pump_data.html',
@@ -98,8 +98,6 @@ def calculate():
         pumps = get_all_pumps()   # Update the pumps dictionary   
         pump_name = get_pump(target_vpm) 
         pump_details = get_pump_details(target_vpm)
-        
-        print(pump_details)
 
         results =  render_template(
         'pump_data.html',
@@ -113,7 +111,7 @@ def calculate():
     return results 
 
 def get_pump_details(target_vpm):
-    # Query to get the Pump with the given targetVPM
+    # Query to get Data of the Pump with the given targetVPM
     sparql_query = f"""
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     PREFIX A3: <http://www.kbe.com/pump.owl#>
@@ -140,7 +138,6 @@ def get_pump_details(target_vpm):
     if response.status_code == 200:
         data = response.json()
         bindings = data["results"]["bindings"] 
-        print(bindings)
         if len(bindings) > 0:
             result = {}
             for key, value in bindings[0].items():
@@ -148,7 +145,7 @@ def get_pump_details(target_vpm):
                     result[key] = value["value"].split("#")[1]
                 else:
                     if key in ["gearRadius", "teethDiameter", "depth"]:
-                        result[key] = round(float(value["value"]) * 1000, 2)
+                        result[key] = round(float(value["value"]) * 1000, 2)        #Convert to mm
                     elif key == "angleSpeed":
                         result[key] = round(float(value["value"]), 2)
                     else:
@@ -199,7 +196,6 @@ def get_all_pumps():
                 "angleSpeed": round(float(binding["angleSpeed"]["value"]), 2),
                 "numberOfTeeth": int(binding["numberOfTeeth"]["value"])
             }
-        print(pumps)
         return pumps
     else:
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
@@ -428,7 +424,23 @@ def show_orders_table(customer_username):
         """
     table += "</tbody></table>"
     return table
-    
+
+def check_username_exists(customer_username):
+    sparql_query = f"""
+    PREFIX A3: <http://www.kbe.com/pump.owl#>
+    ASK {{
+        ?customer a A3:Customer ;
+                  A3:userName "{customer_username}" .
+    }}
+    """
+    url = "http://localhost:3030/A3/query"
+    PARAMS = {"query": sparql_query}
+    response = requests.get(url, PARAMS)
+    if response.status_code == 200:
+        data = response.json()
+        return data["boolean"]  # This will be True if the Customer exists, False otherwise
+    else:
+        raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
