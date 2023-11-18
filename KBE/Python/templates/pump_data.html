@@ -74,27 +74,27 @@
             <th>Value</th>
         </tr>
         <tr>
-            <td>Target VPM</td>
+            <td>Target VPM (m³)</td>
             <td>{{ target_vpm }}</td>
         </tr>
         <tr>
-            <td>Gear Radius</td>
+            <td>Gear Radius (mm)</td>
             <td>{{ pump_data.gearRadius }}</td>
         </tr>
         <tr>
-            <td>Teeth Diameter</td>
+            <td>Teeth Diameter (mm)</td>
             <td>{{ pump_data.teethDiameter }}</td>
         </tr>
         <tr>
-            <td>Gear Depth</td>
+            <td>Gear Depth (mm)</td>
             <td>{{ pump_data.depth }}</td>
         </tr>
         <tr>
-            <td>Case Thickness</td>
+            <td>Case Thickness (mm)</td>
             <td>{{ pump_data.thickness }}</td>
         </tr>
         <tr>
-            <td>Angle Speed</td>
+            <td>Angle Speed (rad/s)</td>
             <td>{{ pump_data.angleSpeed }}</td>
         </tr>
         <tr>
@@ -104,7 +104,7 @@
 
         {% if not pump_exists %}
         <tr>
-            <td>Calculated VPM</td>
+            <td>Calculated VPM (mm)</td>
             <td>{{ calculated_vpm }}</td>
         </tr>
         {% endif %} 

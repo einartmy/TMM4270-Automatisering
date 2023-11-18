@@ -10,9 +10,9 @@ from imageGenerator import ImageGenerator
 
 class Pump:
 
-    def __init__(self, targetVpm, radius, teethDiameter, depth, angleSpeed, caseThickness = 10, x = 0, y = 0, density = 2700, mass = 0):
+    def __init__(self, targetVpm, radius, teethDiameter, depth, angleSpeed, caseThickness, x = 0, y = 0, density = 2700, mass = 0):
         self.targetVpm = targetVpm                                      #Volume per minute flow target
-        self.caseThickness = caseThickness                              #Thickness of casing
+        self.caseThickness = caseThickness * 1000                             #Thickness of casing
         self.x = x                                                      #X coordinate for center of upper gear
         self.y = y                                                      #Y coordinate for center of upper gear
         self.radius = radius * 1000                                     #Radius of a single pump gear

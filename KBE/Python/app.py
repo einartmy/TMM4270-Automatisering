@@ -50,7 +50,7 @@ def confirmed_order():                                              #Order confi
     return render_template('order_confirmed.html', order_number=order_number, orders=orders, username=username)     
 
 @app.route("/create-pump", methods=["POST"])
-def calculate():                                                    #Page where pump is either created or an existing pump is shown
+def calculate():                                                    #Page where a new pump is calculated or an existing pump design is shown
     target_vpm = float(request.form["targetVPM"])
     global pumps
  
@@ -70,8 +70,8 @@ def calculate():                                                    #Page where 
     else:
         optimizer = GeneticPumpOptimizer(target_vpm)
         best_pump = optimizer.run()
-        thickness = 10.0
         radius = best_pump.radius
+        thickness = radius/20
         teethDiameter = best_pump.teethDiameter
         depth = best_pump.depth
         calculated_vpm = best_pump.vpm()
@@ -144,7 +144,7 @@ def get_pump_details(target_vpm):
                 if key == "pump": 
                     result[key] = value["value"].split("#")[1]
                 else:
-                    if key in ["gearRadius", "teethDiameter", "depth"]:
+                    if key in ["gearRadius", "teethDiameter", "depth", "thickness"]:
                         result[key] = round(float(value["value"]) * 1000, 2)        #Convert to mm
                     elif key == "angleSpeed":
                         result[key] = round(float(value["value"]), 2)
@@ -193,7 +193,7 @@ def get_all_pumps():
                 "gearRadius": round(float(binding["gearRadius"]["value"]) * 1000, 2),                   #Convert to mm
                 "teethDiameter": round(float(binding["teethDiameter"]["value"]) * 1000, 2),             #Convert to mm
                 "depth": round(float(binding["depth"]["value"]) * 1000, 2),                             #Convert to mm      
-                "thickness": float(binding["thickness"]["value"]),
+                "thickness": round(float(binding["thickness"]["value"]) * 1000, 2),                     #Convert to mm
                 "angleSpeed": round(float(binding["angleSpeed"]["value"]), 2),
                 "numberOfTeeth": int(binding["numberOfTeeth"]["value"]),
                 "timesOrdered": times_ordered
