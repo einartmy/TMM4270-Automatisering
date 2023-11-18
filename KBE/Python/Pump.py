@@ -37,11 +37,11 @@ class Pump:
         self.gear1 = Pump_Gears(self.radius, self.depth, self.teethDiameter, self.x, self.y, False)                    
         self.gear2 = Pump_Gears(self.radius, self.depth, self.teethDiameter, self.x, self.y - 2*self.radius, True)
 
-        upperCase = UpperCase(self.radius, self.depth, self.teethDiameter, self.caseThickness, self.x, self.y)
-        lowerCase = LowerCase(self.radius, self.depth, self.teethDiameter, self.caseThickness, self.x, self.y - 2*self.radius)
+        # upperCase = UpperCase(self.radius, self.depth, self.teethDiameter, self.caseThickness, self.x, self.y)
+        # lowerCase = LowerCase(self.radius, self.depth, self.teethDiameter, self.caseThickness, self.x, self.y - 2*self.radius)
 
-        volume = self.calculateVolume(self.gear1, self.gear2, upperCase, lowerCase)       #Calculating volume
-        self.mass = self.density * volume                                                   #Calculating mass
+        # volume = self.calculateVolume(self.gear1, self.gear2, upperCase, lowerCase)       #Calculating volume
+        # self.mass = self.density * volume                                                   #Calculating mass
 
 
     def getDesignParameters(self):
