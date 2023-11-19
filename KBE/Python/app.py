@@ -111,7 +111,7 @@ def calculate():                                                    #Page where 
     return results 
 
 def get_pump_details(target_vpm):
-    # Query to get details of the Pump with the given targetVPM in a dictionary
+    # Query to get details of the Pump with the given targetVPM and return it in a dictionary
     sparql_query = f"""
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     PREFIX A3: <http://www.kbe.com/pump.owl#>
@@ -157,7 +157,7 @@ def get_pump_details(target_vpm):
         raise Exception(f"Failed with status code: {response.status_code}. Message: {response.text}")
 
 def get_all_pumps():
-    # Query to get all pumps in a dictionary
+    # Query to get all pumps and return it in a dictionary
     sparql_query = """
     PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
     PREFIX A3: <http://www.kbe.com/pump.owl#>
@@ -204,6 +204,7 @@ def get_all_pumps():
 
 def insert_data(target_vpm, depth, thickness, gear_radius, tooth_radius, angleSpeed, numberOfTeeth): 
         # Query to insert the data of the optimized pump into the ontology 
+        # Pump named with unique count calue
         count = get_pump_count()
         sparql_query = f"""
         PREFIX A3: <http://www.kbe.com/pump.owl#>
@@ -333,6 +334,7 @@ def get_order_count():
 
 def insert_order_data(pump_name, order_quantity, customer_username):
     # SPARQL Query to insert the order data into the ontology
+    # Order named with unique count calue
     count = get_order_count()
     order_number = f"order_{count}"
     sparql_query = f"""

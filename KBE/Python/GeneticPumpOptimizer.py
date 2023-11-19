@@ -86,8 +86,8 @@ class GeneticPumpOptimizer:
             Returns:
                 The best pump design found by the genetic algorithm.
         """
-        population = [CalculatePump(random.uniform(0.01, 0.5), random.randint(3, 10), random.uniform(1, 10)) for _ in range(self.population_size)]
-        
+        population = [CalculatePump(random.uniform(0.01, 0.5), random.randint(3, 10), random.uniform(1, 10)) for _ in range(self.population_size)]  #Just initiating pumps with random values, not doing calculations
+
         for _ in range(self.generations):
             population.sort(key=self.fitness, reverse=True)
             
@@ -112,7 +112,7 @@ class GeneticPumpOptimizer:
 
 # Example usage:
 if __name__ == "__main__":
-    target_vpm = 0.2  # Adjust this value as needed
+    target_vpm = 1.5  # Adjust this value as needed
     optimizer = GeneticPumpOptimizer(target_vpm)
     best_pump = optimizer.run()
     
